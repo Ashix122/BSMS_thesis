@@ -1,0 +1,137 @@
+\documentclass[11pt]{article}
+
+% ---------- Packages ----------
+\usepackage[a4paper, margin=1in]{geometry} % clean margins
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{setspace}
+\usepackage{titlesec}
+
+% ---------- Formatting ----------
+\setstretch{1.15} % slightly tighter than default
+\setlength{\parskip}{0.5em} % space between paragraphs
+\setlength{\parindent}{0pt} % no indent (modern style)
+
+% Section styling (clean, no extra lines)
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{0.5em}{}
+
+% ---------- Document ----------
+\title{\textbf{Master's Thesis}}
+\author{ashique21}
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\vspace{-1em} % tighten space after title
+
+\section{Introduction}
+
+Einstein's General Relativity is, to date, the most successful theory describing gravity as a manifestation of the curvature of spacetime. Since its formulation in 1915, it has passed numerous experimental tests ranging from the precession of Mercury's orbit to the recent direct detection of gravitational waves.
+
+One of the most remarkable predictions of General Relativity is the formation of black holes—regions of spacetime from which no information can escape. Understanding the dynamics of gravitational collapse leading to black hole formation has been a central problem in theoretical physics.
+
+A particularly intriguing aspect of gravitational collapse is the emergence of \textit{critical phenomena}, first discovered by Choptuik in 1993. By finely tuning a parameter in a family of initial data, one observes a threshold between dispersion and black hole formation. Near this threshold, the system exhibits universal behaviour, scale invariance, and power-law scaling of black hole mass.
+
+While critical phenomena in spherical symmetry are relatively well understood and can be studied with high precision, extending these studies beyond symmetry assumptions remains significantly more challenging. The complexity of the governing equations increases, and numerical simulations must resolve increasingly fine spatio-temporal structures.
+
+In this work, we investigate critical collapse in settings with reduced symmetry using numerical relativity techniques. Particular attention is given to the role of gauge choices, numerical stability, and resolution requirements, all of which become increasingly important as one approaches the critical regime.
+
+\section{Theory}
+
+\subsection{Critical Phenomena in Gravitational Collapse}
+
+\subsection{Gauge Freedom in GR (NR)}
+
+One of the most important characteristic of GR is its so called diffeomorphism invariance which essentially means
+that the "physics" inside theory is unchanged under smooth coordinate transformations. In other words, different coordinate systems (or gauges) can describe the same underlying spacetime geometry.
+
+
+Mathematically, this invariance implies that if $g_{\mu\nu}(x)$ is a solution to Einstein's equations, then so is the transformed metric under a diffeomorphism $x^\mu \rightarrow x'^\mu(x)$, with the metric transforming as
+\begin{equation}
+g'_{\mu\nu}(x') = \frac{\partial x^\alpha}{\partial x'^\mu} \frac{\partial x^\beta}{\partial x'^\nu} g_{\alpha\beta}(x).
+
+
+\end{equation}
+
+Often in theoretical studies we utilise various gauges to uncover the internal dynamics of the spacetime variables. The easiest example would in the case of gravitational waves where we often assume a linearised gravity where the metric will be the 
+\section{Tools}
+
+\subsection{Generalised Harmonic Gauge}
+
+\subsection{Horizon Finding}
+
+\section{Problems}
+
+Critical phenomenon usually in spherical symmetry is pretty much straight forward which is very much reflected in the journey that we make towards the critical regime. For example in spherical symmetry, the relevent equations will become into set of coupled one dimensional PDE's which we can solve relatively easily. Choptuik has even tuned the critical parameter into machine precision of 15 decimal places.
+
+Unfortunately, with deviation from symmetries they are no longer as easy. In literature often the most tuned values in axisymmetric vacuum collapses go till 5-7 digits of precision. The main reason for this stems from the fact that its computationally much more harder to tackle multidimensional PDE's and inherent nature of critical behaviour.
+
+
+\subsection{Courant Condition and Resolution Limits}
+
+As we approach the critical regime, the solution develops structure on increasingly small spatio-temporal scales. This imposes a fundamental restriction on the timestep through the Courant–Friedrichs–Lewy (CFL) condition, which is required for the stability of explicit numerical schemes.
+
+The Courant condition states that the numerical domain of dependence must include the physical domain of dependence. For a hyperbolic system with characteristic speed $v_{\max}$, this leads to the condition
+\[
+\Delta t \leq C \frac{\Delta x}{v_{\max}},
+\]
+where $C < 1$ is the Courant factor determined by the numerical scheme.
+
+In the context of general relativity, the maximum signal speed is set by the speed of light (in units where $c=1$), and thus the condition reduces to
+\[
+\Delta t \leq C \, \Delta x.
+\]
+
+This condition has important consequences near criticality. As finer spatial resolution ($\Delta x \to 0$) is required to resolve the small-scale features that emerge, the timestep must also decrease proportionally. Consequently, the computational cost increases significantly, since the number of timesteps required scales inversely with $\Delta t$. With our current computational resources we were only able to tune to about 3 decimal places due to that reason.
+
+Additionally, the dynamics of critical phenomenon is in such a way as we tune towards the threshold of collapse, the evolution resembles each other to even more duration of evolution until the solution "chooses" an end point, be it a singular spacetime or dispersion. So essentially we will have to evolve more as we tune the parameter more to reach the critical regime.But using numerical methods, we are 
+
+
+
+Therefore, the combination of shrinking physical scales and the CFL constraint severely limits how close one can tune to the critical parameter in multidimensional simulations. This is one of the primary reasons why achieving high precision in non-symmetric critical collapse is significantly more challenging than in spherical symmetry.
+
+Since 
+
+\subsection{Ray-body vs non Ray-body Apparent horizons}
+
+\subsubsection{Harmonic Horizon Marching Gauge}
+
+Since GR has an intrinsic gauge freedom built into it, it will be reflected when we do simulations using NR as well. Hence we will have to choose a gauge but in the case of simulations they are chosen by the stability it confers to the simulations.
+
+In \texttt{BAMPS}, the usual gauge that we use is HDWG (Harmonic Gauge). Here the evolution equations for the lapse becomes,
+
+\[
+\mathcal{L}_n \log \alpha = - (H_n +K)
+\]
+
+where $H_n$ is the free choosable function which only contains the metric and not its derivatives.
+
+Inorder the push the lapse to 1 we add an extra term into the harmonic function in such a way that it adds a term $\eta_{hm}(\alpha-1)$ into the evolution equation for lapse
+
+\[
+\partial_t \alpha -\beta^i \partial_i \alpha= -\alpha^2(H_n + K)
+\]
+
+The extra term that in $H_n$ is $\eta_{hm} \alpha^{-2} (\alpha-1)$
+
+\[
+\partial_t \alpha -\beta^i \partial_i \alpha= -(\eta_{hm} (\alpha-1) + \alpha^2 K)
+\]
+
+So in $H_a$ an extra term of $-\eta_{hm} \alpha^{-2} (\alpha - 1) n_a$ is added
+
+So New $H_0=.... + \eta_{hm} \alpha^{-1} (\alpha-1)$
+
+\[
+\partial_t H_0 = +\eta_{hm} \alpha^{-2} \partial_t \alpha
+\]
+
+\[
+\partial_i H_0 = +\eta_{hm} \alpha^{-2} \partial_i \alpha
+\]
+
+\end{document}
