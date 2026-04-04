@@ -6,12 +6,61 @@
 \usepackage{amsmath, amssymb}
 \usepackage{setspace}
 \usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{enumitem}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,decorations.pathmorphing,arrows.meta,calc}
+\newcommand{\wavyarrow}{%
+  \mathrel{\tikz[baseline=-0.5ex]{
+    \draw[->,decorate,
+          decoration={snake, amplitude=0.3mm, segment length=2mm}]
+          (0,0) -- (1em,0);
+  }}%
+}
 
+\definecolor{cyan_dp}{HTML}{007272}
+\definecolor{rose}{HTML}{a84847}
+\definecolor{green}{HTML}{6A8023}%228B22}%4A7212}%527640} %578540}%527640} % 6A8023}
+\definecolor{hot_pink}{HTML}{f743a9}
+\definecolor{orange}{HTML}{FF6600}
+\definecolor{warm_orange}{HTML}{FD7F20}
+\definecolor{red}{HTML}{FF2511}
+\definecolor{blue}{HTML}{055C9D}
+\definecolor{mauve}{HTML}{905171}
+\definecolor{orchid}{HTML}{9c3386} %B464A3}%8A427A}
+\definecolor{ref_blue}{HTML}{00478F}%055C9D}
+\definecolor{dodger_blue}{HTML}{0057FF} % 0074B7
+\definecolor{red}{HTML}{FF2511}
+\definecolor{burnt_orange}{HTML}{B8390E}
+\definecolor{olive}{HTML}{5F6F19}%4B5A20}%787D12}
+\definecolor{baby_blue}{HTML}{09A9C8}
+\definecolor{cornflower}{HTML}{79A9F5}
+\definecolor{blue_grotto}{HTML}{5e9ef7}
+\definecolor{blue_green}{HTML}{00B6BC}
+\definecolor{fau_blue}{HTML}{003366}
+\definecolor{fau_red}{HTML}{CC0000}
+\definecolor{fau_gray_dp}{HTML}{4D4C55}
+\definecolor{fau_gray}{HTML}{CCCCCC}
+\definecolor{fau_blue_el}{HTML}{126BD9}
+\definecolor{fau_stone}{HTML}{7A97AB}
+\definecolor{fau_blue_sk}{HTML}{D9ECFF}
+\definecolor{fau_sand}{HTML}{D4B98B}
+\definecolor{ref_red}{HTML}{A30000}%750000}%A30000}%055C9D}
+\definecolor{forest_green}{HTML}{2C5E1A}
 % ---------- Formatting ----------
 \setstretch{1.15} % slightly tighter than default
 \setlength{\parskip}{0.5em} % space between paragraphs
 \setlength{\parindent}{0pt} % no indent (modern style)
-
+\usepackage[backend=biber]{biblatex}
+\addbibresource{ref.bib}
 % Section styling (clean, no extra lines)
 \titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
@@ -35,7 +84,7 @@
 
 \subsection{Numerical Relativity}
 
-Numerical Relativity (NR) can be defined as the science of solving the Einstein's equations using numerical methods in such a way that the discretised solutions agree with the continuum solutions at the limit of infinite resolution. They are a set of coupled 4-dimensional Partial Differential Equations (PDEs) that 
+Numerical Relativity (NR) can be defined as the science of solving the Einstein's equations using numerical methods in such a way that the discretised solutions agree with the continuum solutions at the limit of infinite resolution. They are a set of coupled 4-dimensional Partial Differential Equations (PDEs) that connect the dynamics between matter and the spacetime curvature.
 
 $$
 G_{ab}=16 \pi T_{ab}
@@ -62,6 +111,98 @@ to a point with the same coordinate label on the next slice, whereas $n^a$
 connects orthogonal (normal) directions across slices. The difference is encoded 
 in the shift vector $\beta^i$ through the standard decomposition $\partial_t^a = \alpha n^a + \beta^i \partial_i^a,$ which parametrises how spatial coordinates shift from one hypersurface to the 
 next.
+\begin{figure}
+\centering
+
+\begin{minipage}{0.01\textwidth}
+
+\begin{tikzpicture}[scale=0.7]
+    \draw[blue,thick,fill=fau_blue_sk] (-1,0) to[out=30, in=200] (5,0)
+         to (5.5,1) to [out=200, in=30] (-0.5,1) to (-1,0);
+    \node[blue] at (2.25,0.6) {$\Sigma_{t_1}$};
+    \node[rose] at (-1.5,0.5) {$t_1$};
+    \draw[thick,rose] (-2,0.5) -- (-1.8,0.5);
+
+    \draw[blue,thick,fill=fau_blue_sk] (-1,1.5) to[out=30, in=200] (5,1.5)
+         to (5.5,2.5) to [out=200, in=30] (-0.5,2.5) to (-1,1.5);
+    \node[blue] at (2.25,2.1) {$\Sigma_{t_2}$};
+    \node[rose] at (-1.5,2) {$t_2$};
+    \draw[thick,rose] (-2,2) -- (-1.8,2);
+
+    \draw[blue,thick,fill=fau_blue_sk] (-1,3) to[out=30, in=200] (5,3)
+         to (5.5,4) to [out=200, in=30] (-0.5,4) to (-1,3);
+    \node[blue] at (2.25,3.6) {$\Sigma_{t_3}$};
+    \node[rose] at (-1.5,3.5) {$t_3$};
+    \draw[thick,rose] (-2,3.5) -- (-1.8,3.5);
+
+    \draw[line width=1.5,rose,->] (-2,-0.5) to (-2,5);
+    \node[rose,above] at (-2,5) {Timelike direction};
+
+    \draw[blue,thick,decorate,decoration={brace,mirror,amplitude=10pt}]
+                  (6,0) -- (6,4);
+    \node[right,blue,align=left] at (6.5,2) {Spacelike \\ hypersurfaces};
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.38\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.8]
+
+    \draw[line width=1.5,forest_green](1,0.9) ++ (-135:0.7) -- ++ (-135:1.5);
+    \draw[line width=1.5,rose] (1,-1) to (1,0.36);
+
+    \draw[blue,thick,fill=fau_blue_sk] (-0.75,0) to[out=30, in=200] (5,0)
+         to (5.5,1.1) to [out=200, in=30] (-0.25,1.1) to (-0.75,0);
+    \node[blue] at (4.5,0.4) {$\Sigma_{t}$};
+    \node[rose] at (-0.75,0.6) {$t$};
+
+    \draw[line width=1.5,rose] (1,0.9) to (1,2.36);
+    \node[left,rose] at (1,1.9) {$\alpha n^\mu dt$};
+
+    \draw[line width=1.5,forest_green](1,0.9) ++ (45:0.02) -- ++ (45:1.8);
+
+    \draw[blue,thick,fill=fau_blue_sk] (-0.75,2) to[out=30, in=200] (5,2)
+         to (5.5,3.1) to [out=200, in=30] (-0.25,3.1) to (-0.75,2);
+    \node[blue] at (4.5,2.4) {$\Sigma_{t + dt}$};
+    \node[rose] at (-1.1,2.6) {$t + dt$};
+
+    \draw[line width=1.5,blue,->](1,2.9) 
+        to node[above,blue] {$\beta^i dt$} (2.66, 2.56);
+
+    \draw[line width=1.5,rose,dashed] (1,0.4) to (1,0.9);
+    \draw[line width=1.5,rose,dashed,->] (1,2.4) to (1,2.9);
+    \draw[line width=1.5,rose,->] (1,2.9) to (1,4.5);
+
+    \draw[line width=1.5,forest_green,dashed](1,0.9) ++ (-135:0.02)
+                                                 -- ++ (-135:0.7);
+
+    \node[green,above right] at (2.6, 2.2) {$x^i$};
+    \node[green,above right] at (1,0.6) {$x^i$};
+
+    \draw[line width=1.5,forest_green,dashed,->]
+        (1,0.9) ++ (45:1.75) -- ++ (45:0.65);
+
+    \node[right,forest_green] at ($(1,0.9) + (40:1.15)$) {$t^\mu dt$};
+
+    \draw[line width=1.5,forest_green,->]
+        (1,0.9) ++ (45:2.35) 
+        to node[above,forest_green] {$t^\mu$} ++ (45:1.75);
+
+    \node[forest_green,above] 
+        at ($(1,0.9) + (45:2.35) + (45:1.75)$) {Coordinate line};
+
+    \node[rose,left] at (1,4.2) {$n^\mu$};
+    \node[rose,above] at (1,4.5) {Normal line};
+
+\end{tikzpicture}
+
+\end{minipage}
+
+\caption{
+(a) Spacelike hypersurfaces sliced along the timelike direction. 
+(b) Relation between slices showing lapse $\alpha$ and shift $\beta^i$.
+}
+\end{figure}
 
 By using the orthogonal projection operator to the hypersurface $\perp_{ab} = \delta_{ab} +n_a n_b$ we can project all  the relevant quantities that we require such as the metric, Riemann curvature tensor etc. This projected part of $g_{ab}$ is called spatial metric $\gamma_{ab}$ and D is the derivative associated with this metric. We define extrinsic curvature $K_{ab}$ to be $-\gamma^c_a \nabla_c n_b$ which in vague terms give the information of the time derivative of the spatial metric by the relation $K_{ab} = -\mathcal{L}_n \gamma_{ab}$ where $\mathcal{L}$ is the lie derivative with respect to a vector field. Using all these we can decompose the Einstein's equations into a set of constraint equations and evolution equations as given below.
 \begin{equation}
@@ -91,7 +232,30 @@ which correspond to Hamiltonian and momentum constraints respectively, R corresp
 
 \subsection*{Recap and Motivation}
 
+\subsection{Horizons}
 
+The main tool we use to classify spacetimes to subcritical or supercritical is by probing to find horizons, specifically Apparent Horizons (AHs) in the evolved slice. The main advantage of AH is that, unlike event horizons they are not \textit{teleological} i.e we dont need the information about the complete spacetime to get the information of apparent horizon. In numerically computed dynamical spacetimes like ours, we might not be in the position to evolve it completely inorder to classify them, hence AHs are the right tool to understand them.
+
+But what is an AH and why does it relate to the notion of a singular spacetime?
+
+Essentially an AH can be defined as the outermost, Marginally Outer Trapped Surface (MOTS) which are closed 2-dimensional submanifold S in the spacetime slice that satisfies the condition that the expansion of the outgoing null geodesics vanishes at each point in S. The expansion is defined as 
+
+$$
+\Theta = h^{ab} \nabla_a \zeta_b \qquad \text{where} \; h^{ab}= g^{ab}-s^as^b + n^a n^b 
+$$
+
+$h^{ab}$ is the induced metric of the 2-dimensional submanifold, $s^a$ is its normal vector and $\zeta$ is the tangent vector along the outgoing null geodesic . Solving this we get the equation of the form,
+
+\begin{equation}
+\Theta = -K + D_i s^i +s^is^j K_{ij} 
+\label{Horizon}
+\end{equation}
+
+Hence, our aim is to find surfaces satisfying ( $\Theta = 0$ ), and we identify the apparent horizon (AH) as the **outermost marginally outer trapped surface (MOTS)**.
+
+The importance of apparent horizons is closely tied to the singularity theorems of general relativity. These theorems state that, under suitable energy conditions (such as the \textit{null energy condition}, which is satisfied in vacuum since ($T_{ab}=0$)) and global hyperbolicity (satisfied since the initial data is constraint satisfying), the presence of a trapped surface implies that the spacetime is geodesically incomplete, i.e., contains a singularity.
+
+Thus, the formation of a MOTS or apparent horizon serves as a strong indicator of black hole formation in the spacetime’s future development. This provides a practical and geometric criterion for classifying spacetimes in our analysis.
 
 
 \subsection{Gauge Freedom in GR (NR)}
@@ -116,7 +280,7 @@ we know in NR, we try to see Einstein's equations as a set of PDE's to solve num
 
 \subsection{Generalised Harmonic Gauge}
 
-The main advantage of the Generalised Harmonic gauge is that it is, by construction, a well-posed formulation of Einstein's equations. This makes it particularly suitable for numerical evolution, as it provides a strongly hyperbolic system with well-defined characteristic structure. Due to this property, practical considerations aside, in theory they are ideal for any kind of numerical evolutions performed with GR in mind. The well-posedness of this formulation comes from the trace reversed form of Einstein's equation i.e
+The main advantage of the Generalised Harmonic gauge is that it is, by construction, a well-posed formulation of Einstein's equations. This makes it particularly suitable for numerical evolution, as it provides a strongly hyperbolic system with well-defined characteristic structure. Due to this property, practical considerations aside, in theory they are ideal for any kind of numerical evolutions performed with GR in mind.  The well-posedness of this formulation comes from the trace reversed form of Einstein's equation i.e
 
 
 
@@ -131,14 +295,15 @@ R_{\mu\nu}
 
 where $
 \Gamma^\mu = g^{\alpha\beta} \Gamma^\mu_{\alpha\beta}$ called the contracted Christophel symbols. The well-posedness or ill-posedness of a PDE is often determined by its principal terms (Terms containing the highest derivatives). In our problem, the principal terms are the first and the second part of the Equation \ref{GHG} since they contain the second derivatives of the metric. But since the wave equation is a well posed problem, the problematic part of the equation is the second term (derivative of contracted Christophels). But for that we can utilise the gauge freedom to ensure that they don't contain second derivatives of the metric ie
-$\Gamma^a=-H^a(x,g)$ where $H^a$ is called the Gauge Source function and it is a function of atmost the metric and not its derivatives.
+$\Gamma^a=\nabla_b \nabla^b x^a=-H^a(x,g)$ where $H^a$ is called the Gauge Source function and it is a function of atmost the metric and not its derivatives.
 
 This gives us the following equations of motion for the lapse($\alpha$) and shift($\beta$)
 
-$$
+\begin{equation}
 \partial_t \alpha = -\alpha^2 (K + H_n) + \mathcal{L}_\beta \alpha
 \qquad \partial_t \beta^i = \alpha^2 (\Gamma^i + \perp H^i) - \alpha D^i \alpha + \beta^j \partial_j \beta^i
-$$
+\label{lapse=shift}
+\end{equation}
 where $H^n= n^a H_a$
 
 The $H^a$'s are freely specifiable functions but as we mentioned before, we choose it in a way to have proper evolutions without any coordinate pathologies. That choice will be mentioned in the coming sections.
@@ -148,14 +313,37 @@ The $H^a$'s are freely specifiable functions but as we mentioned before, we choo
 
 \subsection{Time Evolutions of Twist-included Brill wave Initial Data}
 
-With the new twist included Brill wave initial data that we constructed, we evolved the initial data in \texttt{BAMPS} NR framework. Unlike the previous tests of Brill waves, we have to evolve the non-diagonal components of the spacetime tensors as well. Due to the axisymmetric nature of the problem in hand, we use the cartoon method to simplify the computational costs.
+With the new twist included Brill wave initial data that we constructed, we evolved the initial data in \texttt{BAMPS} NR framework. Unlike the previous tests of Brill waves, we have to evolve the non-diagonal components of the spacetime tensors as well due to the usage of new spatial metric ansatz due to the inclusion of twist. Due to the axisymmetric nature of the problem in hand, we use the cartoon method to simplify the computational costs.
+
+\subsubsection{Cartoon Method \cite{alcubierre_brgmann_holz_takahashi_brandt_seidel_thornburg_2001}}
+
+In general, performing full 3-D simulations in General Relativity is computationally very expensive due to the dimensionality of the problem. However, when the system possesses axisymmetry, one can exploit this symmetry to significantly reduce computational cost without losing essential physical information.
+
+The cartoon method is a technique that allows one to evolve axisymmetric spacetimes using a reduced computational domain while still employing a Cartesian grid. Instead of evolving the full three-dimensional domain, the evolution is restricted to a thin slab around the symmetry plane (typically the $y=0$ plane), consisting of only a few grid points in the symmetry direction.
+
+The key idea is that derivatives in the symmetry direction (e.g., the $y$-direction) can be reconstructed using the assumption of axisymmetry. This is achieved by performing suitable rotations of the evolved variables around the symmetry axis. For a tensor field $T$, its value at off-plane points required for finite difference stencils is obtained by rotating the on-plane data using the Killing symmetry associated with rotations about the axis. Hence essentially our computational domain for the whole problem is the \textbf{Cartesian X-Z} plane.
+
+
+\subsubsection{Harmonic Damped Wave Gauge (HDWG)}
+
+Harmonic Damped Wave Gauge (HDWG) is obtained by modifying the harmonic gauge condition with a damping term in the gauge source function, turning the coordinate condition into a damped wave equation. This suppresses unphysical gauge modes and stabilizes the coordinate evolution during numerical simulations. The gauge source function for it are
+
+$$
+H_a = \mu_L \log (\frac{\gamma^p}{\alpha})n_a - \mu_s \alpha^{-1} g_{ai}\beta^i
+$$
+
+In black-hole spacetimes, particularly near horizon formation, one often observes a rapid growth of the spatial metric determinant $\gamma$ due to coordinate stretching. The first term in $H_a$, through the logarithmic factor $\log(\gamma^p / \alpha)$, acts to counter this growth by driving a collapse of the lapse $\alpha$, thereby controlling the increase in spatial volume elements. The second term damps the shift vector $\beta^i$, suppressing distortions in the spatial coordinates. For more details, refer \cite{lindblom_szilágyi_2009}
+
+Together, these terms act to control gauge dynamics, preventing the development of large coordinate distortions and stabilizing the evolution near strong-field regions.Since $\mu_L$ and $\mu_s$ sets the time scale where these damping acts, a bit of tuning to find the right parameters are required for proper gauge evolutions which becomes essential in out work.
+
+Using Equation \ref{lapse=shift}, the evolution equation for the lapse and shift becomes, 
 
 
 \subsection{Horizon Finding}
 
+In our axisymmetric setting, to locate surfaces satisfying the vanishing expansion condition in Eq.\ref{Horizon}, the problem reduces to a one-dimensional equation in the polar angle, so that the horizon equation becomes an ordinary differential equation. To solve them, we use the \texttt{AHLoc3D} tool which uses a spherical parameterisation for the horizon shape with a parabolic flow method.\cite{thornburg_2007}.      Essentially it uses 
 
-
-
+We also use a complementary method based on a Cartesian parameterisation with a shooting algorithm, which similarly reduces to solving an ODE in axisymmetry. The pros and cons of both in context to our problem will be discussed below
 
 \section{Problems}
 
@@ -181,7 +369,7 @@ In the context of general relativity, the maximum signal speed is set by the spe
 
 This condition has important consequences near criticality. As finer spatial resolution ($\Delta x \to 0$) is required to resolve the small-scale features that emerge, the timestep must also decrease proportionally. Consequently, the computational cost increases significantly, since the number of timesteps required scales inversely with $\Delta t$. With our current computational resources we were only able to tune to about 3 decimal places due to that reason.
 
-Additionally, the dynamics of critical phenomenon is in such a way as we tune towards the threshold of collapse, the evolution resembles each other to even more duration of evolution until the solution "chooses" an end point, be it a singular spacetime or dispersion. So essentially we will have to evolve more as we tune the parameter more to reach the critical regime.But using numerical methods, we are 
+Additionally, the dynamics of critical phenomenon is in such a way as we tune towards the threshold of collapse, the evolution resembles each other to even more duration of evolution until the solution "chooses" an end point, be it a singular spacetime or dispersion. So essentially we will have to evolve more as we tune the parameter more to reach the critical regime. But using numerical methods, we are 
 
 
 
@@ -191,7 +379,7 @@ Since
 
 \subsection{Ray-body vs non Ray-body Apparent horizons}
 \begin{figure}
-    \includegraphics{notebooks/figure.pdf}
+    \includegraphics[scale=0.8]{notebooks/figure.pdf}
     \caption{}
 \end{figure}
 
@@ -231,4 +419,5 @@ So New $H_0=.... + \eta_{hm} \alpha^{-1} (\alpha-1)$
 \partial_i H_0 = +\eta_{hm} \alpha^{-2} \partial_i \alpha
 \]
 
+\printbibliography
 \end{document}
