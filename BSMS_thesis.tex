@@ -238,7 +238,7 @@ The main tool we use to classify spacetimes to subcritical or supercritical is b
 
 But what is an AH and why does it relate to the notion of a singular spacetime?
 
-Essentially an AH can be defined as the outermost, Marginally Outer Trapped Surface (MOTS) which are closed 2-dimensional submanifold S in the spacetime slice that satisfies the condition that the expansion of the outgoing null geodesics vanishes at each point in S. The expansion is defined as 
+Essentially an AH can be defined as the outermost, Marginally Outer Trapped Surface (MOTS) which are smooth closed 2-dimensional submanifold S in the spacetime slice that satisfies the condition that the expansion of the outgoing null geodesics vanishes at each point in S. The expansion is defined as 
 
 $$
 \Theta = h^{ab} \nabla_a \zeta_b \qquad \text{where} \; h^{ab}= g^{ab}-s^as^b + n^a n^b 
@@ -316,10 +316,11 @@ The $H^a$'s are freely specifiable functions but as we mentioned before, we choo
 With the new twist included Brill wave initial data that we constructed, we evolved the initial data in \texttt{BAMPS} NR framework. Unlike the previous tests of Brill waves, we have to evolve the non-diagonal components of the spacetime tensors as well due to the usage of new spatial metric ansatz due to the inclusion of twist. Due to the axisymmetric nature of the problem in hand, we use the cartoon method to simplify the computational costs.
 
 \subsubsection{Cartoon Method \cite{alcubierre_brgmann_holz_takahashi_brandt_seidel_thornburg_2001}}
+\label{Cartoon}
 
 In general, performing full 3-D simulations in General Relativity is computationally very expensive due to the dimensionality of the problem. However, when the system possesses axisymmetry, one can exploit this symmetry to significantly reduce computational cost without losing essential physical information.
 
-The cartoon method is a technique that allows one to evolve axisymmetric spacetimes using a reduced computational domain while still employing a Cartesian grid. Instead of evolving the full three-dimensional domain, the evolution is restricted to a thin slab around the symmetry plane (typically the $y=0$ plane), consisting of only a few grid points in the symmetry direction.
+The cartoon method is a technique that allows one to evolve axisymmetric spacetimes using a reduced computational domain while still employing a Cartesian grid. Instead of evolving the full three-dimensional domain, the evolution is restricted to a thin slab around the symmetry plane (typically the $y=0$ meriodonal plane), consisting of only a few grid points in the symmetry direction.
 
 The key idea is that derivatives in the symmetry direction (e.g., the $y$-direction) can be reconstructed using the assumption of axisymmetry. This is achieved by performing suitable rotations of the evolved variables around the symmetry axis. For a tensor field $T$, its value at off-plane points required for finite difference stencils is obtained by rotating the on-plane data using the Killing symmetry associated with rotations about the axis. Hence essentially our computational domain for the whole problem is the \textbf{Cartesian X-Z} plane.
 
@@ -341,20 +342,52 @@ Using Equation \ref{lapse=shift}, the evolution equation for the lapse and shift
 
 \subsection{Horizon Finding}
 
-In our axisymmetric setting, to locate surfaces satisfying the vanishing expansion condition in Eq.\ref{Horizon}, the problem reduces to a one-dimensional equation in the polar angle, so that the horizon equation becomes an ordinary differential equation. To solve them, we use the \texttt{AHLoc3D} tool which uses a spherical parameterisation for the horizon shape with a parabolic flow method.\cite{thornburg_2007}.      Essentially it uses 
+In our axisymmetric setting, to locate surfaces satisfying the vanishing expansion condition in Eq.\ref{Horizon}, the problem reduces to a one-dimensional equation in the polar angle, so that the horizon equation becomes an ordinary differential equation. To solve them, we use the \texttt{AHLoc3D} tool which uses a spherical parameterisation for the horizon shape with a parabolic flow method \cite{thornburg_2007}. Essentially, it makes use of guess surfaces in such a way that the outermost MOTS is inside the surface, calculates the expansion at a number of points based on the resolution and the "flows" towards lesser and lesser expansion values based on a pseudo time stepping ($\lambda$), ie
+$$
+\partial_\lambda x^i = - \Theta s^i
+$$
+where $s^i$ is the normal vector to the surface.
 
-We also use a complementary method based on a Cartesian parameterisation with a shooting algorithm, which similarly reduces to solving an ODE in axisymmetry. The pros and cons of both in context to our problem will be discussed below
+Additionally in the case of \texttt{AHLoc3D}, the spherical parameterisation used which is $r = F(\theta)$ can only find ray-body/star-shaped horizons. This means that if we draw a ray from the center to the horizon it should only touch horizon once ie the function should not be multivalued in r. This parametrisation begins to break down even before the surface becomes strictly multivalued. In particular, when the surface develops regions where the radial direction becomes tangent to the horizon (i.e., where the outward normal has no radial component), the function $F(\theta)$ develops large gradients or vertical tangents. Numerically, this corresponds to a loss of regularity in the representation, and the horizon finder can fail to converge even though a smooth surface still exists.
 
-\section{Problems}
+Thus, the method is limited not only by true multivaluedness, but also by configurations approaching it, where the surface ceases to be well-described as a function $r(\theta)$.
+
+
+Despite this limitation, such a parametrisation significantly simplifies the apparent horizon finding problem by reducing it to a one-dimensional equation in $\theta$, making it computationally efficient and straightforward to automate. Consequently, it has become a practical and widely adopted approach in numerical relativity. 
+\begin{figure}[!hbt]
+    \centering
+    \includegraphics[scale=0.23]{figures/Screenshot_2026-04-05_14-48-44.png}
+    \caption{An example for a non-ray body horizon. Here the r = F($\theta$) parameterisation breaks and \texttt{AHLoc3D} method won't be able find this type of a horizon in the spacetime \cite{thornburg_2007}.}
+\end{figure}
+
+Moreover, prior studies of vacuum critical collapse have not indicated the necessity for more general surface representations, as the horizons encountered in those scenarios remain well approximated by star-shaped surfaces. But as we will mention in the coming sections, the inability to tune towards the threshold made us rethink regarding this assumption as a hypothesis which proved to be the correct approach.
+
+We also use a complementary method based on a Cartesian parameterisation with a shooting algorithm, which similarly reduces to solving an ODE in axisymmetry. This removes the ray body limitation that we faced previously but the method uses the Cartoon method as in Sec.\ref{Cartoon} since this search is limited on the y=0 plane and the surface becomes a curve which is parameterised as $X^i (\lambda) = ({X(\lambda),0,Z(\lambda))}$ 
+
+For this method, we integrate the Eq.\ref{Horizon} with this new parameterisation and we get two coupled ODE's of the form in X and Z.
+
+Along the symmetry axis, we begin by making initial guesses for the point at which the horizon intersects the $z$-axis. For each such guess, we integrate the coupled ODEs to obtain a candidate curve $(X(\lambda), Z(\lambda))$. This defines a shooting problem, where we search for solutions that return to the axis, i.e., satisfy $X(\lambda_{\max}) = 0$ for some $\lambda_{\max} > 0$.
+
+In addition to this closure condition, regularity at the axis requires the tangent vector to be aligned with the radial direction in the meridional plane, which imposes the boundary condition $u^z(\lambda_{\max}) = 0$. We therefore select those curves that both return to the axis and satisfy this smoothness condition.
+
+Finally, these candidate solutions are passed to a root-finding algorithm such as \texttt{BRENTQ} to determine the precise initial condition that yields a closed and smooth horizon. For further details, see~\cite{khirnov_2022}.
+
+
+\section{Results and Shortcomings}
 
 Critical phenomenon usually in spherical symmetry is pretty much straight forward which is very much reflected in the journey that we make towards the critical regime. For example in spherical symmetry, the relevent equations will become into set of coupled one dimensional PDE's which we can solve relatively easily. Choptuik has even tuned the critical parameter into machine precision of 15 decimal places.
 
-Unfortunately, with deviation from symmetries they are no longer as easy. In literature often the most tuned values in axisymmetric vacuum collapses go till 5-7 digits of precision. The main reason for this stems from the fact that its computationally much more harder to tackle multidimensional PDE's and inherent nature of critical behaviour.
+Unfortunately, with deviation from symmetries they are no longer as easy. In literature often the most tuned values in axisymmetric vacuum collapses go till 5-7 digits of precision. The main reason for this stems from the fact that its computationally much more harder to tackle multidimensional PDE's and the inherent nature of critical behaviour which will discussed herewith
+
+For this family the current best tuned parameter value is 4.110 $\pm$ 0.003. Even with this level of tuning we were able to find the critical exponent to be about 
+
+
+\subsection{Coordinate Pathologies}
 
 
 \subsection{Courant Condition and Resolution Limits}
 
-As we approach the critical regime, the solution develops structure on increasingly small spatio-temporal scales. This imposes a fundamental restriction on the timestep through the Courant–Friedrichs–Lewy (CFL) condition, which is required for the stability of explicit numerical schemes.
+As we approach the critical regime, the solution develops structure on increasingly small spatio-temporal scales. This imposes a fundamental restriction on the timestep through the Courant – Friedrichs – Lewy (CFL) condition, which is required for the stability of explicit numerical schemes.
 
 The Courant condition states that the numerical domain of dependence must include the physical domain of dependence. For a hyperbolic system with characteristic speed $v_{\max}$, this leads to the condition
 \[
@@ -362,20 +395,14 @@ The Courant condition states that the numerical domain of dependence must includ
 \]
 where $C < 1$ is the Courant factor determined by the numerical scheme.
 
-In the context of general relativity, the maximum signal speed is set by the speed of light (in units where $c=1$), and thus the condition reduces to
-\[
-\Delta t \leq C \, \Delta x.
-\]
+This condition has important consequences near criticality. To resolve the features \texttt{BAMPS} uses Adaptive Mesh Refinement (AMR) which adjusts the spatial grid sizes to capture the dynamics that happen in smaller and smaller scales.As finer spatial resolution ($\Delta x \to 0$) is required to resolve the small-scale features that emerge, the timestep must also decrease proportionally. Consequently, the computational cost increases significantly, since the number of timesteps required scales inversely with $\Delta t$. With our current computational resources we were only able to tune to about 3 decimal places due to that reason.
 
-This condition has important consequences near criticality. As finer spatial resolution ($\Delta x \to 0$) is required to resolve the small-scale features that emerge, the timestep must also decrease proportionally. Consequently, the computational cost increases significantly, since the number of timesteps required scales inversely with $\Delta t$. With our current computational resources we were only able to tune to about 3 decimal places due to that reason.
-
-Additionally, the dynamics of critical phenomenon is in such a way as we tune towards the threshold of collapse, the evolution resembles each other to even more duration of evolution until the solution "chooses" an end point, be it a singular spacetime or dispersion. So essentially we will have to evolve more as we tune the parameter more to reach the critical regime. But using numerical methods, we are 
+Additionally, the dynamics of critical phenomenon is in such a way as we tune towards the threshold of collapse, the evolution resembles each other to even more duration of evolution until the solution "chooses" an end point, be it a singular spacetime or dispersion. So essentially we will have to evolve more as we tune the parameter more to reach the critical regime.
 
 
 
 Therefore, the combination of shrinking physical scales and the CFL constraint severely limits how close one can tune to the critical parameter in multidimensional simulations. This is one of the primary reasons why achieving high precision in non-symmetric critical collapse is significantly more challenging than in spherical symmetry.
 
-Since 
 
 \subsection{Ray-body vs non Ray-body Apparent horizons}
 \begin{figure}
