@@ -1,0 +1,168 @@
+\chapter{Introduction}
+
+Introductory lines...
+
+\section{Section-1 Name}
+
+Some text here.
+
+\begin{definition}
+Some definition...
+\end{definition}
+
+\begin{theorem}\label{thm1}
+Some theorem...
+\end{theorem}
+
+\begin{proof}
+Proof is as follows...
+\end{proof}
+
+\begin{corollary}
+A corollary to \autoref{thm1} is...
+\end{corollary}
+
+\begin{remark}
+Some remark...
+\end{remark}
+
+\subsection{Equations and Math Examples}
+
+Equations can be typed as follows:
+
+\begin{equation}\label{eqn1}
+f(x) = \frac{x^2 - 5x + 6}{(e^x - 2)/10} = 10 \times \frac{(x-2)(x-3)}{e^x-2}
+\end{equation}
+
+Referencing labelled objects: \autoref{eqn1}, or \autoref{thm1}.  
+
+For multiline equations,
+\begin{equation}\label{eqn2}
+\text{Array in Math Mode} \quad
+\left\{
+\begin{array}{rcll}
+-\Delta u + \lambda u &=& |u|^{p-2}, & \text{in } \Omega\\
+u &\geq& 0, & u \in H_0^1(\Omega)
+\end{array}
+\right.
+\end{equation}
+
+% r, c, and l stand for the alignment operators for each column (right, centre, left), defined with '&' acting as the delimiter/column separators.
+
+Using \verb+array+ in math mode or \verb+eqnarray+ is a quick and easy way to get the most customisable equation output, but is outdated and longer equations are prone to errors. Use of alternate multiline equation environments like \verb+multiline+(*), \verb+align+(*), \verb+gather+(*) or \verb+split+ in any math-mode environment is recommended.
+
+\begin{align}\label{eq3}
+g(\theta) &= \, i\theta &=& \, (i\theta) \times \ln e \nonumber \\
+&= \, \ln(e^{i\theta}) &=& \, \ln(\cos\theta + i\sin\theta)
+\end{align}
+
+% \nonumber will suppress calling for an equation reference number
+% Alternatively, starred environments (for example, align*) achieve the same result
+
+\section{Section-2 Name}
+
+Matrices in {\LaTeX} look like:
+
+\begin{align*}
+\begin{pmatrix}
+\sin\theta & \cos\theta\\
+-\cos\theta & \sin\theta
+\end{pmatrix}
+\times
+\begin{pmatrix}
+\sin\theta & \cos\theta\\
+-\cos\theta & \sin\theta
+\end{pmatrix} &=
+\begin{pmatrix}
+\sin^2\theta - \cos^2\theta & 2\cos\theta\sin\theta\\
+-2\cos\theta\sin\theta & -\cos^2\theta + \sin^2\theta
+\end{pmatrix} \\
+&=
+\begin{pmatrix}
+-\cos2\theta & \sin2\theta\\
+-\sin2\theta & -\cos2\theta
+\end{pmatrix}
+\end{align*}
+\begin{multicols}{2}
+[The brackets of a given matrix depend on the type of matrix called.]
+\begin{flushright}
+    Here is a quick truth table:
+\end{flushright}
+\columnbreak
+\begin{tabular}{|c c c | c|}
+\hline % Horizontal bar across table
+$P$ & $Q$ & $\neg P$ & $\neg P \to (P \vee Q)$ \\ \hline
+T & T & F & T \\
+T & F & F & T \\
+F & T & T & T \\
+F & F & T & F \\ \hline
+\end{tabular}
+\end{multicols}
+
+\begin{remark}
+Defining a table like this does not count in the LoT; use the \verb+table+ environment instead.
+\end{remark}
+
+\begin{remark}
+You can cite sources in footnotes as so\autocite{golub}.  
+Ensure \verb+ref.bib+ is configured for biblatex. Disable \texttt{verbose} style to switch to inline references.
+\end{remark}
+
+\newpage % to fix the footnote getting "stuck" to the text above.
+
+\subsection{Subsections}
+
+\subsubsection{Subsubsection Example}
+
+Subsubsections do not appear in the ToC and lack numbering\footnote{Footnotes work for comments as well. For more, see \url{https://www.overleaf.com/learn/latex/Footnotes}}.
+To skip numbering in sections/subsections, use \verb+\section*+\{\textit{section\_name}\}.
+
+\begin{theorem}\label{Th123}
+Some theorem...
+\end{theorem}
+
+\begin{proof}
+The proof is as follows...
+\end{proof}
+
+\begin{figure}[htbp]
+\centering
+\captionsetup{justification=centering}
+\input{Images/Figures/3D_Cone}
+\caption{3D Cone designed by Gene R. using TikZ, see \texttt{Images/Figures/3D\_Cone.tex}. Delete to save compile time.}
+\end{figure}
+
+\begin{remark}
+Figures float by default. Position may differ from the order in the code. Use optional arguments [!htbp] (here, top, bottom, next page) to influence placement.
+\end{remark}
+
+To make your own commutative diagrams, consider using tools such as \href{graphviz.org}{GraphViz}, \href{q.uiver.app}{Quiver} and \href{ipe.otfried.org}{IPE}.
+
+\newpage % Avoids footer sticking to text
+
+%\subsection{Chemical Notations} % Uncomment 'CHEMICAL NOTATION' packages in Preamble
+%\ce{HC#CH + H2O ->[Hg^++][18\% H2SO4, $90^\circ$] CH3 - CHO} \\
+%\ce{H2 (g) + I2 (g) <=>[Formation][Decomposition] 2HI (g)}\\
+%\begin{figure}[htbp]
+%\centering
+%\chemfig{*6((=O)-N(-H)-(-R_2)-(=O)-N(-H)-(-R_1)-)}
+%\caption{Diketopiperazine}
+%\end{figure}
+
+\section{Sample Question and Proof}
+
+Suppose $A_i$ is a connected subset of a topological space $X$ for $i=1,\ldots,n$, and $A_i \cap A_{i+1} \neq \emptyset$ for all $i$. 
+Prove that $A = \bigcup_{i=1}^n A_i$ is connected.
+
+\begin{proof}[Proof by Contradiction]
+Assume $A$ is disconnected. $A$ can then be written as a union of two non-empty, disjoint, relatively open subsets, say, $X$ and $Y$. Take some $x \in X$ and some $y \in Y$, with $x \in A_j$ and $y \in A_k$ for some $j \le k$. Then
+\begin{align}\label{sampleeq}
+A_l \cap A_{l+1} \neq \emptyset \qquad & \forall \, l \in \{j,\ldots,k-1\} \nonumber\\
+\Rightarrow \qquad \therefore \quad \bigcup_{i=j}^l A_i \text{ is connected } \quad & \forall \, l \in \{j,\ldots,k\}
+\end{align}
+Hence, $\bigcup_{i=1}^n A_i$ contains both $x$ and $y$ and is connected, contradicting our original assumption of the disjointness of $X$ and $Y$. Therefore, $A=\bigcup_{i=j}^k A_i$ is connected.
+\end{proof}
+
+\begin{remark}
+\verb+\quad+, \verb+\qquad+, \verb+\,+ and \verb+\!+ are effective in adjusting spacing as needed.
+\end{remark}
