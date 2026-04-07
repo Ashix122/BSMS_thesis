@@ -7,7 +7,7 @@ $$
 G_{ab}=16 \pi T_{ab}
 $$
 
-But its tensorial structure prevents us from approaching them as a usual time evolution PDE problems where we see equations like $\partial_t u =f(x^i,\partial_x u)$. So inorder to cast Einstein's equations into a form suitable for time evolution, we assume 
+But its tensorial structure prevents us from approaching them as a usual time evolution PDE problems where we see equations like $\partial_t u =f(x^i,\partial_{x^i} u)$. So inorder to cast Einstein's equations into a form suitable for time evolution, we assume 
 that the spacetime is globally hyperbolic. This guarantees the existence of a
 foliation into space-like Cauchy hypersurfaces $\Sigma_t$, which are the level 
 sets of a scalar time function $t : \mathcal{M} \to \mathbb{R}$. Each slice 
@@ -53,11 +53,11 @@ next.
     \draw[thick,rose] (-2,3.5) -- (-1.8,3.5);
 
     \draw[line width=1.5,rose,->] (-2,-0.5) to (-2,5);
-    \node[rose,above] at (-2,5) {Timelike direction};
+    \node[rose,above] at (-1,5) {Timelike direction};
 
     \draw[blue,thick,decorate,decoration={brace,mirror,amplitude=10pt}]
-                  (6,0) -- (6,4);
-    \node[right,blue,align=left] at (6.5,2) {Spacelike \\ hypersurfaces};
+                  (5.7,0) -- (5.7,4);
+    \node[right,blue,align=left] at (6,2) {Spacelike \\ hypersurfaces};
 \end{tikzpicture}
 \end{minipage}
 \hfill
@@ -81,7 +81,7 @@ next.
     \draw[blue,thick,fill=fau_blue_sk] (-0.75,2) to[out=30, in=200] (5,2)
          to (5.5,3.1) to [out=200, in=30] (-0.25,3.1) to (-0.75,2);
     \node[blue] at (4.5,2.4) {$\Sigma_{t + dt}$};
-    \node[rose] at (-1.1,2.6) {$t + dt$};
+    \node[rose] at (-1.4,2.6) {$t + dt$};
 
     \draw[line width=1.5,blue,->](1,2.9) 
         to node[above,blue] {$\beta^i dt$} (2.66, 2.56);
@@ -153,7 +153,7 @@ which correspond to Hamiltonian and momentum constraints respectively, R corresp
 
 The main tool we use to classify spacetimes to subcritical or supercritical is by probing to find horizons, specifically Apparent Horizons (AHs) in the evolved slice. The main advantage of AH is that, unlike event horizons they are not \textit{teleological} i.e we dont need the information about the complete spacetime to get the information of apparent horizon. In numerically computed dynamical spacetimes like ours, we might not be in the position to evolve it completely inorder to classify them, hence AHs are the right tool to understand them.
 
-But what is an AH and why does it relate to the notion of a singular spacetime?
+\textbf{But what is an AH and why does it relate to the notion of a singular spacetime?}
 
 Essentially an AH can be defined as the outermost, Marginally Outer Trapped Surface (MOTS) which are smooth closed 2-dimensional submanifold S in the spacetime slice that satisfies the condition that the expansion of the outgoing null geodesics vanishes at each point in S. The expansion is defined as 
 

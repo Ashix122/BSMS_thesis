@@ -19,7 +19,7 @@ The key idea is that derivatives in the symmetry direction (e.g., the $y$-direct
 Harmonic Damped Wave Gauge (HDWG) is obtained by modifying the harmonic gauge condition with a damping term in the gauge source function, turning the coordinate condition into a damped wave equation. This suppresses unphysical gauge modes and stabilizes the coordinate evolution during numerical simulations. The gauge source function for it are
 
 $$
-H_a = \mu_L \log (\frac{\gamma^p}{\alpha})n_a - \mu_s \alpha^{-1} g_{ai}\beta^i
+H_a = \mu_L \log \left( \frac{\gamma^p}{\alpha} \right) n_a - \mu_s \alpha^{-1} g_{ai}\beta^i
 $$
 
 In black-hole spacetimes, particularly near horizon formation, one often observes a rapid growth of the spatial metric determinant $\gamma$ due to coordinate stretching. The first term in $H_a$, through the logarithmic factor $\log(\gamma^p / \alpha)$, acts to counter this growth by driving a collapse of the lapse $\alpha$, thereby controlling the increase in spatial volume elements. The second term damps the shift vector $\beta^i$, suppressing distortions in the spatial coordinates. For more details, refer \cite{lindblom_szilágyi_2009}
