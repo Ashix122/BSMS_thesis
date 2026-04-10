@@ -23,7 +23,7 @@
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-\documentclass[12pt,twoside,a4paper]{report} % Font size (pt)
+\documentclass[12pt,oneside,a4paper]{report} % Font size (pt)
 % Add in draft parameter to hide non-essential elements for faster compile times
 
 % Load configuration files
@@ -73,7 +73,7 @@
 \setcounter{page}{3}
 \input{Intro_Pages/02_Certificate}
 \input{Intro_Pages/03_Declaration}
-\input{Intro_Pages/04_Acknowledgements}
+%\input{Intro_Pages/04_Acknowledgements}
 \input{Intro_Pages/05_Abstract}
 \input{Intro_Pages/06_ToC,LoF,LoT}
 %\input{Intro_Pages/07_Glossary}         % Uncomment to enable glossary page   
@@ -98,14 +98,21 @@
 %=========================================================================================
 
 \appendix
-\appendixpage
 \addappheadtotoc
-
+\input{Appendices/A_AppA.tex}
 
 %=========================================================================================
 % BIBLIOGRAPHY
 %=========================================================================================
                              % Include all entries from ref.bib
-\printbibliography[heading=bibintoc]     % Bibliography in ToC
+
+                             \renewcommand*{\bibfont}{\small}
+\setlength\bibitemsep{1pt}
+
+% Start two columns for bibliography ONLY
+\begin{multicols}{2}
+\printbibliography[heading=bibintoc]
+\end{multicols}
+     % Bibliography in ToC
 
 \end{document}

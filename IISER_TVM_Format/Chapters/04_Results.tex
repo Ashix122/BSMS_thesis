@@ -1,21 +1,23 @@
-\chapter{Observations,Results and Challenges}
+\chapter{Observations, Results and Challenges}
 
-Critical phenomena in gravitational collapse are most clearly understood in spherical symmetry, where the approach to the critical regime is comparatively straightforward. In this case, the field equations reduce to a system of coupled one-dimensional partial differential equations, which can be solved with relatively high numerical accuracy. Indeed, in the pioneering work of Matthew Choptuik \cite{choptuik_1993}, the critical parameter was tuned to nearly machine precision, reaching approximately 15 decimal places.
+Critical phenomena in gravitational collapse are most clearly understood in spherical symmetry, where the approach to the critical regime is comparatively straightforward. In this case, the field equations reduce to a system of coupled one-dimensional PDEs, which can be solved with relatively high numerical accuracy. Indeed, in the pioneering work of Matthew Choptuik \cite{choptuik_1993}, the critical parameter was tuned to nearly machine precision, reaching approximately 15 decimal places.
 
 However, once symmetry assumptions are relaxed, the problem becomes significantly more challenging. In the literature, studies of axisymmetric vacuum collapse typically achieve only about 5–7 digits of precision in tuning the critical parameter. This limitation arises both from the increased computational difficulty of solving multidimensional partial differential equations and from the intrinsic nature of critical phenomena, which involve the development of increasingly fine spatial and temporal structures near the threshold of black hole formation.
 
-For the family of initial data considered in this work, the best-tuned critical parameter is found to be $(p^* = 4.110 \pm 0.003)$. Despite this comparatively modest level of tuning, we are able to extract a critical exponent of approximately $( \gamma \approx 0.55 \pm 0.32 )$, demonstrating the robustness of the scaling behaviour even without extremely fine-tuned initial data.
+For the family of initial data considered in this work, the best-tuned critical parameter is found to be $(p^* = 4.110 \pm 0.003)$. Despite this comparatively modest level of tuning, we are able to extract a critical exponent of approximately $( \gamma \approx 0.55 \pm 0.32 )$, demonstrating the robustness of the scaling behaviour even without extremely fine-tuned initial data. In Fig.\ref{Scaling} we see that two families,(positive and negative p as in \ref{Construction}) aggreing well to the critical parameter found. But unless we try some more families at the initial data level, we can't be confident in its universality. So we need to tune more and try more families as well.
 
 The quoted uncertainty in the critical parameter arises from the inability to unambiguously distinguish between subcritical and supercritical evolution within this narrow region of parameter space. In particular, near the threshold, small variations in the parameter lead to qualitatively different outcomes, and within our numerical resolution this transition cannot be resolved more precisely. This limitation propagates into the determination of the scaling exponent, contributing to the relatively large uncertainty in ($\gamma$).
 \begin{figure}[!hbt]
     \centering
-    \includegraphics[scale=0.6]{../notebooks/plusfamily.pdf}
-    \caption{Log--log plot of the maximum Kretschmann scalar $K_{\max}$ in subcritical evolutions as a function of $(p^* - p)$. Each data point corresponds to an independent simulation, with typical computational cost of $\sim 4000$ core-hours per run. The approximate linear behaviour supports the expected power-law scaling $K_{\max} \sim (p^* - p)^{-4\gamma}$ near criticality.}
+    \includegraphics[scale=0.6]{../notebooks/separate_scaling.pdf}
+    \caption{Log-log scaling of the maximum Kretschmann scalar $K_{\max}$ 
+    as a function of $|p - p^*|$ for both families. The fitted lines 
+    yield consistent critical exponents $\gamma$, demonstrating 
+    universality near the threshold of black hole formation. Each data point corresponds to an independent simulation, with typical computational cost of $\sim 4000$ core-hours per run. The approximate linear behaviour supports the expected power-law scaling $K_{\max} \sim (p^* - p)^{-4\gamma}$ near criticality.}
+    \label{Scaling}
 \end{figure}
 
 For the current family that we have chosen, we see a $R^2$ goodness of fit value of 0.995 which gives an additional assurance that there indeed exists some linear scaling even at this level of tuning.
-
-
 
 But in this regard, more work needs to be done to tune more into the critical regime and investigate the critical phenomena (Presence of self-similiar structures and so on).
 
@@ -82,11 +84,32 @@ Another cause of the inability to classify spacetimes also come from limitations
 
 Initially, far away from criticality, we found circular (spherical) AH's and as we approached the critical regime we see more of "peanut" shaped horizons.  These were comparitively found easily using the \texttt{AHLoc3D} AH finder from the AH data outputted by BAMPS.
 
-\begin{figure}[!!hbt]
+
+\begin{figure}[!htb]
     \centering
-    \includegraphics[scale=0.4]{../notebooks/figure.pdf}
-    \caption{The apparent horizon (AH) is overlaid on the Kretschmann scalar for a cropped region of the computational domain. As the tuning parameter approaches the critical threshold, the detected horizons deviate from spherical symmetry and exhibit a characteristic “peanut”-like shape. }
-    \label{horizon_peanut}
+    
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../notebooks/figure.pdf}
+        \caption{Peanut-shaped horizons}
+        \label{peanut}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../notebooks/figure_4.114.pdf}
+        \caption{Disjoint horizons}
+        \label{Bifurc}
+    \end{subfigure}
+    
+    \caption{
+    Log-log scaling of the maximum Kretschmann scalar $K_{\max}$ 
+    as a function of $|p - p^*|$ for both families. The fitted lines 
+    yield consistent critical exponents $\gamma$, demonstrating 
+    universality near the threshold of black hole formation.
+    }
+    
+    \label{fig:combined_scaling}
 \end{figure}
 
 But as we tuned further the inability to tune the parameter by finding horizons made us rethink on further assumptions that we made until now. (Other than the reasons mentioned before like coordinate singularities and so on). As mentioned in , we hypothesised that the horizon might already be formed in the data which we can't find due to the use of spherical ray-body parameterisation by \texttt{AHLoc3D}. This turned out to be true since we are able to find horizons after using a cartesian parameterisation based AH finder \cite{khirnov_2022} which was modified to include twist.
@@ -102,38 +125,3 @@ As seen in Fig.\ref{horizon_not}, the parameterisation is no longer valid for ho
 
 
 
-\subsubsection{Harmonic Horizon Marching Gauge}
-\label{HHMG}
-Since GR has an intrinsic gauge freedom built into it, it will be reflected when we do simulations using NR as well. Hence we will have to choose a gauge but in the case of simulations they are chosen by the stability it confers to the simulations.
-
-In \texttt{BAMPS}, the usual gauge that we use is HDWG (Harmonic Gauge). Here the evolution equations for the lapse becomes,
-
-\[
-\mathcal{L}_n \log \alpha = - (H_n +K)
-\]
-
-where $H_n$ is the free choosable function which only contains the metric and not its derivatives.
-
-Inorder the push the lapse to 1 we add an extra term into the harmonic function in such a way that it adds a term $\eta_{hm}(\alpha-1)$ into the evolution equation for lapse
-
-\[
-\partial_t \alpha -\beta^i \partial_i \alpha= -\alpha^2(H_n + K)
-\]
-
-The extra term that in $H_n$ is $\eta_{hm} \alpha^{-2} (\alpha-1)$
-
-\[
-\partial_t \alpha -\beta^i \partial_i \alpha= -(\eta_{hm} (\alpha-1) + \alpha^2 K)
-\]
-
-So in $H_a$ an extra term of $-\eta_{hm} \alpha^{-2} (\alpha - 1) n_a$ is added
-
-So New $H_0=.... + \eta_{hm} \alpha^{-1} (\alpha-1)$
-
-\[
-\partial_t H_0 = +\eta_{hm} \alpha^{-2} \partial_t \alpha
-\]
-
-\[
-\partial_i H_0 = +\eta_{hm} \alpha^{-2} \partial_i \alpha
-\]

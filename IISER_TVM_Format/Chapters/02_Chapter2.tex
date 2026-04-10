@@ -1,4 +1,14 @@
-\chapter{Recap and Background}
+\chapter{Introduction and Background}
+General Relativity (GR) provides a profound description of gravity as the dynamics of spacetime geometry, governed by a set of highly nonlinear partial differential equations. While many exact solutions to Einstein’s equations are known, a large class of physically relevant phenomena—particularly those involving strong gravitational fields and dynamical evolution—remain analytically intractable. This necessitates the use of numerical methods, giving rise to the field of Numerical Relativity, where spacetime dynamics are studied through computational techniques.
+
+One of the most intriguing phenomena uncovered through numerical studies is critical behavior in gravitational collapse. When evolving a one-parameter family of initial data, the system exhibits a threshold separating dispersion from black hole formation. Near this threshold, the spacetime displays remarkable universal features such as power-law scaling, universality of critical exponents, and self-similarity. These discoveries, first made in spherically symmetric systems, revealed deep connections between gravity, nonlinear dynamics, and critical phenomena.
+
+However, much of our current understanding is restricted to highly symmetric settings. In particular, spherical symmetry eliminates gravitational wave degrees of freedom, limiting the richness of the dynamics. To explore genuinely gravitational critical phenomena, it is essential to move beyond spherical symmetry into axisymmetric or fully three-dimensional spacetimes. In vacuum, this becomes especially significant, as nontrivial dynamics arise purely from the nonlinear structure of Einstein’s equations rather than matter fields.
+
+In this work, we investigate critical phenomena in axisymmetric vacuum spacetimes using Brill wave initial data, with a particular focus on the role of twist, which introduces additional geometric degrees of freedom. By constructing and evolving one-parameter families of twist-included initial data, we aim to study how these additional structures influence the nature of the critical solution, its universality, and the emergence of self-similar behavior.
+
+The analysis is carried out within a numerical relativity framework, where we solve the Einstein equations using appropriate gauge conditions and horizon-finding techniques to classify the end states of evolution. Particular attention is given to challenges arising near the critical regime, including coordinate pathologies, resolution limits, and limitations of horizon detection methods.
+
 \section{Numerical Relativity}
 \label{NR}
 Numerical Relativity (NR) can be defined as the science of solving the Einstein's equations using numerical methods in such a way that the discretised solutions agree with the continuum solutions at the limit of infinite resolution. They are a set of coupled 4-dimensional Partial Differential Equations (PDEs) that connect the dynamics between matter and the spacetime curvature.
@@ -153,11 +163,11 @@ we observe that they usually reach two types of end points in phase space, eithe
 But the main interest lies in the spacetimes that sit \textit{in the critical regime}, between the two end-states of dispersion and black-hole(BH) formation. In his breakthrough numerical study, Choptuik \cite{choptuik_1993} using spherical symmetry with a minimally coupled, massless scalar field as the source of stress--energy, discovered that this intermediate regime exhibits three remarkable and universal features:
 
 \begin{itemize}
-    \item \textbf{Power-law mass scaling:} \\
+    \item \textbf{Power-law mass scaling:\footnote{Later Garfinkle and Comer \cite{garfinkle_duncan_1998} found out that according to proper dimensionality, the maximum of curvature invariants from the subcritical side also follow similiar scaling laws with the same critical exponents.}
+} \\
     On the supercritical side, the mass of the collapsed BH  obeys a scaling law of the form $
         M_{\rm BH} \propto (p - p_*)^\eta $
     where \(p\) is the parameter controlling a one-parameter family of initial data, \(p_*\) is the critical value separating the two regimes, and \(\eta\) is the \emph{critical exponent}. Choptuik found the critical parameter upto 15 digit precision. See \ref{fig:Choptuik_Figures}\ref{sub@fig:Powerlawscaling}
-
     \item \textbf{Universality of the exponent:} \\
     The exponent \(\eta\) is \textbf{independent of the choice of initial data family}. Different families with different shapes, widths, or profiles all yield the same value of \(\eta\), depending only on the matter model (e.g.\ scalar field, Yang--Mills field, etc.). See \ref{fig:Choptuik_Figures}\ref{sub@fig:Powerlawscaling}
 
@@ -198,8 +208,11 @@ family independent known as echoing constant (Self similiarity)}.
     \label{fig:Choptuik_Figures}
 \end{figure}
 
+
 The choice of spherical symmetry here was crucial: it reduced the full \((3+1)\)-dimensional PDE system to an effective \((1+1)\)-dimensional problem (in suitable coordinates, the fields depend only on time and radius). This simplification dramatically lowers the computational cost compared with a full three-dimensional evolution, while still capturing highly nontrivial gravitational dynamics.
 Following Choptuik's discovery, many researchers studied and characterised critical phenomena in a wide variety of matter models like scalar fields, perfect fluids, Yang--Mills fields, and scalar electrodynamics etc, mostly within spherical symmetry, taking advantage of the same reduction in dimensionality and computational expense \cite{gundlach_hilditch_martín-garcía}.
+
+
 
 To further understand the structure of the critical solution space of Einstein’s equations, subsequent studies have explored departures from spherical symmetry. In this context, one of the most important and intriguing cases is that of vacuum spacetimes, i.e., gravitational collapse without matter fields. In spherical symmetry, vacuum solutions are trivial due to Birkhoff’s theorem, which implies the absence of dynamical degrees of freedom. Therefore, going beyond spherical symmetry is essential to probe genuinely gravitational critical phenomena in vacuum, where the dynamics arise purely from the nonlinear structure of Einstein’s equations.
 
@@ -225,7 +238,7 @@ conformal factor $\psi$ is fixed by the Hamiltonian constraint which becomes an 
 $
 8 \tilde{D}^2 \psi =\tilde{R} \psi 
 $
-where $\tilde{R}$ is the Ricci scalar of the conformal metric and $\tilde{D} $ is the derivative operator compatible to the conformal metric. This in our case becomes a linear differential equation of the form. This here is the main advantage of using this conformal formalism since we just need to solve this differential equation to get the constraint solved initial data. And since $K_{ij}$ = 0 ,the momentum constraint will be trivially satisfied (See equation \ref{eq:Constraints} ).
+where $\tilde{R}$ is the Ricci scalar of the conformal metric and $\tilde{D} $ is the derivative operator compatible to the conformal metric. This in our case becomes a linear differential equation of the form. This here is the main advantage of using this conformal formalism since we just need to solve this differential equation to get the constraint solved initial data. And since $K_{ij}$ = 0, the momentum constraint will be trivially satisfied (See equation \ref{eq:Constraints}).
 $$
 \tilde{D}^2 \psi = -\dfrac{1}{4} \left( \dfrac{\partial^2 q}{\partial \rho^2}+ \dfrac{\partial^2 q}{\partial{z^2}} \right)\psi
 $$
@@ -238,36 +251,35 @@ measures the failure of $\xi^a$ to be hypersurface orthogonal, and is encoded in
 \section*{Recap and Motivation}
 Critical collapse in twist-free axisymmetric geometries, both in vacuum and non-vacuum settings, has revealed significant departures from the standard critical phenomena observed in spherical symmetry, including bifurcation of the collapse point and loss of universality in scaling laws \cite{baumgarte_2018}. These deviations suggest that the additional gravitational degrees of freedom present in axisymmetry, namely gravitational waves might play a crucial role, as opposed to purely matter-driven dynamics.
 
-But we also see that the introduction of rotating matter (With angular momentum) brings back some of the textbook critical behaviour that is lost in the aspherical setting in non vacuum such as single center of collapse \cite{marouda_cors_rüter_vaño-viñuales_hilditch}.\footnote{When there is angular momentum there will be twist but not vice versa}. 
+But we also see that the introduction of rotating matter (With angular momentum) brings back some of the textbook critical behaviour that is lost in the aspherical setting in non vacuum such as single center of collapse, universal scaling laws \cite{marouda_cors_rüter_vaño-viñuales_hilditch}.\footnote{When there is angular momentum there will be twist but not vice versa}. 
 
-But in vacuum, from regular initial data (without blackholes/singularity), the data can't evolve to form BHs with angular momentum due to conservation\cite{marouda_cors_rüter_vaño-viñuales_hilditch} and due to the absence of matter, it would have no net angular momentum unlike the previous case. But we can still introduce twist.
+But in vacuum, from regular initial data (without blackholes/singularity), the data can't evolve to form BHs with angular momentum due to conservation\cite{marouda_cors_rüter_vaño-viñuales_hilditch} and the absence of matter dynamics, it would have no net angular momentum unlike the previous case. But we can still introduce twist into the spacetime.
 
 
 This motivates our investigation: to introduce twist into the Brill metric (adding two new
 degrees of freedom) and examine how twist influences the critical solution and its 
 universality.
-Now we introduce the metric for brill type initial data with twist included.
-\[
+Now we introduce the metric for Brill type initial data with twist included.
+\begin{equation}
 \gamma_{ij}(\rho,z,\phi) = \gamma_{ij}(\rho,z) = 
 \psi ^4\begin{pmatrix}
     e^{2q(\rho,z)} + f^2(\rho,z) & f(\rho,z)h(\rho,z) & \rho f(\rho,z) \\
     f(\rho,z)h(\rho,z) & e^{2q(\rho,z)} + h(\rho,z)^2 & \rho h(\rho,z) \\
     \rho f(\rho,z) & \rho h(\rho,z) & \rho^{2}
 \end{pmatrix},
-\qquad (i,j) = (\rho, z, \phi).
-\]
-where the function \emph{f($\rho$,z)} and \emph{h($\rho$,z)} parameterises the twist of the spacelike killing vector. This ansatz is chosen because it can be cleanly divided into the twist free brill metric and a twist part when we write the line element. The new differential equation to solve for the conformal factor becomes 
+(i,j) = (\rho, z, \phi).
+\label{Twist-included}
+\end{equation}
+where the function \emph{f($\rho$,z)} and \emph{h($\rho$,z)} parameterises the twist of the spacelike killing vector. This ansatz is chosen because it can be cleanly divided into the twist free Brill metric and a twist part when we write the line element. The new differential equation to solve for the conformal factor becomes 
 
 \begin{equation}
 8\tilde{D^2} \psi = \left(-\dfrac{e^{-2q}(\rho(\frac{\partial f}{\partial z} - {\frac{\partial h}{\partial \rho}}))+h)^2}{2 \rho^2}-2 \left(\dfrac{\partial^2 q}{\partial \rho^2}+ \dfrac{\partial^2 q}{\partial{z^2}}\right) \right) \psi
 \label{eq:newconst}
 \end{equation} 
 
-
-
 \section{Horizons}
 
-The main tool we use to classify spacetimes to subcritical or supercritical is by probing to find horizons, specifically Apparent Horizons (AHs) in the evolved slice. The main advantage of AH is that, unlike event horizons they are not \textit{teleological} i.e we dont need the information about the complete spacetime to get the information of apparent horizon. In numerically computed dynamical spacetimes like ours, we might not be in the position to evolve it completely inorder to classify them, hence AHs are the right tool to understand them.
+The main tool we use to classify spacetimes to subcritical or supercritical is by probing to find horizons, specifically Apparent Horizons (AHs) in the evolved slice. The main advantage of AH is that, unlike event horizons they are not \textit{teleological} i.e we dont need the information about the complete spacetime to get the information of apparent horizon. In numerically computed dynamical spacetimes like ours, we might not be in the position to evolve it completely inorder to classify them since the code will crash after some more evolution, hence AHs are the right tool to understand them.
 
 \textbf{But what is an AH and why does it relate to the notion of a singular spacetime?}
 
@@ -291,53 +303,5 @@ The importance of apparent horizons is closely tied to the singularity theorems 
 Thus, the formation of a MOTS or apparent horizon serves as a strong indicator of black hole formation in the spacetime’s future development. This provides a practical and geometric criterion for classifying spacetimes in our analysis.
 
 
-\section{Gauge Freedom in GR (NR)}
 
-One of the most important characteristic of GR is its so called diffeomorphism invariance which essentially means
-that the "physics" inside theory is unchanged under smooth coordinate transformations. In other words, different coordinate systems (or gauges) can describe the same underlying spacetime geometry.
-
-
-Mathematically, this invariance implies that if $g_{\mu\nu}(x)$ is a solution to Einstein's equations, then so is the transformed metric under a diffeomorphism $x^\mu \rightarrow x'^\mu(x)$, with the metric transforming as
-\begin{equation}
-g'_{\mu\nu}(x') = \frac{\partial x^\alpha}{\partial x'^\mu} \frac{\partial x^\beta}{\partial x'^\nu} g_{\alpha\beta}(x).
-\end{equation}
-
-Often in theoretical studies we utilise various gauges to uncover the internal dynamics of the spacetime variables. The easiest example would in the case of gravitational waves where we often assume a linearised gravity ($g_{\mu\nu}= \eta_{\mu \nu} + h_{\mu \nu}$ where $O(h) << 1$) where the Minkowskian flat space metric is considered as the background metric of the spacetime.  Here to retrieve the notion of gravitational waves we use something known as Lorenz gauge or De Donder gauge ($\partial^{\mu} \bar{h}_{\mu\nu}$) where $\bar{h}$ is the trace reversed metric perturbation. 
-Using this gauge we will be able to see that, the metric perturbation has formalised into the form of a wave equation.
-
-$$
-\Box \bar{h}^{\mu\nu}= -16 \pi T^{\mu \nu}
-$$
-This is finest and easiest example of utilising gauges to understand the internal physics. But in the case of the NR, it is utilised differently. As
-we know in NR, we try to see Einstein's equations as a set of PDE's to solve numerically. But to solve a problem numerically it is essential that the problem we are solving is \textit{well-posed} and devoid of any coordinate artifacts that coordinate system may evolve into(coordinate singularities , constraint violation and so on). So essentially, we utilise the gauge freedom to counter these problems. Based on how we tackle them has given rise to various formulations of NR like BSSN, Z4C etc. In our case we use the Generalised Harmonic Formulation of NR.
-
-\section{Generalised Harmonic Gauge}
-
-The main advantage of the Generalised Harmonic gauge is that it is, by construction, a well-posed formulation of Einstein's equations. This makes it particularly suitable for numerical evolution, as it provides a strongly hyperbolic system with well-defined characteristic structure. Due to this property, practical considerations aside, in theory they are ideal for any kind of numerical evolutions performed with GR in mind.  The well-posedness of this formulation comes from the trace reversed form of Einstein's equation i.e
-
-
-
-\begin{equation}
-R_{\mu\nu}
-= -\frac{1}{2} g^{\alpha\beta} \partial_\alpha \partial_\beta g_{\mu\nu}
-+ \partial_{(\mu} \Gamma_{\nu)}
-+ \Gamma^\alpha \Gamma_{\mu\nu\alpha}
-- \Gamma^\alpha_{\mu\beta} \Gamma^\beta_{\nu\alpha}
-\label{GHG}
-\end{equation}
-
-where $
-\Gamma^\mu = g^{\alpha\beta} \Gamma^\mu_{\alpha\beta}$ called the contracted christoffel symbols. The well-posedness or ill-posedness of a PDE is often determined by its principal terms (Terms containing the highest derivatives). In our problem, the principal terms are the first and the second part of the Equation \ref{GHG} since they contain the second derivatives of the metric. But since the wave equation is a well posed problem, the problematic part of the equation is the second term (derivative of contracted christoffels). But for that we can utilise the gauge freedom to ensure that they don't contain second derivatives of the metric i.e
-$\Gamma^a=\nabla_b \nabla^b x^a=-H^a(x,g)$ where $H^a$ is called the Gauge Source function and it is a function of atmost the metric and not its derivatives.
-
-This gives us the following equations of motion for the lapse($\alpha$) and shift($\beta$)
-
-\begin{equation}
-\partial_t \alpha = -\alpha^2 (K + H_n) + \mathcal{L}_\beta \alpha
-\qquad \partial_t \beta^i = \alpha^2 (\Gamma^i + \perp H^i) - \alpha D^i \alpha + \beta^j \partial_j \beta^i
-\label{lapse=shift}
-\end{equation}
-where $H^n= n^a H_a$
-
-The $H^a$'s are freely specifiable functions but as we mentioned before, we choose it in a way to have proper evolutions without any coordinate pathologies. That choice will be mentioned in the coming sections.
 % Remember to input this to the presentative tex file before compiling.
