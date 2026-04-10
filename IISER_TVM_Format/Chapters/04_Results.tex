@@ -19,11 +19,11 @@ For the current family that we have chosen, we see a $R^2$ goodness of fit value
 
 But in this regard, more work needs to be done to tune more into the critical regime and investigate the critical phenomena (Presence of self-similiar structures and so on).
 
-For example, as the parameter is tuned closer to the critical value, the evolution exhibits increasingly pronounced oscillatory features in the curvature, suggestive of the onset of echoing behaviour. These structures appear as repeated, self-similar peaks in the Kretschmann scalar as a function of proper time. However, due to the limited level of tuning and numerical resolution in the present simulations, these features cannot be conclusively identified as true discrete self-similarity. Achieving a more definitive verification would require finer tuning of the critical parameter and higher resolution to resolve the increasingly small spacetime scales involved.
+For example, as the parameter is tuned closer to the critical value, the evolution exhibits increasingly pronounced oscillatory features in the curvature, suggestive of the onset of echoing behaviour as in Fig \ref{feature}. These structures appear as repeated, self-similar peaks in the Kretschmann scalar as a function of proper time. However, due to the limited level of tuning and numerical resolution in the present simulations, these features cannot be conclusively identified as true discrete self-similarity. Achieving a more definitive verification would require finer tuning of the critical parameter and higher resolution to resolve the increasingly small spacetime scales involved. R
 
 \begin{figure}[!!hbt]
     \centering
-    \includegraphics[scale=0.6]{../figures/feature.pdf}
+    \includegraphics[scale=0.4]{../figures/feature.pdf}
     \caption{Log--log plot of the maximum Kretschmann scalar $K_{\max}$ in subcritical evolutions as a function of $(p^* - p)$. Each data point corresponds to an independent simulation, with typical computational cost of $\sim 4000$ core-hours per run. The approximate linear behaviour supports the expected power-law scaling $K_{\max} \sim (p^* - p)^{-4\gamma}$ near criticality.}
     \label{feature}
 \end{figure}
@@ -42,34 +42,65 @@ thereby making the outcome ambiguous within finite numerical resolution. This co
 
 \section*{Development of Coordinate Pathologies}
 
+Often the inability to classify spacetimes arise from the development of coordinate pathologies which are mainly constraint violations and coordinate singularities in the evolution before we are able to place them to either supercritical or subcritical data.
 
 
 \subsection*{Courant Condition and Resolution Limits}
 
 As we approach the critical regime, the solution develops structure on increasingly small spatio-temporal scales. This imposes a fundamental restriction on the timestep through the Courant – Friedrichs – Lewy (CFL) condition, which is required for the stability of explicit numerical schemes.
-
-The Courant condition states that the numerical domain of dependence must include the physical domain of dependence. For a hyperbolic system with characteristic speed $v_{\max}$, this leads to the condition
+ For a hyperbolic system with characteristic speed $v_{\max}$, this leads to the condition
 \[
 \Delta t \leq C \frac{\Delta x}{v_{\max}},
 \]
-where $C < 1$ is the Courant factor determined by the numerical scheme.
+where $C < 1$ is the Courant factor determined by the numerical scheme and $\Delta x$ and $\Delta t$ are the spatial grid spacing and time-step spacing respectively.
+
 
 This condition has important consequences near criticality. To resolve the features \texttt{BAMPS} uses Adaptive Mesh Refinement (AMR) which adjusts the spatial grid sizes to capture the dynamics that happen in smaller and smaller scales. As finer spatial resolution ($\Delta x \to 0$) is required to resolve the small-scale features that emerge, the timestep must also decrease proportionally. Consequently, the computational cost increases significantly, since the number of timesteps required scales inversely with $\Delta t$. With our current computational resources we were only able to tune to about 3 decimal places due to that reason.
 
-Additionally, the dynamics of critical phenomenon is in such a way as we tune towards the threshold of collapse, the evolution resembles each other to even more duration of evolution until the solution "chooses" an end point, be it a singular spacetime or dispersion. So essentially we will have to evolve more as we tune the parameter more to reach the critical regime.
+Additionally, the dynamics of critical phenomenon is in such a way as we tune towards the threshold of collapse, the evolution resembles each other to even more duration of evolution until the solution "chooses" an end point, be it a singular spacetime or dispersion. So essentially we will have to evolve more simultion time as we tune the parameter more to reach the critical regime.
 
+Therefore, the combination of shrinking physical scales and the CFL constraint severely limits how close one can tune to the critical parameter in multidimensional simulations. This is one of the primary reasons why achieving high precision in non-symmetric critical collapse is significantly more challenging than in spherical symmetry. This problem can most probably only mitigated by evolving with more number of points in the grids which indeed will slow the runs down more, hence we will need more computational resources to effectively resolve the features in a way that the computational time that it takes wont be high.
 
+\subsection*{Gauge effects and its resolution}
 
-Therefore, the combination of shrinking physical scales and the CFL constraint severely limits how close one can tune to the critical parameter in multidimensional simulations. This is one of the primary reasons why achieving high precision in non-symmetric critical collapse is significantly more challenging than in spherical symmetry.
+In near-critical evolutions, coordinate pathologies often manifest as the development of sharp features in the gauge variables, particularly in the shift vector and the lapse. One commonly observed issue is the formation of steep gradients or localized spikes in the shift, which can lead to numerical instability and eventual breakdown of the evolution.
 
-
-
-
-
-\begin{figure}
-    \includegraphics[scale=0.8]{../notebooks/figure.pdf}
-    \caption{}
+These features are not physical but arise due to the choice of gauge conditions. In particular, certain gauge choices may fail to adequately respond to the strong focusing of the geometry near criticality, allowing large coordinate distortions to develop.Since, in NR, the coordinates themselves are evolved alongside the spacetime, the gauge dynamics can drive the coordinate system toward pathological configurations. In extreme cases, this can lead to the formation of coordinate singularities during the evolution. Such singularities are purely gauge effects and do not correspond to any physical divergence in the spacetime geometry, but they can nevertheless result in the breakdown of the numerical simulation.
+\begin{figure}[!!hbt]
+    \centering
+    \includegraphics[scale=0.4]{../figures/shift.pdf}
+    \caption{Two evolutions with different shift damping gauge parameters. As we can observe in the higher one, the divergence of the shift is damped away by the shift damping term of the gauge, hence allowing us to evolve more in time and observe the dynamics}
+    \label{shift}
 \end{figure}
+
+To mitigate such coordinate pathologies,we increase the damping parameters in the HDW Gauge (Sec \ref{HDWG}) to suppress rapid variations in the shift and control the growth of coordinate distortions. But finding the right gauge is a process that purely involves trial and error and testing them requires to evolve them with multiple gauge choices and understand how the pathology behaves. Hence this process takes time which in turn adds the time to the tuning of the critical parameter as well.
+
+
+\section*{Horizon Finding}
+
+Another cause of the inability to classify spacetimes also come from limitations of the AH finders that we had used.
+
+Initially, far away from criticality, we found circular (spherical) AH's and as we approached the critical regime we see more of "peanut" shaped horizons.  These were comparitively found easily using the \texttt{AHLoc3D} AH finder from the AH data outputted by BAMPS.
+
+\begin{figure}[!!hbt]
+    \centering
+    \includegraphics[scale=0.4]{../notebooks/figure.pdf}
+    \caption{The apparent horizon (AH) is overlaid on the Kretschmann scalar for a cropped region of the computational domain. As the tuning parameter approaches the critical threshold, the detected horizons deviate from spherical symmetry and exhibit a characteristic “peanut”-like shape. }
+    \label{horizon_peanut}
+\end{figure}
+
+But as we tuned further the inability to tune the parameter by finding horizons made us rethink on further assumptions that we made until now. (Other than the reasons mentioned before like coordinate singularities and so on). As mentioned in , we hypothesised that the horizon might already be formed in the data which we can't find due to the use of spherical ray-body parameterisation by \texttt{AHLoc3D}. This turned out to be true since we are able to find horizons after using a cartesian parameterisation based AH finder \cite{khirnov_2022} which was modified to include twist.
+
+\begin{figure}[!!hbt]
+    \centering
+    \includegraphics[scale=0.5]{../notebooks/problematic.pdf}
+    \caption{One of the disjoint horizons found by the new cartesian based horizon finder near criticality. \texttt{AHLoc3D} is not able to find them in a spherical parameterisation like the one used in \texttt{AHLoc3D}, the derivatives diverges near the problematic points shown in red since the parameterisation breaks at those regions(borderline before multivaluedness).  }
+    \label{horizon_not}
+\end{figure}
+
+As seen in Fig.\ref{horizon_not}, the parameterisation is no longer valid for horizons like these and in our journey into the critical regime, from now on we can only depend on this new parameterisation. Currently, we find disjoint horizons that are centered around $z=\pm z_{\text{peak}}$ where $z_{\text{peak}}$ is the point the in the z axis where maximum of curvature (Kretschmann Scalar) is located.
+
+
 
 \subsubsection{Harmonic Horizon Marching Gauge}
 \label{HHMG}
