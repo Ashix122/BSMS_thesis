@@ -27,10 +27,10 @@
 \geometry{
     a4paper,               % Paper size
     centering,
-    left=0.8in,           % Margins
-    right=0.8in,
-    top=0in+0.8in,
-    bottom=0.8in
+    left=0.75in,           % Margins
+    right=0.75in,
+    top=0in+0.75in,
+    bottom=0.75in
 }
 
 %-----------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@
 %-----------------------------------------------------------------------------------------
 
 \usepackage{fancyhdr}      % Custom headers and footers
-% \pagestyle{fancy}        % Enable for standard header and footer
+  \pagestyle{fancy}        % Enable for standard header and footer
 
 %-----------------------------------------------------------------------------------------
 % DATE FORMATTING
@@ -266,3 +266,15 @@
 }
 
 \setlength{\parindent}{0pt}
+
+\AtEveryBibitem{
+  \clearfield{url}
+  \clearfield{urlyear}
+  \clearfield{urlmonth}
+  \clearfield{doi}
+  \clearfield{isbn}
+  \clearfield{issn}
+  \clearfield{eprint}
+  \clearfield{eprinttype}
+  \clearfield{eprintclass}
+}

@@ -4,7 +4,7 @@
 \label{Construction}
 For solving the constraint equation on the initial $t=0$ slice, we employ a pseudospectral method. Since the equation is a linear PDE in two spatial dimensions and the data are smooth, the spectral approach provides exponential convergence as the number of collocation points is increased. In contrast, obtaining a closed-form solution is highly impractical: the variable coefficients introduced by general choices of $q(\rho,z)$, $f(\rho,z)$, and $h(\rho,z)$ prevent separation of variables and lead to nonstandard equations. Moreover, pursuing an analytic solution would restrict our freedom to modify the ansatz
 
-For the first step, inspecting the most general axisymmetric and regular metric ansatz \cite{rinne_2025} shows that \(f(\rho,z)\) must be an even function of \(\rho\) and \(h(\rho,z)\) must be an odd function of \(\rho\) (at origin). In addition, the metric must approach the flat metric at spatial infinity to ensure a well-defined notion of mass for any black hole that forms and to keep the analysis confined to the isolated system under consideration (Asymptotic flatness). While evolving it's always better to have some form of parity with respect to z as well, since it will decrease the cost of evolutions (We can reflect with respect to the z axis)(From \ref{eq:newconst}). Hence considering all these we take the ansatz
+For the first step, inspecting the most general axisymmetric and regular metric ansatz \cite{rinne_2025} shows that \(f(\rho,z)\) must be an even function of \(\rho\) and \(h(\rho,z)\) must be an odd function of \(\rho\) (at origin). In addition, the metric must approach the flat metric at spatial infinity to ensure a well-defined notion of mass for any black hole that forms and to keep the analysis confined to the isolated system under consideration \footnote{For asymptotic flatness}. While evolving it's always better to have some form of parity with respect to z as well, since it will decrease the cost of evolutions (We can reflect with respect to the z axis)(From \ref{eq:newconst}). Hence considering all these we take the ansatz
 \begin{equation}
 \begin{aligned}
 f(\rho,z) &= \text{twp1}\,\rho^{2} z\, e^{-(\rho^{2} + z^{2})} \; \; \;
@@ -22,7 +22,7 @@ With the new twist included Brill wave initial data that we constructed, we evol
 \subsubsection{Cartoon Method \cite{alcubierre_brgmann_holz_takahashi_brandt_seidel_thornburg_2001}}
 \label{Cartoon}
 
-In general, performing full 3-D simulations in General Relativity is computationally very expensive due to the dimensionality of the problem. However, when the system possesses axisymmetry, one can exploit this symmetry to significantly reduce computational cost without losing essential physical information.
+In general, performing full 3-D simulations in NR is computationally very expensive due to the dimensionality of the problem. However, when the system possesses axisymmetry, one can exploit this symmetry to significantly reduce computational cost without losing essential physical information.
 
 The cartoon method is a technique that allows one to evolve axisymmetric spacetimes using a reduced computational domain while still employing a Cartesian grid. Instead of evolving the full three-dimensional domain, the evolution is restricted to a thin slab around the symmetry plane (typically the $y=0$ meriodonal plane), consisting of only a few grid points in the symmetry direction.
 
@@ -32,34 +32,24 @@ The key idea is that derivatives in the symmetry direction (e.g., the $y$-direct
 \subsubsection{Harmonic Damped Wave Gauge (HDWG)}
 \label{HDWG}
 Harmonic Damped Wave Gauge (HDWG) is obtained by modifying the harmonic gauge condition ($\nabla_a \nabla^a x^b =0$) with a damping term in the RHS, turning the coordinate condition into a damped wave equation ($\nabla_a \nabla^a x^b =H^b$) . This suppresses unphysical gauge modes and stabilizes the coordinate evolution during numerical simulations. The gauge source function/RHS for it is of the form
-
 $$
 H_a = \eta_L \log \left( \frac{\gamma^p}{\alpha} \right) n_a - \eta_s \alpha^{-1} g_{ai}\beta^i
 $$
-
 In black-hole spacetimes, particularly near horizon formation, one often observes a rapid growth of the spatial metric determinant $\gamma$ due to coordinate stretching. The first term in $H_a$, through the logarithmic factor $\log(\gamma^p / \alpha)$, acts to counter this growth by driving a collapse of the lapse $\alpha$, thereby controlling the increase in spatial volume elements. The second term damps the shift vector $\beta^i$, suppressing distortions in the spatial coordinates. For more details, refer \cite{lindblom_szilágyi_2009}
 
 Together, these terms act to control gauge dynamics, preventing the development of large coordinate distortions and stabilizing the evolution near strong-field regions. Since $\eta_L$ and $\eta_s$ sets the time scale where these damping acts, a bit of tuning to find the right parameters are required for proper gauge evolutions which becomes essential in out work.
 
-Using Equation \ref{lapse=shift}, the evolution equation for the lapse and shift becomes, 
-
-$$
-\partial_t \alpha = - \alpha^2 K + \eta_L \alpha^2 \log \left(\frac{\gamma^{p/2}}{\alpha}\right) + \beta^i \partial_i \alpha \qquad
-\partial_t \beta^i = \alpha^2 \Gamma^i - \alpha \partial^i \alpha - \eta_s \beta^i + \beta^j \partial_j \beta^i ,
-$$
-
 \section{Horizon Finding}
 \label{horizon}
-In our axisymmetric setting, using a spherical parameterisation to locate surfaces satisfying the vanishing expansion condition in Eq.\ref{Horizon}, the problem reduces to a one-dimensional equation in the polar angle, so that the horizon equation becomes an ordinary differential equation. To solve them, we use the \texttt{AHLoc3D} tool with a parabolic flow method \cite{thornburg_2007}. Essentially, it makes use of guess surfaces in such a way that the outermost MOTS is inside the surface, calculates the expansion at a number of points based on the resolution and the "flows" towards lesser and lesser expansion values based on a pseudo time stepping ($\lambda$), ie
-$$
+In our axisymmetric setting, using a spherical parameterisation to locate surfaces satisfying the vanishing expansion condition in Eq.\ref{Horizon}, the problem reduces to a one-dimensional an ordinary differential equation in the polar angle. To solve them, we use the \texttt{AHLoc3D} tool with a parabolic flow method \cite{thornburg_2007}. Essentially, it makes use of guess surfaces in such a way that the outermost MOTS is inside the surface, calculates the expansion at a number of points based on the resolution and the ``flows" towards lesser and lesser expansion values based on a pseudo time stepping ($\lambda$), ie
+$
 \partial_\lambda x^i = - \Theta s^i
-$$
+$
 where $s^i$ is the normal vector to the surface and $x^i$ are the coordinates.
 
-Additionally in the case of \texttt{AHLoc3D}, the spherical parameterisation used which is $r = F(\theta)$ can only find ray-body/star-shaped horizons. This means that if we draw a ray from the center to the horizon it should only touch horizon once i.e the function should not be multivalued in r. This parameterisation begins to break down even before the surface becomes strictly multivalued. In particular, when the surface develops regions where the radial direction becomes tangent to the horizon (i.e., where the outward normal has no radial component), the function $F(\theta)$ develops large gradients or vertical tangents. Numerically, this corresponds to a loss of regularity in the representation, and the horizon finder can fail to converge even though a smooth surface still exists.
+Additionally in the case of \texttt{AHLoc3D}, the spherical parameterisation used which is $r = F(\theta)$ can only find ray-body/star-shaped horizons. This means that if we draw a ray from the center to the horizon it should only touch horizon once i.e the function should not be multivalued in r. This parameterisation begins to break down even before the surface becomes strictly multivalued. In particular, when the surface develops regions where the radial direction becomes tangent to the horizon, the function $F(\theta)$ develops large gradients or vertical tangents. Numerically, this corresponds to a loss of regularity in the representation, and the horizon finder can fail to converge even though a smooth surface still exists.
 
 Thus, the method is limited not only by true multivalueness, but also by configurations approaching it, where the surface ceases to be well-described as a function $r(\theta)$.
-
 
 Despite this limitation, such a parameterisation significantly simplifies the apparent horizon finding problem by reducing it to a one-dimensional equation in $\theta$, making it computationally efficient and straightforward to automate. Consequently, it has become a practical and widely adopted approach in NR. 
 \begin{figure}[!hbt]
@@ -71,26 +61,21 @@ Moreover, prior studies of vacuum critical collapse have not indicated the neces
 
 We also use a complementary method based on a Cartesian parameterisation with a shooting algorithm, which reduces to solving a set of coupled ODEs in axisymmetry. This removes the ray body limitation that we faced previously but the method uses the Cartoon method as in Sec.\ref{Cartoon} since this search is limited on the y=0 plane and the surface becomes a curve which is parameterised as $X^i (\lambda) = ({X(\lambda),0,Z(\lambda))}$ 
 
-For this method, we integrate the Eq.\ref{Horizon} with this new parameterisation and we get two coupled ODE's  in X and Z. Along the symmetry axis, we begin by making initial guesses for the point at which the horizon intersects the $z$-axis. For each such guess, we integrate the coupled ODEs to obtain a candidate curve $(X(\lambda), Z(\lambda))$. This defines a shooting problem, where we search for solutions that return to the axis, i.e., satisfy $X(\lambda_{\max}) = 0$ for some $\lambda_{\max} > 0$.
-
-In addition to this closure condition, regularity at the axis requires the tangent vector to be aligned with the radial direction in the meridional plane, which imposes the boundary condition $u^z(\lambda_{\max}) = 0$. We therefore select those curves that both return to the axis and satisfy this smoothness condition.
+For this method, we integrate the Eq.\ref{Horizon} with this new parameterisation and we get two coupled ODE's  in X and Z. Along the symmetry axis, we begin by making initial guesses for the point at which the horizon intersects the $z$-axis. For each such guess, we integrate the coupled ODEs to obtain a candidate curve $(X(\lambda), Z(\lambda))$. This defines a shooting problem, where we search for solutions that return to the axis, i.e., satisfy $X(\lambda_{\max}) = 0$ for some $\lambda_{\max} > 0$. In addition to this closure condition, regularity at the axis requires the tangent vector to be aligned with the radial direction in the meridional plane, which imposes the boundary condition $u^z(\lambda_{\max}) = 0$. We therefore select those curves that both return to the axis and satisfy this smoothness condition.
 
 Finally, these candidate solutions are passed to a root-finding algorithm such as \texttt{BRENTQ} to determine the precise initial condition that yields a closed and smooth horizon. For further details, see~\cite{khirnov_2022}.
 
 \section*{General workflow for tuning to the threshold of collapse}
 
-\begin{enumerate}
+\begin{enumerate}[nosep]
     \item Initial Data :- Using the framework that we made for solving the Initial Data PDE for arbitary parameters, we construct the initial data for whatever parameters we need for tuning. For example if we know the initial data is between [1,2] then we will construct 10 initial data like 1.0,1.1,1.2.....2.0 
     \item Evolve these initial data using \texttt{BAMPS} and analyse the results. If we observe dispersion on one parameter and horizon formation in the subsequent one, do the next level of search between these parameters and repeat the process
-    
-    For subcriticality, we look at the Curvature invariant, Kretschmann Scalar $$K = R_{abcd}R^{abcd}$$ where $R_{abcd}$ is the Riemann curvature tensor, observe its behaviour and check whether its dispersing towards spatial infinity (the end of the grid) and ensure there is no reflection at the boundaries which can be problematic.
+    \begin{itemize}[nosep]
+    \item For subcriticality, we look at the Curvature invariant, Kretschmann Scalar $$K = R_{abcd}R^{abcd}$$ where $R_{abcd}$ is the Riemann curvature tensor, observe its behaviour and check whether its dispersing towards spatial infinity (the end of the grid) and ensure there is no reflection at the boundaries which can be problematic.
 
-    For supercriticality, if the code crashes (either due to numerical error or singularity), we output the very expensive apparent horizon data (essentially metric and metric derivatives at all points in the grid) from the previous checkpoint time for a short time and use that data to find whether horizons has formed or not. 
-
+    \item For supercriticality, if the code crashes (either due to numerical error or singularity), we output the very expensive apparent horizon data (essentially metric and metric derivatives at all points in the grid) from the previous checkpoint time for a short time and use that data to find whether horizons have formed or not. 
+    \end{itemize}
     \item If we get to a scenario where we can't determine it due to errors or coordinate artifacts, we adjusted the relevant gauge parameters (in \ref{HDWG}) and evolve them again until we can determine them properly.
-
-
 \end{enumerate}
-
-Once the critical parameter has been determined to the desired precision (typically five to six decimal places), we investigate the behavior of the system in its vicinity. In particular, we focus on the universality of critical quantities and analyze the emergence of (discrete) self-similarity through the appearance of “echoes” in the relevant fields. In that regard, we try to measure the exponents from the maximum of curvature scalars from the subcritical side \cite{garfinkle_duncan_1998} rather than use the AH mass as an indicator. This is because there is alwaus of question "when" to measure the AH mass since we would need to compare them between evolutions where there exists an ambiguity in that regard. Additionally AH is a folitation dependent object and since we adjust the gauges based on numerical stability that it procures to the simulations, it can also change based on the foliation removing any basis that we have for comparison.
+Once the critical parameter has been determined to the desired precision (typically five to six decimal places), we investigate the behavior of the system in its vicinity. In particular, we focus on the universality of critical quantities and analyze the emergence of (discrete) self-similarity through the appearance of ``echoes” in the relevant fields. In that regard, we try to measure the exponents from the maximum of curvature scalars from the subcritical side \cite{garfinkle_duncan_1998} rather than use the BH mass as an indicator (Measured from AH area). This choice is motivated by the ambiguity associated with determining when to measure the AH area, especially when comparing different evolutions. Additionally, AH is a slicing dependent object and since we adjust the gauges based on numerical stability that it procures to the simulations, it removes any basis that we have for comparison.
 % Remember to input this to the presentative tex file before compiling.

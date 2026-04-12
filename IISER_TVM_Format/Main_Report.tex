@@ -23,7 +23,7 @@
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-\documentclass[12pt,oneside,a4paper,draft]{report} % Font size (pt)
+\documentclass[12pt,oneside,a4paper]{report} % Font size (pt)
 % Add in draft parameter to hide non-essential elements for faster compile times
 
 % Load configuration files
@@ -43,7 +43,7 @@
 \SetTCMBFacultyPosition{[Faculty Position]}
 \SetThesisCommitteeMemberC{[TC Member 3]}
 \SetTCMCFacultyPosition{[Faculty Position]}
-\SetThesisKeywords{}                     % Insert abstract keywords for SEO
+\SetThesisKeywords{Numerical Relativity, Apparent Horizons, Singularity}                     % Insert abstract keywords for SEO
 
 \hypersetup{
     pdfauthor={\ThesisAuthor},
@@ -65,6 +65,16 @@
   }}
 \makeatother
 
+\makeatletter
+\def\@makeschapterhead#1{%
+  \vspace*{-80pt} {\parindent \z@ \raggedright \normalfont
+    \huge\bfseries #1\par
+    \vspace{1pt}
+  }}
+\makeatother
+\titlespacing*{\section}{0pt}{0.7em}{0.4em}
+\titlespacing*{\subsection}{0pt}{0.6em}{0.3em}
+\titlespacing*{\subsubsection}{0pt}{0.5em}{0.2em}
 
 \begin{document}
 
@@ -120,7 +130,7 @@
 
                              \renewcommand*{\bibfont}{\small}
 \setlength\bibitemsep{1pt}
-
+\vspace{40pt}
 % Start two columns for bibliography ONLY
 \begin{multicols}{2}
 \printbibliography[heading=bibintoc]

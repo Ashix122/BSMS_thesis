@@ -1,17 +1,15 @@
 \chapter{Introduction and Background}
-General Relativity (GR) provides a profound description of gravity as the dynamics of spacetime geometry, governed by a set of highly nonlinear Partial Differential Equations (PDEs). While many exact solutions to Einstein’s equations are known, a large class of physically relevant phenomena—particularly those involving strong gravitational fields and dynamical evolution—remain analytically intractable. This necessitates the use of numerical methods, giving rise to the field of Numerical Relativity, where spacetime dynamics are studied through computational techniques.
+General Relativity (GR) provides a profound description of gravity as the dynamics of spacetime geometry, governed by a set of highly nonlinear Partial Differential Equations (PDEs). While many exact solutions to Einstein’s equations are known, a large class of physically relevant phenomena—particularly those involving strong gravitational fields and dynamical evolution—remain analytically intractable. This necessitates the use of numerical methods, giving rise to the field of Numerical Relativity (NR), where spacetime dynamics are studied through computational techniques.
 
 One of the most intriguing phenomena uncovered through numerical studies is critical behavior in gravitational collapse. When evolving a one-parameter family of initial data, the system exhibits a threshold separating dispersion from black hole formation. Near this threshold, the spacetime displays remarkable universal features such as power-law scaling, universality of critical exponents, and self-similarity. These discoveries, first made in spherically symmetric systems, revealed deep connections between gravity, nonlinear dynamics, and critical phenomena.
 
 However, much of our current understanding is restricted to highly symmetric settings. In particular, spherical symmetry eliminates gravitational wave degrees of freedom, limiting the richness of the dynamics. To explore genuinely gravitational critical phenomena, it is essential to move beyond spherical symmetry into axisymmetric or fully three-dimensional spacetimes. In vacuum, this becomes especially significant, as nontrivial dynamics arise purely from the nonlinear structure of Einstein’s equations rather than matter fields.
 
-In this work, we investigate critical phenomena in axisymmetric vacuum spacetimes using Brill wave initial data, with a particular focus on the role of twist, which introduces additional geometric degrees of freedom. By constructing and evolving one-parameter families of twist-included initial data, we aim to study how these additional structures influence the nature of the critical solution, its universality, and the emergence of self-similar behavior.
-
-The analysis is carried out within a numerical relativity framework, where we solve the Einstein equations using appropriate gauge conditions and horizon-finding techniques to classify the end states of evolution. Particular attention is given to challenges arising near the critical regime, including coordinate pathologies, resolution limits, and limitations of horizon detection methods.
+In this work, we investigate critical phenomena in axisymmetric vacuum spacetimes using Brill wave initial data, with a particular focus on the role of twist, which introduces additional geometric degrees of freedom. By constructing and evolving one-parameter families of twist-included initial data, we aim to study how these additional structures influence the nature of the critical solution, its universality, and the emergence of self-similar behavior. In this section, we provide a concise overview of the key background concepts relevant to this work.
 
 \section{Numerical Relativity}
 \label{NR}
-Numerical Relativity (NR) can be defined as the science of solving the Einstein's equations using numerical methods in such a way that the discretised solutions agree with the continuum solutions at the limit of infinite resolution. They are a set of coupled 4-dimensional PDEs that connect the dynamics between matter and the spacetime curvature.
+Numerical Relativity can be defined as the science of solving the Einstein's equations using numerical methods in such a way that the discretised solutions agree with the continuum solutions at the limit of infinite resolution. They are a set of coupled 4-dimensional PDEs that connect the dynamics between matter and the spacetime curvature.
 $$
 G_{ab}=16 \pi T_{ab}
 $$
@@ -184,7 +182,7 @@ But the main interest lies in the spacetimes that sit \textit{in the critical re
     \hfill
     \begin{subfigure}{0.32\textwidth}
         \centering
-        \includegraphics[width=1.1\linewidth]{/home/ashiquetnizar/Projects/Midterm_Thesis/Report_new_template/Figures/Screenshot_2025-11-20_17-48-01.png}
+        \includegraphics[width=1\linewidth]{/home/ashiquetnizar/Projects/Midterm_Thesis/Report_new_template/Figures/Screenshot_2025-11-20_17-48-01.png}
         \caption{Here each set of 4 lines contains near-critical solutions of different families of initial data and as it evolves in time we can see that they even have the same profile (Universality  of critical solution)}
         \label{fig:Universality}
         \vspace{62pt}
@@ -218,7 +216,7 @@ In this regard, axisymmetric vacuum spacetimes form the next natural class of mo
 \subsection{Brill waves}
 
 Brill waves are axisymmetric, vacuum gravitational-wave initial data constructed on a moment-of-time-symmetry slice ($K_{ij} = 0$), providing a practical prescription for generating axisymmetric vacuum spacetimes  which is obtained by solving the constraint equation in axisymmetric vacuum. These are then evolved in time to learn curvature dynamics of pure non-linear gravity rather than matter. Brill considered this for the ansatz for the spatial axisymmetric metric in cylindrical coordinates
-\[
+$$
 \gamma_{ij}(\rho,z,\phi) = \gamma_{ij}(\rho,z) = 
 \psi ^4\begin{pmatrix}
     e^{2q(\rho,z)} & 0 & 0 \\
@@ -226,12 +224,12 @@ Brill waves are axisymmetric, vacuum gravitational-wave initial data constructed
     0 & 0 & \rho^{2}
 \end{pmatrix},
 \qquad (i,j) = (\rho, z, \phi).
-\]
+$$
 When $q(\rho,z)=0$, the seed metric on the $(\rho,z)$--plane is flat, so the Brill
 3-metric
 reduces to a conformally flat geometry. Thus $q(\rho,z)$ acts as a \emph{seed function}
 that introduces nontrivial gravitational content into the initial data, while the
-conformal factor $\psi$ is fixed by the Hamiltonian constraint which becomes an elliptic equation (With York's conformal decomposition method) to solve making this metric constraint satisfying. When $\gamma_{ij} = \psi ^4 \tilde{\gamma}_{ij}$ then the hamiltonian constraint becomes ,
+conformal factor $\psi$ is fixed by the Hamiltonian constraint which becomes an elliptic equation \footnote{With York's conformal decomposition method} to solve making this metric constraint satisfying. When $\gamma_{ij} = \psi ^4 \tilde{\gamma}_{ij}$ then the Hamiltonian constraint becomes ,
 $
 8 \tilde{D}^2 \psi =\tilde{R} \psi 
 $
@@ -268,13 +266,10 @@ Now we introduce the metric for Brill type initial data with twist included.
 \label{Twist-included}
 \end{equation}
 where the function \emph{f($\rho$,z)} and \emph{h($\rho$,z)} parameterises the twist of the spacelike killing vector. This ansatz is chosen because it can be cleanly divided into the twist free Brill metric and a twist part when we write the line element. The new differential equation to solve for the conformal factor becomes 
-
 \begin{equation}
 8\tilde{D^2} \psi = \left(-\dfrac{e^{-2q}(\rho(\frac{\partial f}{\partial z} - {\frac{\partial h}{\partial \rho}}))+h)^2}{2 \rho^2}-2 \left(\dfrac{\partial^2 q}{\partial \rho^2}+ \dfrac{\partial^2 q}{\partial{z^2}}\right) \right) \psi
 \label{eq:newconst}
 \end{equation} 
-
-
 \section{Horizons}
 
 The main tool we use to classify spacetimes to subcritical or supercritical is by probing to find horizons, specifically Apparent Horizons (AHs) in the evolved slice. The main advantage of AH is that, unlike event horizons they are not \textit{teleological} i.e we dont need the information about the entire future development of the spacetime to get the information of AHs. In numerically computed dynamical spacetimes like ours, we might not be in the position to evolve it indefinitely inorder to classify them since the code will crash after some more evolution, hence AHs are the right tool to understand them.
@@ -282,18 +277,14 @@ The main tool we use to classify spacetimes to subcritical or supercritical is b
 \textbf{But what is an AH and why does it relate to the notion of a singular spacetime?}
 
 Essentially an AH can be defined as the outermost, Marginally Outer Trapped Surface (MOTS) which are smooth closed 2-dimensional submanifold S in the spacetime slice that satisfies the condition that the expansion of the outgoing null geodesics vanishes at each point in S. The expansion is defined as 
-
 $$
 \Theta = h^{ab} \nabla_a \zeta_b \qquad \text{where} \; h^{ab}= g^{ab}-s^as^b + n^a n^b 
 $$
-
 $h^{ab}$ is the induced metric of the 2-dimensional submanifold, $s^a$ is its normal vector and $\zeta$ is the tangent vector along the outgoing null geodesic . Solving this we get the equation of the form,
-
 \begin{equation}
 \Theta = -K + D_i s^i +s^is^j K_{ij} 
 \label{Horizon}
 \end{equation}
-
 Hence, our aim is to find surfaces satisfying ($\Theta = 0$), and we identify the apparent horizon (AH) as the \textbf{outermost marginally outer trapped surface (MOTS)}.
 
 The importance of apparent horizons is closely tied to the singularity theorems of general relativity. These theorems state that, under suitable energy conditions (such as the \textit{null energy condition}, which is satisfied in vacuum since ($T_{ab}=0$)) and global hyperbolicity (satisfied since the initial data is constraint satisfying), the presence of a trapped surface implies that the spacetime is geodesically incomplete, i.e., contains a singularity.

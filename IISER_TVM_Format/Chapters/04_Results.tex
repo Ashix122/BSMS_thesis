@@ -17,9 +17,7 @@ The quoted uncertainty in the critical parameter arises from the inability to un
     \label{Scaling}
 \end{figure}
 
-For the current family that we have chosen, we see a $R^2$ goodness of fit value of 0.995 which gives an additional assurance that there indeed exists some linear scaling even at this level of tuning.
-
-But in this regard, more work needs to be done to tune more into the critical regime and investigate the critical phenomena (Presence of self-similiar structures and so on).
+For the current family that we have chosen, we see a $R^2$ goodness of fit value of 0.995 which gives an additional assurance that there indeed exists some linear scaling even at this level of tuning. But in this regard, more work needs to be done to tune more into the critical regime and investigate the critical phenomena (Presence of self-similiar structures and so on).
 
 For example, as the parameter is tuned closer to the critical value, the evolution exhibits increasingly pronounced oscillatory features in the curvature, suggestive of the onset of echoing behaviour as in Fig \ref{feature}. These structures appear as repeated, self-similar peaks in the Kretschmann scalar as a function of proper time. However, due to the limited level of tuning and numerical resolution in the present simulations, these features cannot be conclusively identified as true (discrete) self-similarity. Achieving a more definitive verification would require finer tuning of the critical parameter and higher resolution to resolve the increasingly small spacetime scales involved.
 
@@ -30,16 +28,13 @@ For example, as the parameter is tuned closer to the critical value, the evoluti
     \label{feature}
 \end{figure}
 
-
 \textbf{But what makes tuning and classifying spacetimes difficult?}
 
 As the critical threshold is approached, it becomes increasingly difficult to classify a given evolution as subcritical or supercritical. In particular, near-critical evolutions may:
-
-\begin{enumerate}
+\begin{itemize}[nosep]
 \item not exhibit clear dispersal of curvature to spatial infinity,
 \item not form an apparent horizon detectable by standard horizon-finding tools,
-\end{enumerate}
-
+\end{itemize}
 thereby making the outcome ambiguous within finite numerical resolution. This could be attributed to certain reasons as to why.
 
 \section*{Development of Coordinate Pathologies}
@@ -76,33 +71,28 @@ These features are not physical but arise due to the choice of gauge conditions.
 \end{figure}
 
 To mitigate such coordinate pathologies,we increase the damping parameters in the HDW Gauge (Sec \ref{HDWG}) to suppress rapid variations in the shift and control the growth of coordinate distortions. But finding the right gauge is a process that purely involves trial and error and testing them requires to evolve them with multiple gauge choices and understand how the pathology behaves. Hence this process takes time which in turn adds the time to the tuning of the critical parameter as well.
-
-
 \section*{Horizon Finding}
 
-Another cause of the inability to classify spacetimes also come from limitations of the AH finders that we had used.
-
-Initially, far away from criticality, we found circular (spherical) AH's and as we approached the critical regime we see more of a``peanut" shaped horizons.  These were comparitively found easily using the spherical parameterised \texttt{AHLoc3D} AH finder from the AH data outputted by \texttt{BAMPS}.
-
+Another cause of the inability to classify spacetimes also come from limitations of the AH finders that we had used. Initially, far away from criticality, we found circular (spherical) AH's and as we approached the critical regime we see more of a ``peanut" shaped horizons.  These were comparitively found easily using the spherical parameterised \texttt{AHLoc3D} AH finder from the AH data outputted by \texttt{BAMPS}.
 
 \begin{figure}[!htb]
     \centering
     
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.4\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../notebooks/figure.pdf}
         \caption{Peanut-shaped horizons}
         \label{peanut}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.48\textwidth}
+    \begin{subfigure}{0.4\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../notebooks/figure_4.114.pdf}
         \caption{Disjoint horizons}
         \label{Bifurc}
     \end{subfigure}
     
-    \caption{Plots here show Kretschmann scalar over a reduced computational domain with the horizon found in the data overlaid on top. As we tune towards the threshold of collapse we observe ``peanut'' shaped horizons as in (a) found by the \texttt{AHLoc3D} and bifurcated or disjoint ``banana'' shaped horizons as we tune even more which can only be found by the cartesian based AH finder.  }
+    \caption{Plots here show Kretschmann scalar over a reduced computational domain with the horizon found in the data overlaid on top. As we tune towards the threshold of collapse we observe ``peanut'' (star-shaped) shaped horizons as in (a) found by the \texttt{AHLoc3D} and bifurcated or disjoint ``banana'' (non-star shaped) shaped horizons as we tune even more which can only be found by the cartesian based AH finder.  }
     
     \label{fig:combined_scaling}
 \end{figure}
