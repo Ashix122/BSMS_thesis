@@ -23,7 +23,7 @@
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-\documentclass[12pt,oneside,a4paper]{report} % Font size (pt)
+\documentclass[12pt,oneside,a4paper,draft]{report} % Font size (pt)
 % Add in draft parameter to hide non-essential elements for faster compile times
 
 % Load configuration files
@@ -31,11 +31,11 @@
 \input{Configuration/Colours.tex}       % Colour definitions
 \input{Configuration/MathLetters.tex}   % Math symbols and alphabet macros
 % Document Metadata
-\SetThesisTitle{[Project Title]}
+\SetThesisTitle{Towards Critical Phenomena in Twisting Axisymmetric Vacuum Spacetimes}
 \SetThesisAuthor{Ashique T Nizar}
 \SetRegNumber{IMS21039}
 \SetDegree{\msc}                         % Choose from: \msc, \phd, and \minor
-\SetDepartment{School of Physics}
+\SetDepartment{Physics}
 \SetProjectSupervisor{Dr.Soumen Basak}
 \SetThesisCommitteeMemberA{[TC Member 1]}
 \SetTCMAFacultyPosition{[Faculty Position]}
@@ -55,6 +55,16 @@
 %=========================================================================================
 % DOCUMENT STARTS HERE
 %=========================================================================================
+\makeatletter
+\def\@makechapterhead#1{%
+  {\parindent \z@ \raggedright \normalfont
+    \huge\bfseries \chaptername\ \thechapter\par
+    \vspace{10pt}
+    \Huge\bfseries #1\par
+    \vspace{20pt}
+  }}
+\makeatother
+
 
 \begin{document}
 
@@ -90,6 +100,8 @@
 \input{Chapters/02_Chapter2}
 \input{Chapters/03_Chapter3}
 \input{Chapters/04_Results.tex}
+\input{Chapters/05_Conclusion.tex}
+
 % Note:
 % Use sections/subsections to structure content within each chapter.
 
@@ -97,9 +109,9 @@
 % APPENDICES
 %=========================================================================================
 
-\appendix
-\addappheadtotoc
-\input{Appendices/A_AppA.tex}
+%\appendix
+%\addappheadtotoc
+%\input{Appendices/A_AppA.tex}
 
 %=========================================================================================
 % BIBLIOGRAPHY

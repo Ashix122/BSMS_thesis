@@ -1,5 +1,5 @@
 \chapter{Introduction and Background}
-General Relativity (GR) provides a profound description of gravity as the dynamics of spacetime geometry, governed by a set of highly nonlinear partial differential equations. While many exact solutions to Einstein’s equations are known, a large class of physically relevant phenomena—particularly those involving strong gravitational fields and dynamical evolution—remain analytically intractable. This necessitates the use of numerical methods, giving rise to the field of Numerical Relativity, where spacetime dynamics are studied through computational techniques.
+General Relativity (GR) provides a profound description of gravity as the dynamics of spacetime geometry, governed by a set of highly nonlinear Partial Differential Equations (PDEs). While many exact solutions to Einstein’s equations are known, a large class of physically relevant phenomena—particularly those involving strong gravitational fields and dynamical evolution—remain analytically intractable. This necessitates the use of numerical methods, giving rise to the field of Numerical Relativity, where spacetime dynamics are studied through computational techniques.
 
 One of the most intriguing phenomena uncovered through numerical studies is critical behavior in gravitational collapse. When evolving a one-parameter family of initial data, the system exhibits a threshold separating dispersion from black hole formation. Near this threshold, the spacetime displays remarkable universal features such as power-law scaling, universality of critical exponents, and self-similarity. These discoveries, first made in spherically symmetric systems, revealed deep connections between gravity, nonlinear dynamics, and critical phenomena.
 
@@ -11,13 +11,11 @@ The analysis is carried out within a numerical relativity framework, where we so
 
 \section{Numerical Relativity}
 \label{NR}
-Numerical Relativity (NR) can be defined as the science of solving the Einstein's equations using numerical methods in such a way that the discretised solutions agree with the continuum solutions at the limit of infinite resolution. They are a set of coupled 4-dimensional Partial Differential Equations (PDEs) that connect the dynamics between matter and the spacetime curvature.
-
+Numerical Relativity (NR) can be defined as the science of solving the Einstein's equations using numerical methods in such a way that the discretised solutions agree with the continuum solutions at the limit of infinite resolution. They are a set of coupled 4-dimensional PDEs that connect the dynamics between matter and the spacetime curvature.
 $$
 G_{ab}=16 \pi T_{ab}
 $$
-
-But its tensorial structure prevents us from approaching them as a usual time evolution PDE problems where we see equations like $\partial_t u =f(x^i,\partial_{x^i} u)$ where $x^i$ are the spatial coordinates. So inorder to cast Einstein's equations into a form suitable for time evolution, we assume 
+But its tensorial structure prevents us from approaching them as a usual time evolution PDE problems where we see equations like $\partial_t u =f(x^i,\partial_{x^i} u)$ where $x^i$ are the spatial coordinates and t is the time coordinate. So inorder to cast Einstein's equations into a form suitable for time evolution, we assume 
 that the spacetime is globally hyperbolic. This guarantees the existence of a
 foliation into space-like Cauchy hypersurfaces $\Sigma_t$, which are the level 
 sets of a scalar time function $t : \mathcal{M} \to \mathbb{R}$. Each slice 
@@ -131,7 +129,7 @@ next.
 }
 \end{figure}
 
-By using the orthogonal projection operator to the hypersurface $\perp_{ab} = \delta_{ab} +n_a n_b$ we can project all  the relevant quantities that we require such as the metric, Riemann curvature tensor etc. This projected part of $g_{ab}$ is called spatial metric $\gamma_{ab}$ and D is the derivative associated with this metric. We define extrinsic curvature $K_{ab}$ to be $-\gamma^c_a \nabla_c n_b$ which in vague terms give the information of the time derivative of the spatial metric by the relation $K_{ab} = -\mathcal{L}_n \gamma_{ab}$ where $\mathcal{L}$ is the lie derivative with respect to a vector field. Using all these we can decompose the Einstein's equations into a set of constraint equations and evolution equations as given below.
+By using the orthogonal projection operator to the hypersurface $\perp_{ab} = \delta_{ab} +n_a n_b$ we can project all  the relevant quantities that we require such as the metric, Riemann curvature tensor etc. This projected part of $g_{ab}$ is called spatial metric $\gamma_{ab}$ and D is the derivative associated with this metric. We define extrinsic curvature $K_{ab}$ to be $-\gamma^c_a \nabla_c n_b$ which in simple terms give the information of the time derivative of the spatial metric by the relation $K_{ab} = -\mathcal{L}_n \gamma_{ab}$ where $\mathcal{L}$ is the lie derivative with respect to a vector field. Using all these we can decompose the Einstein's equations into a set of constraint equations and evolution equations as given below.
 \begin{equation}
 \label{eq:Constraints}
 R + K^2 - K_{ab} K^{ab} = 16\pi \rho 
@@ -153,17 +151,16 @@ which correspond to Hamiltonian and momentum constraints respectively, R corresp
   + 4\pi \alpha \!\left[\, \gamma_{ij}(s - \rho) - 2 s_{ij} \right]
   + \mathcal{L}_{\beta} K_{ij}.\footnote{where i,j $\rightarrow $1,2,3 (Spatial)}
 \]
- Now we can see that the GR equations have been formulated into a way which is ideal for time evolution using standard PDE techniques(Since all the elements in the RHS are spatial). However, more modern formulations such as BSSN, Z4C, and related systems include constraint-damping mechanisms that improve numerical stability, since in a discretised scheme the constraints cannot be satisfied exactly. It is also well known that the constraint subsystem is closed, meaning that the time derivatives of the constraints depend only on the constraints themselves.  Consequently, if the constraint equations are solved initially, they remain satisfied for a finite time during the evolution. For further details, see \cite{hilditch_2024}. So we take solutions of the constraint equations which often amount to solving elliptic PDE's on the initial slice (called \textbf{Initial Data}) and then proceed to evolve it in time using the evolutions equations
+ Now we can see that the GR equations have been formulated into a way which is ideal for time evolution using standard PDE techniques (Since all the elements in the RHS are spatial). However, more modern formulations such as BSSN, Z4C, and related systems include constraint-damping mechanisms that improve numerical stability, since in a discretised scheme the constraints cannot be satisfied exactly. It is also well known that the constraint subsystem is closed, meaning that the time derivatives of the constraints depend only on the constraints themselves.  Consequently, if the constraint equations are solved initially, they remain satisfied for a finite time during the evolution. For further details, see \cite{hilditch_2024}. So we take solutions of the constraint equations which often amount to solving elliptic PDE's on the initial slice (called \textbf{Initial Data}) and then proceed to evolve it in time using the evolutions equations.
 
 \section{Critical Phenomena in Gravitational Collapse}
-Instead of viewing GR as a field theory, viewing it in using a dynamical system perspective helps us see a widely underappreciated nuance of the theory, since essentially GR is a set of PDE's at its core which enables us to view them as so. Essentially, the dynamic system's phase space will be a set of functions of the coordinates which are spatial 3-metric,the extrinsic curvature and the variables from the matter we choose. So as we evolve in time, these points in the phase space will evolve from one point to another while satisfying the Einstein equations as well as the matter equations that we set.
+Instead of viewing GR as a field theory, viewing it in a dynamical system perspective helps us see a widely underappreciated nuance of the theory, since essentially GR is a set of PDE's at its core which enables us to view them as so. Essentially, the dynamic system's phase space will be a set of functions of the coordinates which are spatial 3-metric,the extrinsic curvature and the variables from the matter we choose. So as we evolve in time, these points in the phase space will evolve from one point to another while satisfying the Einstein equations as well as the matter equations that we set.
 Until now its pretty standard. To see the nuance, we take a one-parameter family of smooth initial data (Solving the Einstein constraint equations (Eq:\ref{eq:Constraints}) and the matter equations), 
-we observe that they usually reach two types of end points in phase space, either disperse the mass-energy to infinity (known as \textbf{subcritical} data)  or collapse to a black hole (known as \textbf{supercritical} data).
+we observe that they usually reach two types of end points in phase space, either disperse the mass-energy to infinity (known as \textbf{subcritical} initial data)  or collapse to a black hole (known as \textbf{supercritical} initial data).
 
 But the main interest lies in the spacetimes that sit \textit{in the critical regime}, between the two end-states of dispersion and black-hole(BH) formation. In his breakthrough numerical study, Choptuik \cite{choptuik_1993} using spherical symmetry with a minimally coupled, massless scalar field as the source of stress--energy, discovered that this intermediate regime exhibits three remarkable and universal features:
-
 \begin{itemize}
-    \item \textbf{Power-law mass scaling:\footnote{Later Garfinkle and Comer \cite{garfinkle_duncan_1998} found out that according to proper dimensionality, the maximum of curvature invariants from the subcritical side also follow similiar scaling laws with the same critical exponents.}
+    \item \textbf{Power-law mass scaling:\footnote{Later Garfinkle and Comer \cite{garfinkle_duncan_1998} found out that according to proper dimensionality, the maximum of curvature invariants from the subcritical side also follow similar scaling laws ($ \text{Kretschmann Scalar maximum} \; K_{max} = (p-p^*)^{-4\eta} $) with the same critical exponents. }
 } \\
     On the supercritical side, the mass of the collapsed BH  obeys a scaling law of the form $
         M_{\rm BH} \propto (p - p_*)^\eta $
@@ -172,7 +169,7 @@ But the main interest lies in the spacetimes that sit \textit{in the critical re
     The exponent \(\eta\) is \textbf{independent of the choice of initial data family}. Different families with different shapes, widths, or profiles all yield the same value of \(\eta\), depending only on the matter model (e.g.\ scalar field, Yang--Mills field, etc.). See \ref{fig:Choptuik_Figures}\ref{sub@fig:Powerlawscaling}
 
     \item \textbf{Self-similarity and universality of the critical solution:} \\
-    The critical solution itself exhibits a form of \textbf{self-similarity} (either continuous or discrete), meaning that the spacetime repeats its structure on smaller and smaller spatiotemporal scales based on how near the parameter is to the critical parameter.Additionally this critical solution is universal with respect to initial data See \ref{fig:Choptuik_Figures}\ref{sub@fig:Self_similarity} \ref{fig:Universality}
+    The critical solution itself exhibits a form of \textbf{self-similarity} (either continuous or discrete), meaning that the spacetime repeats its structure on smaller and smaller spatiotemporal scales based on how near the parameter is to the critical parameter. Additionally this critical solution is universal with respect to initial data See \ref{fig:Choptuik_Figures}\ref{sub@fig:Self_similarity} \ref{fig:Universality}
 \end{itemize}
 
 \begin{figure}[h]
@@ -238,10 +235,11 @@ conformal factor $\psi$ is fixed by the Hamiltonian constraint which becomes an 
 $
 8 \tilde{D}^2 \psi =\tilde{R} \psi 
 $
-where $\tilde{R}$ is the Ricci scalar of the conformal metric and $\tilde{D} $ is the derivative operator compatible to the conformal metric. This in our case becomes a linear differential equation of the form. This here is the main advantage of using this conformal formalism since we just need to solve this differential equation to get the constraint solved initial data. And since $K_{ij}$ = 0, the momentum constraint will be trivially satisfied (See equation \ref{eq:Constraints}).
-$$
+where $\tilde{R}$ is the Ricci scalar of the conformal metric and $\tilde{D} $ is the derivative operator compatible to the conformal metric. This in our case becomes a linear differential equation of the form in Eq.\ref{diffbrill}. This here is the main advantage of using this conformal formalism since we just need to solve this differential equation to get the constraint solved initial data. And since $K_{ij}$ = 0, the momentum constraint will be trivially satisfied (See equation \ref{eq:Constraints}).
+\begin{equation}
 \tilde{D}^2 \psi = -\dfrac{1}{4} \left( \dfrac{\partial^2 q}{\partial \rho^2}+ \dfrac{\partial^2 q}{\partial{z^2}} \right)\psi
-$$
+\label{diffbrill}
+\end{equation}
 A spacetime is axisymmetric if it admits globally a
 spacelike Killing vector field $\xi^a=(\partial_\phi)^a $ whose integral curves are
 closed, reflecting the periodicity of $\phi$. In the untwisted Brill metric, the
@@ -279,7 +277,7 @@ where the function \emph{f($\rho$,z)} and \emph{h($\rho$,z)} parameterises the t
 
 \section{Horizons}
 
-The main tool we use to classify spacetimes to subcritical or supercritical is by probing to find horizons, specifically Apparent Horizons (AHs) in the evolved slice. The main advantage of AH is that, unlike event horizons they are not \textit{teleological} i.e we dont need the information about the complete spacetime to get the information of apparent horizon. In numerically computed dynamical spacetimes like ours, we might not be in the position to evolve it completely inorder to classify them since the code will crash after some more evolution, hence AHs are the right tool to understand them.
+The main tool we use to classify spacetimes to subcritical or supercritical is by probing to find horizons, specifically Apparent Horizons (AHs) in the evolved slice. The main advantage of AH is that, unlike event horizons they are not \textit{teleological} i.e we dont need the information about the entire future development of the spacetime to get the information of AHs. In numerically computed dynamical spacetimes like ours, we might not be in the position to evolve it indefinitely inorder to classify them since the code will crash after some more evolution, hence AHs are the right tool to understand them.
 
 \textbf{But what is an AH and why does it relate to the notion of a singular spacetime?}
 

@@ -2,9 +2,9 @@
 
 \section{Construction of 1-parameter family of Initial Data}
 \label{Construction}
-For solving the constraint equation on the initial $t=0$ slice, we employ pseudospectral method. Since the equation is linear PDE in two spatial dimensions and the data are smooth, the spectral approach provides exponential convergence as the number of collocation points is increased. In contrast, obtaining a closed-form solution is highly impractical: the variable coefficients introduced by general choices of $q(\rho,z)$, $f(\rho,z)$, and $h(\rho,z)$ prevent separation of variables and lead to nonstandard equations. Moreover, pursuing an analytic solution would restrict our freedom to modify the ansatz
+For solving the constraint equation on the initial $t=0$ slice, we employ a pseudospectral method. Since the equation is a linear PDE in two spatial dimensions and the data are smooth, the spectral approach provides exponential convergence as the number of collocation points is increased. In contrast, obtaining a closed-form solution is highly impractical: the variable coefficients introduced by general choices of $q(\rho,z)$, $f(\rho,z)$, and $h(\rho,z)$ prevent separation of variables and lead to nonstandard equations. Moreover, pursuing an analytic solution would restrict our freedom to modify the ansatz
 
-For the first step, inspecting the most general axisymmetric and regular metric ansatz \cite{rinne_2025} shows that \(f(\rho,z)\) must be an even function of \(\rho\) and \(h(\rho,z)\) must be an odd function of \(\rho\)(at origin). In addition, the metric must approach the flat metric at spatial infinity to ensure a well-defined notion of mass for any black hole that forms and to keep the analysis confined to the isolated system under consideration. While evolving it's always better to have some form of parity with respect to z as well since it will decrease the cost of evolutions (We can reflect with respect to z axis)(From \ref{eq:newconst}). Hence considering all these we take the ansatz
+For the first step, inspecting the most general axisymmetric and regular metric ansatz \cite{rinne_2025} shows that \(f(\rho,z)\) must be an even function of \(\rho\) and \(h(\rho,z)\) must be an odd function of \(\rho\) (at origin). In addition, the metric must approach the flat metric at spatial infinity to ensure a well-defined notion of mass for any black hole that forms and to keep the analysis confined to the isolated system under consideration (Asymptotic flatness). While evolving it's always better to have some form of parity with respect to z as well, since it will decrease the cost of evolutions (We can reflect with respect to the z axis)(From \ref{eq:newconst}). Hence considering all these we take the ansatz
 \begin{equation}
 \begin{aligned}
 f(\rho,z) &= \text{twp1}\,\rho^{2} z\, e^{-(\rho^{2} + z^{2})} \; \; \;
@@ -31,7 +31,7 @@ The key idea is that derivatives in the symmetry direction (e.g., the $y$-direct
 
 \subsubsection{Harmonic Damped Wave Gauge (HDWG)}
 \label{HDWG}
-Harmonic Damped Wave Gauge (HDWG) is obtained by modifying the harmonic gauge condition ($\nabla_a \nabla^a x^b =0$) with a damping term in the RHS, turning the coordinate condition into a damped wave equation. This suppresses unphysical gauge modes and stabilizes the coordinate evolution during numerical simulations. The gauge source function/RHS for it is of the form
+Harmonic Damped Wave Gauge (HDWG) is obtained by modifying the harmonic gauge condition ($\nabla_a \nabla^a x^b =0$) with a damping term in the RHS, turning the coordinate condition into a damped wave equation ($\nabla_a \nabla^a x^b =H^b$) . This suppresses unphysical gauge modes and stabilizes the coordinate evolution during numerical simulations. The gauge source function/RHS for it is of the form
 
 $$
 H_a = \eta_L \log \left( \frac{\gamma^p}{\alpha} \right) n_a - \eta_s \alpha^{-1} g_{ai}\beta^i
@@ -49,8 +49,8 @@ $$
 $$
 
 \section{Horizon Finding}
-
-In our axisymmetric setting, to locate surfaces satisfying the vanishing expansion condition in Eq.\ref{Horizon}, the problem reduces to a one-dimensional equation in the polar angle, so that the horizon equation becomes an ordinary differential equation. To solve them, we use the \texttt{AHLoc3D} tool which uses a spherical parameterisation for the horizon shape with a parabolic flow method \cite{thornburg_2007}. Essentially, it makes use of guess surfaces in such a way that the outermost MOTS is inside the surface, calculates the expansion at a number of points based on the resolution and the "flows" towards lesser and lesser expansion values based on a pseudo time stepping ($\lambda$), ie
+\label{horizon}
+In our axisymmetric setting, using a spherical parameterisation to locate surfaces satisfying the vanishing expansion condition in Eq.\ref{Horizon}, the problem reduces to a one-dimensional equation in the polar angle, so that the horizon equation becomes an ordinary differential equation. To solve them, we use the \texttt{AHLoc3D} tool with a parabolic flow method \cite{thornburg_2007}. Essentially, it makes use of guess surfaces in such a way that the outermost MOTS is inside the surface, calculates the expansion at a number of points based on the resolution and the "flows" towards lesser and lesser expansion values based on a pseudo time stepping ($\lambda$), ie
 $$
 \partial_\lambda x^i = - \Theta s^i
 $$
@@ -61,7 +61,7 @@ Additionally in the case of \texttt{AHLoc3D}, the spherical parameterisation use
 Thus, the method is limited not only by true multivalueness, but also by configurations approaching it, where the surface ceases to be well-described as a function $r(\theta)$.
 
 
-Despite this limitation, such a parameterisation significantly simplifies the apparent horizon finding problem by reducing it to a one-dimensional equation in $\theta$, making it computationally efficient and straightforward to automate. Consequently, it has become a practical and widely adopted approach in numerical relativity. 
+Despite this limitation, such a parameterisation significantly simplifies the apparent horizon finding problem by reducing it to a one-dimensional equation in $\theta$, making it computationally efficient and straightforward to automate. Consequently, it has become a practical and widely adopted approach in NR. 
 \begin{figure}[!hbt]
     \centering
     \includegraphics[scale=0.15]{../figures/Screenshot_2026-04-05_14-48-44.png}
@@ -69,7 +69,7 @@ Despite this limitation, such a parameterisation significantly simplifies the ap
 \end{figure}
 Moreover, prior studies of vacuum critical collapse have not indicated the necessity for more general surface representations, as the horizons encountered in those scenarios remain well approximated by star-shaped surfaces. But as we will mention in the coming sections, the inability to tune towards the threshold made us rethink regarding this assumption as a hypothesis which proved to be the correct approach.
 
-We also use a complementary method based on a Cartesian parameterisation with a shooting algorithm, which similarly reduces to solving an ODE in axisymmetry. This removes the ray body limitation that we faced previously but the method uses the Cartoon method as in Sec.\ref{Cartoon} since this search is limited on the y=0 plane and the surface becomes a curve which is parameterised as $X^i (\lambda) = ({X(\lambda),0,Z(\lambda))}$ 
+We also use a complementary method based on a Cartesian parameterisation with a shooting algorithm, which reduces to solving a set of coupled ODEs in axisymmetry. This removes the ray body limitation that we faced previously but the method uses the Cartoon method as in Sec.\ref{Cartoon} since this search is limited on the y=0 plane and the surface becomes a curve which is parameterised as $X^i (\lambda) = ({X(\lambda),0,Z(\lambda))}$ 
 
 For this method, we integrate the Eq.\ref{Horizon} with this new parameterisation and we get two coupled ODE's  in X and Z. Along the symmetry axis, we begin by making initial guesses for the point at which the horizon intersects the $z$-axis. For each such guess, we integrate the coupled ODEs to obtain a candidate curve $(X(\lambda), Z(\lambda))$. This defines a shooting problem, where we search for solutions that return to the axis, i.e., satisfy $X(\lambda_{\max}) = 0$ for some $\lambda_{\max} > 0$.
 
@@ -81,16 +81,16 @@ Finally, these candidate solutions are passed to a root-finding algorithm such a
 
 \begin{enumerate}
     \item Initial Data :- Using the framework that we made for solving the Initial Data PDE for arbitary parameters, we construct the initial data for whatever parameters we need for tuning. For example if we know the initial data is between [1,2] then we will construct 10 initial data like 1.0,1.1,1.2.....2.0 
-    \item Evolve these initial data using BAMPS and analyse the results. If we observe dispersion on one parameter and Horizon formation in the next one. Do the next level of search between these parameters and repeat the process
+    \item Evolve these initial data using \texttt{BAMPS} and analyse the results. If we observe dispersion on one parameter and horizon formation in the subsequent one, do the next level of search between these parameters and repeat the process
     
     For subcriticality, we look at the Curvature invariant, Kretschmann Scalar $$K = R_{abcd}R^{abcd}$$ where $R_{abcd}$ is the Riemann curvature tensor, observe its behaviour and check whether its dispersing towards spatial infinity (the end of the grid) and ensure there is no reflection at the boundaries which can be problematic.
 
     For supercriticality, if the code crashes (either due to numerical error or singularity), we output the very expensive apparent horizon data (essentially metric and metric derivatives at all points in the grid) from the previous checkpoint time for a short time and use that data to find whether horizons has formed or not. 
 
-    \item If we get to a scenario where we can't determine it due to errors or coordinate artifacts, we adjusted the relevant gauge parameters and evolve them again until we can determine them properly.
+    \item If we get to a scenario where we can't determine it due to errors or coordinate artifacts, we adjusted the relevant gauge parameters (in \ref{HDWG}) and evolve them again until we can determine them properly.
 
 
 \end{enumerate}
 
-Once the critical parameter has been determined to the desired precision (typically five to six decimal places), we investigate the behavior of the system in its vicinity. In particular, we focus on the universality of critical quantities and analyze the emergence of discrete self-similarity through the appearance of “echoes” in the relevant fields. In that regard, we try to measure the exponents from the maximum of curvature scalars from the subcritical side \cite{garfinkle_duncan_1998} rather than use the AH mass as an indicator. This is because there is alwaus of question "when" to measure the AH mass since we would need to compare them between evolutions where there exists an ambiguity in that regard. Additionally AH is a folitation dependent object and since we adjust the gauges based on numerical stability that it procures to the simulations, it can also change based on the foliation removing any basis that he have for comparison.
+Once the critical parameter has been determined to the desired precision (typically five to six decimal places), we investigate the behavior of the system in its vicinity. In particular, we focus on the universality of critical quantities and analyze the emergence of (discrete) self-similarity through the appearance of “echoes” in the relevant fields. In that regard, we try to measure the exponents from the maximum of curvature scalars from the subcritical side \cite{garfinkle_duncan_1998} rather than use the AH mass as an indicator. This is because there is alwaus of question "when" to measure the AH mass since we would need to compare them between evolutions where there exists an ambiguity in that regard. Additionally AH is a folitation dependent object and since we adjust the gauges based on numerical stability that it procures to the simulations, it can also change based on the foliation removing any basis that we have for comparison.
 % Remember to input this to the presentative tex file before compiling.

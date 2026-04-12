@@ -1,0 +1,22 @@
+\chapter{Conclusion and Future directions}
+In this work, we have investigated critical phenomena in axisymmetric vacuum spacetimes using Brill wave initial data with twist. By introducing additional geometric degrees of freedom, we explored how twist influences the structure and universality of the critical solution beyond the well-studied twist-free setting.
+
+Through the construction and evolution of one-parameter families of initial data, we identified a threshold separating dispersion from black hole formation. Despite the challenges inherent to multidimensional numerical relativity, we were able to tune the critical parameter to moderate precision and extract a scaling exponent consistent with the expected power-law behaviour of curvature invariants. The observed scaling of the Kretschmann scalar, along with a strong goodness-of-fit, supports the persistence of critical behaviour in this setting.
+
+Additionally, near-critical evolutions exhibit echo-like features in the curvature, suggestive of underlying self-similar dynamics. While the current level of tuning and resolution does not allow for a definitive identification of discrete self-similarity, these results are consistent with expectations from critical collapse.
+
+A significant outcome of this work is the identification of key numerical and geometric challenges that arise near criticality. In particular, coordinate pathologies, resolution limits imposed by the CFL condition, and limitations of standard horizon-finding methods play a crucial role. Notably, the emergence of non-star-shaped and disjoint horizons necessitated the use of a Cartesian-based horizon finder, which proved essential for correctly classifying supercritical evolutions. 
+
+To our knowledge, this study represents one of the first systematic attempts to incorporate twist in vacuum Brill-wave critical collapse. The substantial computational cost ( $\approx$4000 core-hours per simulation) further highlights the difficulty of accessing the critical regime in less symmetric spacetimes.
+
+\section*{Future Directions}
+
+An immediate direction for future work is to achieve higher precision in tuning the critical parameter. This would enable more accurate determination of critical exponents and a clearer assessment of universality. Exploring multiple families of initial data will be essential to establish whether the observed behaviour is truly universal. Until now we have only tried pure twisting Brill wave i.e Seed function $q(\rho,z) =0 $ and after trying different families in that, we will move on to adding the influence of the seed function along with twist variables. Then an even stronger test would be to take the other class of axisymmetric vacuum initial data which are Teulkosky waves, modify them to include twist and conduct similar tests in that data. We expect that to be easier with the insights that we have gained with this experiment.
+
+A deeper investigation of self-similarity is also required. Higher resolution simulations may allow for the extraction of echoing structure and scaling periods, providing stronger evidence for the nature of the critical solution.
+
+Understanding the role of twist remains an open problem. In particular, it is important to determine whether twist gives rise to new classes of critical solutions or modifies existing ones. This could provide insight into the broader structure of the solution space in axisymmetric vacuum spacetimes.
+
+From a numerical perspective, improving gauge choices and developing more robust horizon-finding techniques will be crucial. Extending these methods and analyses to more general settings, including fully three-dimensional spacetimes, forms a natural next step. Since the cartesian AH finder is a method which required a lot of ``hand holding'' to find the horizon, we would need to find a way to automate them or rather determine new automatable ways to find horizons.
+
+In summary, this work demonstrates that critical phenomena persist in axisymmetric vacuum spacetimes with twist, while also highlighting the rich structure and challenges that emerge beyond spherical symmetry.
