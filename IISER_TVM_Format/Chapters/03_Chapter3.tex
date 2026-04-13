@@ -4,7 +4,7 @@
 \label{Construction}
 For solving the constraint equation on the initial $t=0$ slice, we employ a pseudospectral method. Since the equation is a linear PDE in two spatial dimensions and the data are smooth, the spectral approach provides exponential convergence as the number of collocation points is increased. In contrast, obtaining a closed-form solution is highly impractical: the variable coefficients introduced by general choices of $q(\rho,z)$, $f(\rho,z)$, and $h(\rho,z)$ prevent separation of variables and lead to nonstandard equations. Moreover, pursuing an analytic solution would restrict our freedom to modify the ansatz
 
-For the first step, inspecting the most general axisymmetric and regular metric ansatz \cite{rinne_2025} shows that \(f(\rho,z)\) must be an even function of \(\rho\) and \(h(\rho,z)\) must be an odd function of \(\rho\) (at origin). In addition, the metric must approach the flat metric at spatial infinity to ensure a well-defined notion of mass for any black hole that forms and to keep the analysis confined to the isolated system under consideration \footnote{For asymptotic flatness}. While evolving it's always better to have some form of parity with respect to z as well, since it will decrease the cost of evolutions (We can reflect with respect to the z axis)(From \ref{eq:newconst}). Hence considering all these we take the ansatz
+For the first step, inspecting the most general axisymmetric and regular metric ansatz \cite{rinne_2025} shows that \(f(\rho,z)\) must be an even function of \(\rho\) and \(h(\rho,z)\) must be an odd function of \(\rho\) (at origin). In addition, the metric must approach the flat metric at spatial infinity to ensure a well-defined notion of mass for any BH that forms and to keep the analysis confined to the isolated system under consideration \footnote{For asymptotic flatness}. While evolving it's always better to have some form of parity with respect to z as well, since it will decrease the cost of evolutions (We can reflect with respect to the z axis)(From \ref{eq:newconst}). Hence considering all these factors we take the ansatz
 \begin{equation}
 \begin{aligned}
 f(\rho,z) &= \text{twp1}\,\rho^{2} z\, e^{-(\rho^{2} + z^{2})} \; \; \;
@@ -17,7 +17,7 @@ where twp1 and twp2 are parameters that we would like to characterise the critic
 
 \section{Time Evolutions of Twist-included Brill wave Initial Data}
 
-With the new twist included Brill wave initial data that we constructed, we evolved them in \texttt{BAMPS} NR framework. Unlike the previous tests of Brill waves, we have to evolve the non-diagonal components of the spacetime tensors as well due to the usage of new spatial metric ansatz due to the inclusion of twist as in Eq.\ref{Twist-included}. Due to the axisymmetric nature of the problem in hand, we use the cartoon method to simplify the computational costs.
+With the new twist included Brill wave initial data that we constructed, we evolved them in \texttt{BAMPS} NR framework \cite{hilditch_weyhausen_brugmann_2016}. Unlike the previous tests of Brill waves, we have to evolve the non-diagonal components of the spacetime tensors as well due to the usage of new spatial metric ansatz due to the inclusion of twist as in Eq.\ref{Twist-included}. Due to the axisymmetric nature of the problem in hand, we use the cartoon method to simplify the computational costs.
 
 \subsubsection{Cartoon Method \cite{alcubierre_brgmann_holz_takahashi_brandt_seidel_thornburg_2001}}
 \label{Cartoon}
@@ -26,7 +26,7 @@ In general, performing full 3-D simulations in NR is computationally very expens
 
 The cartoon method is a technique that allows one to evolve axisymmetric spacetimes using a reduced computational domain while still employing a Cartesian grid. Instead of evolving the full three-dimensional domain, the evolution is restricted to a thin slab around the symmetry plane (typically the $y=0$ meriodonal plane), consisting of only a few grid points in the symmetry direction.
 
-The key idea is that derivatives in the symmetry direction (e.g., the $y$-direction) can be reconstructed using the assumption of axisymmetry. This is achieved by performing suitable rotations of the evolved variables around the symmetry axis. For a tensor field $T$, its value at off-plane points required for finite difference stencils is obtained by rotating the on-plane data using the Killing symmetry associated with rotations about the axis. Hence essentially our computational domain for the whole problem is the \textbf{Positive Cartesian X-Z} plane.
+The key idea is that derivatives in the symmetry direction (e.g., the $y$-direction) can be reconstructed using the assumption of axisymmetry. This is achieved by performing suitable rotations of the evolved variables around the symmetry axis. For a tensor field $T$, its value at off-plane points required for finite difference stencils is obtained by rotating the on-plane data using the Killing symmetry associated with rotations about the axis. Hence essentially our computational domain for the whole problem is the \textbf{Cartesian xz (y=0)} plane.
 
 
 \subsubsection{Harmonic Damped Wave Gauge (HDWG)}
@@ -45,7 +45,7 @@ In our axisymmetric setting, using a spherical parameterisation to locate surfac
 $
 \partial_\lambda x^i = - \Theta s^i
 $
-where $s^i$ is the normal vector to the surface and $x^i$ are the coordinates.
+where $s^i$ is the normal vector to the surface and $x^i$ are the coordinates of points in the guess surface.
 
 Additionally in the case of \texttt{AHLoc3D}, the spherical parameterisation used which is $r = F(\theta)$ can only find ray-body/star-shaped horizons. This means that if we draw a ray from the center to the horizon it should only touch horizon once i.e the function should not be multivalued in r. This parameterisation begins to break down even before the surface becomes strictly multivalued. In particular, when the surface develops regions where the radial direction becomes tangent to the horizon, the function $F(\theta)$ develops large gradients or vertical tangents. Numerically, this corresponds to a loss of regularity in the representation, and the horizon finder can fail to converge even though a smooth surface still exists.
 
@@ -73,9 +73,9 @@ Finally, these candidate solutions are passed to a root-finding algorithm such a
     \begin{itemize}[nosep]
     \item For subcriticality, we look at the Curvature invariant, Kretschmann Scalar $$K = R_{abcd}R^{abcd}$$ where $R_{abcd}$ is the Riemann curvature tensor, observe its behaviour and check whether its dispersing towards spatial infinity (the end of the grid) and ensure there is no reflection at the boundaries which can be problematic.
 
-    \item For supercriticality, if the code crashes (either due to numerical error or singularity), we output the very expensive apparent horizon data (essentially metric and metric derivatives at all points in the grid) from the previous checkpoint time for a short time and use that data to find whether horizons have formed or not. 
+    \item For supercriticality, if the code crashes (either due to numerical error or singularity), we output the very expensive apparent horizon data from the previous checkpoint time for a short time and use that data to find whether horizons have formed or not. 
     \end{itemize}
     \item If we get to a scenario where we can't determine it due to errors or coordinate artifacts, we adjusted the relevant gauge parameters (in \ref{HDWG}) and evolve them again until we can determine them properly.
 \end{enumerate}
-Once the critical parameter has been determined to the desired precision (typically five to six decimal places), we investigate the behavior of the system in its vicinity. In particular, we focus on the universality of critical quantities and analyze the emergence of (discrete) self-similarity through the appearance of ``echoes” in the relevant fields. In that regard, we try to measure the exponents from the maximum of curvature scalars from the subcritical side \cite{garfinkle_duncan_1998} rather than use the BH mass as an indicator (Measured from AH area). This choice is motivated by the ambiguity associated with determining when to measure the AH area, especially when comparing different evolutions. Additionally, AH is a slicing dependent object and since we adjust the gauges based on numerical stability that it procures to the simulations, it removes any basis that we have for comparison.
+Once the critical parameter has been determined to the desired precision (typically five to six decimal places), we investigate the behavior of the system in its vicinity. In particular, we focus on the universality of critical quantities and analyze the emergence of (discrete) self-similarity through the appearance of self similiar ``echoes” in the relevant fields. In that regard, we try to measure the exponents from the maximum of curvature scalars from the subcritical side \cite{garfinkle_duncan_1998} rather than use the BH mass as an indicator (Measured from AH area). This choice is motivated by the ambiguity associated with determining when to measure the AH area, especially when comparing different evolutions. Additionally, AH is a slicing dependent object and since we adjust the gauges based on numerical stability that it procures to the simulations, it removes any basis that we have for comparison.
 % Remember to input this to the presentative tex file before compiling.

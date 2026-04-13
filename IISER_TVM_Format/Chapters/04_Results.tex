@@ -63,7 +63,7 @@ Therefore, the combination of shrinking physical scales and the CFL constraint s
 In near-critical evolutions, coordinate pathologies often manifest as the development of sharp features in the gauge variables, particularly in the shift vector and the lapse. One commonly observed issue is the formation of steep gradients or localized spikes in the shift, which can lead to numerical instability and eventual breakdown of the evolution.
 
 These features are not physical but arise due to the choice of gauge conditions. In particular, certain gauge choices may fail to adequately respond to the strong focusing of the geometry near criticality, allowing large coordinate distortions to develop. Since, in NR, the coordinates themselves are evolved alongside the spacetime, the gauge dynamics can drive the coordinate system toward pathological configurations. In extreme cases, this can lead to the formation of coordinate singularities during the evolution. Such singularities are purely gauge effects and do not correspond to any physical divergence in the spacetime geometry, but they can nevertheless result in the breakdown of the numerical simulation.
-\begin{figure}[!!hbt]
+\begin{figure}
     \centering
     \includegraphics[scale=0.4]{../figures/shift.pdf}
     \caption{Two evolutions with different shift damping gauge parameters. As we can observe in the higher one, the divergence of the shift is damped away by the shift damping term of the gauge, hence allowing us to evolve more in time and observe the dynamics}
@@ -73,19 +73,19 @@ These features are not physical but arise due to the choice of gauge conditions.
 To mitigate such coordinate pathologies,we increase the damping parameters in the HDW Gauge (Sec \ref{HDWG}) to suppress rapid variations in the shift and control the growth of coordinate distortions. But finding the right gauge is a process that purely involves trial and error and testing them requires to evolve them with multiple gauge choices and understand how the pathology behaves. Hence this process takes time which in turn adds the time to the tuning of the critical parameter as well.
 \section*{Horizon Finding}
 
-Another cause of the inability to classify spacetimes also come from limitations of the AH finders that we had used. Initially, far away from criticality, we found circular (spherical) AH's and as we approached the critical regime we see more of a ``peanut" shaped horizons.  These were comparitively found easily using the spherical parameterised \texttt{AHLoc3D} AH finder from the AH data outputted by \texttt{BAMPS}.
+Another cause of the inability to classify spacetimes also come from limitations of the AH finders that we had used. Initially, far away from criticality, we found circular (spherical) AH's and as we approached the critical regime we see more of a ``peanut" shaped horizons as in Fig.\ref{peanut}.  These were comparitively found easily using the spherical parameterised \texttt{AHLoc3D} AH finder from the AH data outputted by \texttt{BAMPS}.
 
-\begin{figure}[!htb]
+\begin{figure}
     \centering
     
-    \begin{subfigure}{0.4\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../notebooks/figure.pdf}
         \caption{Peanut-shaped horizons}
         \label{peanut}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.4\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../notebooks/figure_4.114.pdf}
         \caption{Disjoint horizons}
@@ -99,16 +99,17 @@ Another cause of the inability to classify spacetimes also come from limitations
 
 But as we tuned further the inability to tune the parameter by finding horizons made us rethink on the basic assumptions that we made until now. (Other than the reasons mentioned before like coordinate singularities and so on). As mentioned in Sec.\ref{horizon}, we hypothesised that the horizon might already be formed in the data which we can't find due to the use of spherical ray-body parameterisation by \texttt{AHLoc3D}. This turned out to be true since we are able to find horizons after using a cartesian parameterisation based AH finder \cite{khirnov_2022} which was modified to include twist.
 
-\begin{figure}[!!hbt]
+\begin{figure}
     \centering
-    \includegraphics[scale=0.5]{../notebooks/problematic.pdf}
+    \includegraphics[scale=0.6]{../notebooks/problematic.pdf}
     \caption{One of the disjoint horizons found by the new cartesian based horizon finder near criticality. \texttt{AHLoc3D} is not able to find them in a spherical parameterisation like the one used in \texttt{AHLoc3D}, the derivatives diverges near the problematic points shown in red since the parameterisation breaks at those regions(borderline before multivaluedness).  }
     \label{horizon_not}
 \end{figure}
 
 As seen in Fig.\ref{horizon_not}, the parameterisation is no longer valid for horizons like these and in our journey into the critical regime, from now on we can only depend on this new parameterisation. Currently, we find disjoint horizons that are centered around $z=\pm z_{\text{peak}}$ where $z_{\text{peak}}$ is the point the in the z axis where maximum of curvature (Kretschmann Scalar) is located.
 
+Although non–star-shaped (non–ray-body) AHs have been observed in certain scenarios, such as during binary black hole mergers, the appearance of a set of disjoint non–ray-body AHs in the present context appears to be relatively unexplored and, to the best of our knowledge, has not been reported in similar studies. This, in turn, highlights the need for more general and robust parameterisations in investigations of this kind.
 
-
+Taken together, these results illustrate that while critical phenomena persist beyond spherical symmetry, accessing and characterizing them demands increasingly sophisticated numerical methods and a deeper understanding of the underlying geometry.
 
 
