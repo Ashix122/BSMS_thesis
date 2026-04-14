@@ -92,7 +92,7 @@ Another cause of the inability to classify spacetimes also come from limitations
         \label{Bifurc}
     \end{subfigure}
     
-    \caption{Plots here show Kretschmann scalar over a reduced computational domain with the horizon found in the data overlaid on top. As we tune towards the threshold of collapse we observe ``peanut'' (star-shaped) shaped horizons as in (a) found by the \texttt{AHLoc3D} and bifurcated or disjoint ``banana'' (non-star shaped) shaped horizons as we tune even more which can only be found by the cartesian based AH finder.  }
+    \caption{Plots here show Kretschmann scalar over a reduced computational domain with the horizon found in the data overlaid on top. As we tune towards the threshold of collapse we observe ``peanut'' (star-shaped) shaped horizons as in (a) found by the \texttt{AHLoc3D} and bifurcated or disjoint ``banana'' (non-star shaped) shaped horizons as we tune even more which can only be found by the Cartesian based AH finder.  }
     
     \label{fig:combined_scaling}
 \end{figure}
@@ -102,7 +102,7 @@ But as we tuned further the inability to tune the parameter by finding horizons 
 \begin{figure}
     \centering
     \includegraphics[scale=0.6]{../notebooks/problematic.pdf}
-    \caption{One of the disjoint horizons found by the new cartesian based horizon finder near criticality. \texttt{AHLoc3D} is not able to find them in a spherical parameterisation like the one used in \texttt{AHLoc3D}, the derivatives diverges near the problematic points shown in red since the parameterisation breaks at those regions(borderline before multivaluedness).  }
+    \caption{One of the disjoint horizons found by the new cartesian based horizon finder near criticality. \texttt{AHLoc3D} is not able to find them in a spherical parameterisation, since the derivatives diverges near the problematic points shown in red if we were to find it using the $r=F(\theta)$ parameterisation, since the parameterisation breaks at those regions (borderline before multivaluedness).  }
     \label{horizon_not}
 \end{figure}
 
