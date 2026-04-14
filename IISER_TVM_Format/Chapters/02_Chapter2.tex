@@ -1,20 +1,20 @@
 \chapter{Introduction and Background}
-General Relativity (GR) provides a profound description of gravity as the dynamics of spacetime geometry, governed by a set of highly nonlinear Partial Differential Equations (PDEs). While many exact solutions to Einstein’s equations are known, analytic methods often limits the wide variety of relativistic systems that could be understood using framework of GR. This necessitates the use of numerical methods, giving rise to the field of Numerical Relativity (NR), where spacetime dynamics are studied through computational techniques.
+General Relativity (GR) provides a profound description of gravity as the dynamics of spacetime geometry, governed by a set of highly nonlinear Partial Differential Equations (PDEs). While many exact solutions to Einstein’s equations are known, analytic methods often limit the wide variety of relativistic systems that could be understood using the framework of GR. This necessitates the use of numerical methods, leading to the field of Numerical Relativity (NR), in which spacetime dynamics are studied computationally.
 
 One of the most intriguing phenomena uncovered through numerical studies is critical behavior in gravitational collapse. When evolving a one-parameter family of initial data, the system exhibits a threshold separating dispersion from Black Hole (BH) formation. Near this threshold, the spacetime displays remarkable universal features such as power-law scaling, universality of critical exponents, and self-similarity. These discoveries, first made in spherically symmetric systems, revealed deep connections between gravity, nonlinear dynamics, and critical phenomena.
 
 However, much of our current understanding is restricted to highly symmetric settings. In particular, spherical symmetry eliminates gravitational wave degrees of freedom, limiting the richness of the dynamics. To explore genuinely gravitational critical phenomena, it is essential to move beyond spherical symmetry into axisymmetric or fully three-dimensional spacetimes. In vacuum, this becomes especially significant, as nontrivial dynamics arise purely from the nonlinear structure of Einstein’s equations rather than matter fields.
 
 In this work, we investigate critical phenomena in axisymmetric vacuum spacetimes using Brill wave initial data, with a particular focus on the role of twist, which introduces additional geometric degrees of freedom. By constructing and evolving one-parameter families of twist-included initial data, we aim to study how these additional structures influence the nature of the critical solution, its universality, and the emergence of self-similar behavior. In this chapter, we provide a concise overview of the key background concepts relevant to this work.
-In chapter 2, we deal with the details regarding the tools and frameworks that we used to attempt this problem.
+
 
 \section{Numerical Relativity}
 \label{NR}
-Numerical Relativity can be defined as the science of solving the Einstein's equations using numerical methods in such a way that the discretised solutions agree with the continuum solutions at the limit of infinite resolution. They are a set of coupled 4-dimensional PDEs that connect the dynamics between matter and the spacetime curvature.
+Numerical Relativity can be defined as the science of solving Einstein's equations using numerical methods in such a way that the discretized solutions agree with the continuum solutions at the limit of infinite resolution. They are a set of coupled 4-dimensional PDEs that connect the dynamics between matter and the spacetime curvature.
 $$
 G_{\mu \nu}=8 \pi T_{\mu \nu}
 $$
-But its tensorial structure prevents us from approaching them as a usual time evolution PDE problems where we see equations like $\partial_t u =f(x^i,\partial_{x^i} u)$ where $x^i$ are the spatial coordinates and t is the time coordinate. So inorder to cast Einstein's equations into a form suitable for time evolution, we assume 
+But its tensorial structure prevents us from approaching them as usual time-evolution PDE problems, where we see equations like $\partial_t u = f(x^i, \partial_{x^i} u)$, where $x^i$ are the spatial coordinates and t is the time coordinate. So in order to cast Einstein's equations into a form suitable for time evolution, we assume 
 that the spacetime is globally hyperbolic. This guarantees the existence of a
 foliation of the spacetime manifold ($\mathcal{M}$) into space-like Cauchy hypersurfaces $\Sigma_t$, which are the level 
 sets of a scalar time function $t : \mathcal{M} \to \mathbb{R}$. Each slice 
@@ -33,7 +33,7 @@ the hypersurfaces $\Sigma_t$, while $(\partial_t)^a$ need not be aligned with th
 normal vector $n^a$. Instead, $\partial_t$ generally maps a point on one slice 
 to a point with the same coordinate label on the next slice, whereas $n^a$ 
 connects orthogonal (normal) directions across slices. The difference is encoded 
-in the shift vector $\beta^i$ through the standard decomposition $\partial_t^a = \alpha n^a + \beta^i \partial_i^a,$ which parametrises how spatial coordinates shift from one hypersurface to the 
+in the shift vector $\beta^i$ through the standard decomposition $\partial_t^a = \alpha n^a + \beta^i \partial_i^a,$ which parametrizes how spatial coordinates shift from one hypersurface to the 
 next.
 \begin{figure}
 \centering
@@ -127,7 +127,7 @@ next.
 (b) Relation between slices showing lapse $\alpha$ and shift $\beta^i$. \cite{adhikari2025gr}}
 \end{figure}
 
-By using the orthogonal projection operator to the hypersurface $\perp_{ab} = \delta_{ab} +n_a n_b$ we can project all  the relevant quantities that we require such as the metric, Riemann curvature tensor etc. This projected part of $g_{ab}$ is called spatial metric $\gamma_{ab}$ and D is the derivative associated with this metric. We define extrinsic curvature $K_{ab}$ to be $-\gamma^c_a \nabla_c n_b$ which in simple terms give the information of the time derivative of the spatial metric by the relation $K_{ab} = -\mathcal{L}_n \gamma_{ab}$ where $\mathcal{L}$ is the lie derivative with respect to a vector field. Using all these we can decompose the Einstein's equations into a set of constraint equations and evolution equations as given below.
+By using the orthogonal projection operator to the hypersurface $\perp_{ab} = \delta_{ab} +n_a n_b$, we can project all the relevant quantities that we require, such as the metric, Riemann curvature tensor, etc. This projected part of $g_{ab}$ is called the spatial metric $\gamma_{ab}$, and D is the derivative associated with this metric. We define extrinsic curvature $K_{ab}$ to be $-\gamma^c_a \nabla_c n_b$ which in simple terms give the information of the time derivative of the spatial metric by the relation $K_{ab} = -\mathcal{L}_n \gamma_{ab}$ where $\mathcal{L}$ is the lie derivative with respect to a vector field. Using all these, we can decompose Einstein's equations into a set of constraint equations and evolution equations as given below.
 \begin{equation}
 \label{eq:Constraints}
 R + K^2 - K_{ab} K^{ab} = 16\pi \rho 
@@ -149,25 +149,25 @@ which correspond to Hamiltonian and momentum constraints respectively, R corresp
   + 4\pi \alpha \!\left[\, \gamma_{ij}(s - \rho) - 2 s_{ij} \right]
   + \mathcal{L}_{\beta} K_{ij}.\footnote{where i,j $\rightarrow $1,2,3 (Spatial)}
 \]
- Now we can see that the GR equations have been formulated into a way which is ideal for time evolution using standard PDE techniques (Since all the elements in the RHS are spatial). However, more modern formulations such as BSSN, Z4C, and related systems include constraint-damping mechanisms that improve numerical stability, since in a discretised scheme the constraints cannot be satisfied exactly. It is also well known that the constraint subsystem is closed, meaning that the time derivatives of the constraints depend only on the constraints themselves.  Consequently, if the constraint equations are solved initially, they remain satisfied for a finite time during the evolution. For further details, see \cite{hilditch_2024}. So we take solutions of the constraint equations which often amount to solving elliptic PDE's on the initial slice (called \textbf{Initial Data}) and then proceed to evolve it in time using the evolutions equations.
+ Now we can see that the GR equations have been formulated in a way that is ideal for time evolution using standard PDE techniques (Since all the elements in the RHS are spatial). However, more modern formulations such as BSSN, Z4C, and related systems include constraint-damping mechanisms that improve numerical stability, since in a discretized scheme the constraints cannot be satisfied exactly. It is also well known that the constraint subsystem is closed, meaning that the time derivatives of the constraints depend only on the constraints themselves.  Consequently, if the constraint equations are solved initially, they remain satisfied for a finite time during the evolution. For further details, see \cite{hilditch_2024}. So we take solutions of the constraint equations, which often amount to solving elliptic PDE's on the initial slice (called \textbf{Initial Data}) and then proceed to evolve it in time using the evolution equations.
 
 \section{Critical Phenomena in Gravitational Collapse}
-Instead of viewing GR as a field theory, viewing it in a dynamical system perspective helps us see a widely underappreciated nuance of the theory, since essentially GR is a set of PDE's at its core which enables us to view them as so. Essentially, the dynamic system's phase space will be a set of functions of the coordinates which are spatial 3-metric,the extrinsic curvature and the variables from the matter we choose. So as we evolve in time, these points in the phase space will evolve from one point to another while satisfying the Einstein equations as well as the matter equations that we set.
+Instead of viewing GR as a field theory, a dynamical systems perspective helps us see a widely underappreciated nuance of the theory: GR is essentially a set of PDEs at its core, which enables us to view it as such. Essentially, the dynamic system's phase space will be a set of functions of the coordinates, namely the spatial 3-metric, the extrinsic curvature, and the matter variables we choose. So as we evolve in time, these points in the phase space will evolve from one point to another while satisfying the Einstein equations as well as the matter equations that we set.
 Until now its pretty standard. To see the nuance, we take a one-parameter family of smooth initial data (Solving the Einstein constraint equations (Eq:\ref{eq:Constraints}) and the matter equations), 
 we observe that they usually reach two types of end points in phase space, either disperse the mass-energy to infinity (known as \textbf{subcritical} initial data)  or collapse to a black hole (known as \textbf{supercritical} initial data).
 
-But the main interest lies in the spacetimes that sit \textit{in the critical regime}, between the two end-states of dispersion and black-hole(BH) formation. In his breakthrough numerical study, Choptuik \cite{choptuik_1993} using spherical symmetry with a minimally coupled, massless scalar field as the source of stress--energy, discovered that this intermediate regime exhibits three remarkable and universal features:
+But the main interest lies in the spacetimes that sit \textit{in the critical regime}, between the two end-states of dispersion and black-hole(BH) formation. In his breakthrough numerical study, Choptuik \cite{choptuik_1993}, using spherical symmetry with a minimally coupled, massless scalar field as the source of stress--energy, discovered that this intermediate regime exhibits three remarkable and universal features:
 \begin{itemize}
     \item \textbf{Power-law mass scaling:\footnote{Later Garfinkle and Comer \cite{garfinkle_duncan_1998} found out that according to proper dimensionality, the maximum of curvature invariants from the subcritical side also follow similar scaling laws ($ \text{Kretschmann Scalar maximum} \; K_{max} = (p-p^*)^{-4\eta} $) with the same critical exponents. }
 } \\
     On the supercritical side, the mass of the collapsed BH  obeys a scaling law of the form $
         M_{\rm BH} \propto (p - p_*)^\eta $
-    where \(p\) is the parameter controlling a one-parameter family of initial data, \(p_*\) is the critical value separating the two regimes, and \(\eta\) is the \emph{critical exponent}. Choptuik found the critical parameter upto 15 digit precision. See Fig \ref{fig:Choptuik_Figures}(\ref{sub@fig:Powerlawscaling})
+    where \(p\) is the parameter controlling a one-parameter family of initial data, \(p_*\) is the critical value separating the two regimes, and \(\eta\) is the \emph{critical exponent}. Choptuik found the critical parameter with up to 15-digit precision. See Fig \ref{fig:Choptuik_Figures}(\ref{sub@fig:Powerlawscaling})
     \item \textbf{Universality of the exponent:} \\
-    The exponent \(\eta\) is \textbf{independent of the choice of initial data family}. Different families with different shapes, widths, or profiles all yield the same value of \(\eta\), depending only on the matter model (e.g.\ scalar field, Yang--Mills field, etc.). See Fig \ref{fig:Choptuik_Figures}(\ref{sub@fig:Powerlawscaling})
+    The exponent \(\eta\) is \textbf{independent of the choice of initial data family}. Different families with different shapes, widths, or profiles all yield the same value of \(\eta\), depending only on the matter model (e.g., \ scalar field, Yang--Mills field, etc.). See Fig \ref{fig:Choptuik_Figures}(\ref{sub@fig:Powerlawscaling})
 
     \item \textbf{Self-similarity and universality of the critical solution:} \\
-    The critical solution itself exhibits a form of \textbf{self-similarity} (either continuous or discrete), meaning that the spacetime repeats its structure on smaller and smaller spatiotemporal scales based on how near the parameter is to the critical parameter. Additionally this critical solution is universal with respect to initial data See Figs \ref{fig:Choptuik_Figures}(\ref{sub@fig:Self_similarity}) \ref{fig:Universality}
+    The critical solution itself exhibits a form of \textbf{self-similarity} (either continuous or discrete), meaning that the spacetime repeats its structure on smaller and smaller spatiotemporal scales based on how near the parameter is to the critical parameter. Additionally, this critical solution is universal with respect to initial data. See Figs \ref{fig:Choptuik_Figures}(\ref{sub@fig:Self_similarity}) \ref{fig:Universality}
 \end{itemize}
 
 \begin{figure}[h]
@@ -175,7 +175,7 @@ But the main interest lies in the spacetimes that sit \textit{in the critical re
     \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{/home/ashiquetnizar/Projects/Midterm_Thesis/Report_new_template/Figures/Screenshot_2025-11-20_18-07-41.png}
-        \caption{We can observe here the theorised power-law mass scaling in the supercritical data. Different dots signify different families of initial data, and they all agree with the exponent (Power law mass scaling and universality of exponent)}
+        \caption{We can observe here the theorized power-law mass scaling in the supercritical data. Different dots signify different families of initial data, and they all agree with the exponent (Power law mass scaling and universality of exponent)}
         \label{fig:Powerlawscaling}
         \vspace{48pt}
     \end{subfigure}
@@ -183,7 +183,7 @@ But the main interest lies in the spacetimes that sit \textit{in the critical re
     \begin{subfigure}{0.32\textwidth}
         \centering
         \includegraphics[width=1\linewidth]{/home/ashiquetnizar/Projects/Midterm_Thesis/Report_new_template/Figures/Screenshot_2025-11-20_17-48-01.png}
-        \caption{Here each set of 4 curves contains near-critical solutions of different families of initial data. As it evolves in time we can see that they even have the same profile (Universality  of critical solution)}
+        \caption{Here, each set of 4 curves contains near-critical solutions of different families of initial data. As it evolves in time, we can see that they even have the same profile (Universality  of critical solution)}
         \label{fig:Universality}
         \vspace{62pt}
     \end{subfigure}
@@ -192,9 +192,9 @@ But the main interest lies in the spacetimes that sit \textit{in the critical re
         \centering
         \includegraphics[width=\linewidth]{/home/ashiquetnizar/Projects/Midterm_Thesis/Report_new_template/Figures/Screenshot_2025-11-20_17-42-15.png}
         \caption{In the critical solution, the same structure (echoes) reappears under rescaling.  
-The two different dots correspond to same field at different times, and zooming by a
+The two different dots correspond to the same field at different times, and zooming in by a
 factor of $e^{\Delta}$ reveals the same repeating pattern, and this constant is
-family independent known as echoing constant (Self similiarity)}.
+family independent known as the echoing constant (Self-similarity).
         \label{fig:Self_similarity}
         \vspace{25pt}
     \end{subfigure}
@@ -205,17 +205,17 @@ family independent known as echoing constant (Self similiarity)}.
 
 
 The choice of spherical symmetry here was crucial: it reduced the full \((3+1)\)-dimensional PDE system to an effective \((1+1)\)-dimensional problem (in suitable coordinates, the fields depend only on time and radius). This simplification dramatically lowers the computational cost compared with a full three-dimensional evolution, while still capturing highly nontrivial gravitational dynamics.
-Following Choptuik's discovery, many researchers studied and characterised critical phenomena in a wide variety of matter models like scalar fields, perfect fluids, Yang--Mills fields, and scalar electrodynamics etc, mostly within spherical symmetry, taking advantage of the same reduction in dimensionality and computational expense \cite{gundlach_hilditch_martín-garcía}.
+Following Choptuik’s discovery, many researchers studied and characterized critical phenomena in a wide variety of matter models like scalar fields, perfect fluids, Yang-Mills fields, and scalar electrodynamics, etc., mostly within spherical symmetry, taking advantage of the same reduction in dimensionality and computational expense \cite{gundlach_hilditch_martín-garcía}.
 
 
 
-To further understand the structure of the critical solution space of Einstein’s equations, subsequent studies have explored departures from spherical symmetry. In this context, one of the most important and intriguing cases is that of vacuum spacetimes, i.e., gravitational collapse without matter fields. In spherical symmetry, vacuum solutions are trivial due to Birkhoff’s theorem, which implies the absence of dynamical degrees of freedom. Therefore, going beyond spherical symmetry is essential to probe genuinely gravitational critical phenomena in vacuum, where the dynamics arise purely from the nonlinear structure of Einstein’s equations.
+To further understand the structure of the critical solution space of Einstein’s equations, subsequent studies have explored departures from spherical symmetry. In this context, one of the most important and intriguing cases is that of vacuum spacetimes, i.e., gravitational collapse without matter fields. In spherical symmetry, vacuum solutions are trivial due to Birkhoff’s theorem, which implies the absence of dynamical degrees of freedom. Therefore, going beyond spherical symmetry is essential to probe genuinely gravitational critical phenomena in vacuum, where the dynamics arise purely from the non-linear structure of Einstein’s equations.
 
-In this regard, axisymmetric vacuum spacetimes form the next natural class of models, as they admit nontrivial gravitational wave dynamics absent in spherical symmetry, while still offering a significant reduction in computational complexity compared to fully three-dimensional simulations. In this class, the two main candidates are Brill waves and Teukolsky waves. For our problem we are focusing on Brill waves due its simplicity in implementation
+In this regard, axisymmetric vacuum spacetimes form the next natural class of models, as they admit nontrivial gravitational wave dynamics absent in spherical symmetry, while still offering a significant reduction in computational complexity compared to fully three-dimensional simulations. In this class, the two main candidates are Brill waves and Teukolsky waves. In this work, we focus on Brill waves because they are comparatively simpler to implement.
 
 \subsection{Brill waves}
 
-Brill waves are axisymmetric, vacuum gravitational-wave initial data constructed on a moment-of-time-symmetry slice ($K_{ij} = 0$), providing a practical prescription for generating axisymmetric vacuum spacetimes  which is obtained by solving the constraint equation in axisymmetric vacuum. These are then evolved in time to learn curvature dynamics of pure non-linear gravity rather than matter. Brill considered this for the ansatz for the spatial axisymmetric metric in cylindrical coordinates
+Brill waves are axisymmetric, vacuum gravitational-wave initial data constructed on a moment-of-time-symmetry slice ($K_{ij} = 0$), providing a practical prescription for generating axisymmetric vacuum spacetimes,  which is obtained by solving the constraint equation in axisymmetric vacuum. These are then evolved in time to learn curvature dynamics of pure non-linear gravity rather than matter. Brill considered this ansatz for the spatial axisymmetric metric in cylindrical coordinates.
 $$
 \gamma_{ij}(\rho,z,\phi) = \gamma_{ij}(\rho,z) = 
 \psi ^4\begin{pmatrix}
@@ -228,12 +228,12 @@ $$
 When $q(\rho,z)=0$, the seed metric on the $(\rho,z)$--plane is flat, so the Brill
 3-metric
 reduces to a conformally flat geometry. Thus $q(\rho,z)$ acts as a \emph{seed function}
-that introduces nontrivial gravitational content into the initial data, while the
-conformal factor $\psi$ is fixed by the Hamiltonian constraint which becomes an elliptic equation \footnote{With York's conformal decomposition method} to solve making this metric constraint satisfying. When $\gamma_{ij} = \psi ^4 \tilde{\gamma}_{ij}$ then the Hamiltonian constraint becomes ,
+that introduces nontrivial gravitational content into the initial data. At the same time, the
+conformal factor $\psi$ is fixed by the Hamiltonian constraint, which becomes an elliptic equation \footnote{With York’s conformal decomposition method} to solve, making this metric constraint satisfying. When $\gamma_{ij} = \psi ^4 \tilde{\gamma}_{ij}$ then the Hamiltonian constraint becomes ,
 $
 8 \tilde{D}^2 \psi =\tilde{R} \psi 
 $
-where $\tilde{R}$ is the Ricci scalar of the conformal metric and $\tilde{D} $ is the derivative operator compatible to the conformal metric. This in our case becomes a linear differential equation of the form in Eq.\ref{diffbrill}. This here is the main advantage of using this conformal formalism since we just need to solve this differential equation to get the constraint solved initial data. And since $K_{ij}$ = 0, the momentum constraint will be trivially satisfied (See equation \ref{eq:Constraints}).
+where $\tilde{R}$ is the Ricci scalar of the conformal metric and $\tilde{D} $ is the derivative operator compatible to the conformal metric. This, in our case, becomes a linear differential equation of the form in Eq.\ref{diffbrill}. This is the main advantage of using this conformal formalism: we just need to solve this differential equation to obtain the initial data. And since $K_{ij}$ = 0, the momentum constraint will be trivially satisfied (See equation \ref{eq:Constraints}).
 \begin{equation}
 \tilde{D}^2 \psi = -\dfrac{1}{4} \left( \dfrac{\partial^2 q}{\partial \rho^2}+ \dfrac{\partial^2 q}{\partial{z^2}} \right)\psi
 \label{diffbrill}
@@ -245,16 +245,16 @@ components $g_{i\phi}/ \gamma_{i \phi}$ vanish, so this Killing vector is \textb
 measures the failure of $\xi^a$ to be hypersurface orthogonal, and is encoded in the
 1-form $ \omega_a = \epsilon_{abcd}\,\xi^b \nabla^c \xi^d $
 \section*{Motivation}
-Critical collapse in twist-free axisymmetric geometries, both in vacuum and non-vacuum settings, has revealed significant departures from the standard critical phenomena observed in spherical symmetry, including bifurcation of the collapse point and loss of universality in scaling laws \cite{baumgarte_2018}. These deviations suggest that the additional gravitational degrees of freedom present in axisymmetry, namely gravitational waves might play a crucial role, as opposed to purely matter-driven dynamics. 
+Critical collapse in twist-free axisymmetric geometries, both in vacuum and non-vacuum settings, has revealed significant departures from the standard critical phenomena observed in spherical symmetry, including bifurcation of the collapse point and loss of universality in scaling laws \cite{baumgarte_2018}. These deviations suggest that the additional gravitational degrees of freedom present in axisymmetry, namely, gravitational waves, might play a crucial role, as opposed to purely matter-driven dynamics. 
 
-But we also see that the introduction of rotating matter (With angular momentum) brings back some of the textbook critical behaviour that is lost in the aspherical setting in non vacuum such as single center of collapse, universal scaling laws \cite{marouda_cors_rüter_vaño-viñuales_hilditch}.\footnote{When there is angular momentum there will be twist but not vice versa}. A possible explanation for the restoration of standard critical behaviour in the presence of angular momentum is that, in axisymmetry, there is no corresponding vacuum threshold solution with nonzero angular momentum. As a result, the dynamics is not influenced by competing vacuum critical solutions, allowing the system to exhibit cleaner, more universal behaviour. In contrast, in the absence of angular momentum, vacuum axisymmetric thresholds may introduce competing dynamics that lead to deviations from the standard picture.
+But we also see that the introduction of rotating matter (with angular momentum) restores some of the textbook critical behavior that is lost in the previous case (only in non-vacuum cases), such as a single center of collapse and universal scaling laws \cite{marouda_cors_rüter_vaño-viñuales_hilditch}.\footnote{When there is angular momentum, there will be twist but not vice versa}. A possible explanation for the restoration of standard critical behavior in the presence of angular momentum is that, in axisymmetry, there is no corresponding vacuum threshold solution with nonzero angular momentum. This is because with regular vacuum initial data (without singularities/BH), the data can’t have or evolve to have angular momentum \cite{marouda_cors_rüter_vaño-viñuales_hilditch}. As a result, the dynamics is not influenced by competing vacuum critical solutions, allowing the system to exhibit cleaner, more universal behavior. In contrast, in the absence of angular momentum, vacuum axisymmetric thresholds may introduce competing dynamics that lead to deviations from the standard picture. But the absence of angular momentum doesn’t necessarily imply the absence of twist.
 
-To assess this hypothesis, it is therefore essential to investigate whether a distinct twisting vacuum critical solution exists. If such a solution is present and lies nearby in solution space, it could influence or compete with matter-driven collapse, potentially modifying or suppressing universal behaviour even in the case with angular momentum in non vacuum
+Hence, to assess the hypothesis, it is essential to investigate whether a distinct twisting vacuum critical solution exists. If such a solution is present and lies nearby in solution space, it could influence or compete with matter-driven collapse, potentially modifying or suppressing universal behavior even in the case with angular momentum in non-vacuum
 
 This motivates our investigation: to introduce twist into the Brill metric (adding two new
 degrees of freedom) and examine how twist influences the critical solution and its 
 universality.
-Now we introduce the metric for Brill type initial data with twist included.
+Now we introduce the metric for Brill-type initial data with twist included.
 \begin{equation}
 \gamma_{ij}(\rho,z,\phi) = \gamma_{ij}(\rho,z) = 
 \psi ^4\begin{pmatrix}
@@ -265,22 +265,22 @@ Now we introduce the metric for Brill type initial data with twist included.
 (i,j) = (\rho, z, \phi).
 \label{Twist-included}
 \end{equation}
-where the function \emph{f($\rho$,z)} and \emph{h($\rho$,z)} parameterises the twist of the spacelike killing vector. This ansatz is chosen because it can be cleanly divided into the twist free Brill metric and a twist part when we write the line element. The new differential equation to solve for the conformal factor becomes 
+where the function \emph{f($\rho$,z)} and \emph{h($\rho$,z)} parameterises the twist of the spacelike killing vector. This ansatz is chosen because it cleanly splits into a twist-free Brill metric and a twist part when the line element is written. The new differential equation to solve for the conformal factor becomes 
 \begin{equation}
 8\tilde{D^2} \psi = \left(-\dfrac{e^{-2q}(\rho(\frac{\partial f}{\partial z} - {\frac{\partial h}{\partial \rho}}))+h)^2}{2 \rho^2}-2 \left(\dfrac{\partial^2 q}{\partial \rho^2}+ \dfrac{\partial^2 q}{\partial{z^2}}\right) \right) \psi
 \label{eq:newconst}
 \end{equation} 
 \section{Horizons}
 
-The main tool we use to classify spacetimes to subcritical or supercritical is by probing to find horizons, specifically Apparent Horizons (AHs) in the evolved slice. The main advantage of AH is that, unlike event horizons they are not \textit{teleological} i.e we dont need the information about the entire future development of the spacetime to get the information of AHs. In numerically computed dynamical spacetimes like ours, we might not be in the position to evolve it indefinitely inorder to classify them since the code will crash after some more evolution, hence AHs are the right tool to understand them.
+The main tool we use to classify spacetimes as subcritical or supercritical is to probe for horizons, specifically Apparent Horizons (AHs), in the evolved slice. The main advantage of AH is that, unlike event horizons, they are not \textit{teleological}, i.e., we don’t need the information about the entire future development of the spacetime to get the information about AHs. In numerically computed dynamical spacetimes like ours, we might not be able to evolve them indefinitely to classify them, since the code will crash after some further evolution. Hence, AHs are the right tool to understand them.
 
 \textbf{But what is an AH and why does it relate to the notion of a singular spacetime?}
 
-Essentially an AH can be defined as the outermost, Marginally Outer Trapped Surface (MOTS) which are smooth closed 2-dimensional submanifold $\mathcal{S}$ in the spacetime slice that satisfies the condition that the expansion of the outgoing null geodesics vanishes at each point in $\mathcal{S}$. The expansion is defined as 
+Essentially, an AH can be defined as the outermost Marginally Outer Trapped Surface (MOTS), which is a smooth, closed 2-dimensional submanifold $\mathcal{S}$ in the spacetime slice that satisfies the condition that the expansion of the outgoing null geodesics vanishes at each point in $\mathcal{S}$. The expansion is defined as 
 $$
 \Theta = h^{ab} \nabla_a \zeta_b \qquad \text{where} \; h^{ab}= g^{ab}-s^as^b + n^a n^b 
 $$
-$h^{ab}$ is the induced metric of the 2-dimensional submanifold, $s^a$ is its normal vector and $\zeta$ is the tangent vector along the outgoing null geodesic . Solving this we get the equation of the form,
+$h^{ab}$ is the induced metric of the 2-dimensional submanifold, $s^a$ is its normal vector and $\zeta$ is the tangent vector along the outgoing null geodesic . Solving this, we get the equation of the form,
 \begin{equation}
 \Theta = -K + D_i s^i +s^is^j K_{ij} 
 \label{Horizon}
