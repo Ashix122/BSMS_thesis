@@ -128,11 +128,12 @@
 %=========================================================================================
                              % Include all entries from ref.bib
 
-                             \renewcommand*{\bibfont}{\small}
-\setlength\bibitemsep{1pt}
-\vspace{40pt}
+                             \renewcommand*{\bibfont}{\fontsize{11pt}{12pt}\selectfont}
+\setlength\bibitemsep{0.1pt}
+\vspace{30pt}
 % Start two columns for bibliography ONLY
 \begin{multicols}{2}
+\setlength{\columnsep}{10pt}   % default ~15pt
 \printbibliography[heading=bibintoc]
 \end{multicols}
      % Bibliography in ToC

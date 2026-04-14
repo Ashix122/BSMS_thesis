@@ -4,7 +4,7 @@ Critical phenomena in gravitational collapse are most clearly understood in sphe
 
 However, once symmetry assumptions are relaxed, the problem becomes significantly more challenging. In the literature, studies of axisymmetric vacuum collapse typically achieve only about 5–7 digits of precision in tuning the critical parameter. This limitation arises both from the increased computational difficulty of solving multidimensional partial differential equations and from the intrinsic nature of critical phenomena, which involve the development of increasingly fine spatial and temporal structures near the threshold of black hole formation.
 
-For the family of initial data considered in this work, the best-tuned critical parameter is found to be $(p^* = 4.110 \pm 0.003 \; \text{and} \;-4.110 \pm 0.003)$. Despite this comparatively modest level of tuning, we are able to extract a critical exponent of approximately $( \gamma \approx 0.354 \pm 0.204 )$, demonstrating the robustness of the scaling behaviour even without extremely fine-tuned initial data. In Fig.\ref{Scaling} we see that two families,(positive and negative p as in \ref{Construction}) aggreeing well to the critical exponent found. But unless we try some more families at the initial data level, we can't be confident in its universality. So we need to tune more and try more families as well.
+For the family of initial data considered in this work, the best-tuned critical parameter is found to be $(p^* = 4.110 \pm 0.003 \; \text{and} \;-4.110 \pm 0.003)$. Despite this comparatively modest level of tuning, we are able to extract a critical exponent of approximately $( \gamma \approx 0.354 \pm 0.204 )$, demonstrating the robustness of the scaling behaviour even without extremely fine-tuned initial data. In Fig.\ref{Scaling} we see that two families,(positive and negative p as in \ref{Construction}) which agrees well to the critical exponent found between each other. But unless we try some more families at the initial data level, we can't be confident in its universality. So we need to tune more and try more families as well.
 
 The quoted uncertainty in the critical parameter arises from the inability to unambiguously distinguish between subcritical and supercritical evolution within this narrow region of parameter space. In particular, near the threshold, small variations in the parameter lead to qualitatively different outcomes, and within our numerical resolution this transition cannot be resolved more precisely. This limitation propagates into the determination of the scaling exponent, contributing to the relatively large uncertainty in ($\gamma$).
 \begin{figure}[!hbt]
@@ -12,8 +12,8 @@ The quoted uncertainty in the critical parameter arises from the inability to un
     \includegraphics[scale=0.6]{../notebooks/separate_scaling.pdf}
     \caption{Log-log scaling of the maximum Kretschmann scalar $K_{\max}$ 
     as a function of $|p - p^*|$ for both families. The fitted lines 
-    yield consistent critical exponents $\gamma$, demonstrating 
-    universality near the threshold of black hole formation. Each data point corresponds to an independent simulation, with typical computational cost of $\sim 4000$ core-hours per run. The approximate linear behaviour supports the expected power-law scaling $K_{\max} \sim (p^* - p)^{-4\gamma}$ near criticality.}
+    yield consistent critical exponents $\gamma$, suggesting possible 
+    universality near the threshold of black hole formation for the families studies here. Each data point corresponds to an independent simulation, with typical computational cost of $\sim 4000$ core-hours per run. The approximate linear behaviour supports the expected power-law scaling $K_{\max} \sim (p^* - p)^{-4\gamma}$ near criticality.}
     \label{Scaling}
 \end{figure}
 
