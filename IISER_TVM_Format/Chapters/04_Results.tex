@@ -4,27 +4,28 @@ Critical phenomena in gravitational collapse are most clearly understood in sphe
 
 However, once symmetry assumptions are relaxed, the problem becomes significantly more challenging. In the literature, studies of axisymmetric vacuum collapse typically achieve only about 5–7 digits of precision in tuning the critical parameter. This limitation arises both from the increased computational difficulty of solving multidimensional partial differential equations and from the intrinsic nature of critical phenomena, which involve the development of increasingly fine spatial and temporal structures near the threshold of black hole formation.
 
-For the family of initial data considered in this work, the best-tuned critical parameter is found to be $(p^* = 4.110 \pm 0.003 \; \text{and} \;-4.110 \pm 0.003)$. Despite this comparatively modest level of tuning, we are able to extract a critical exponent of approximately $( \gamma \approx 0.354 \pm 0.204 )$, demonstrating the robustness of the scaling behaviour even without extremely fine-tuned initial data. In Fig.\ref{Scaling} we see that two families,(positive and negative p as in \ref{Construction}) which agrees well to the critical exponent found between each other. But unless we try some more families at the initial data level, we can't be confident in its universality. So we need to tune more and try more families as well.
+For the family of initial data considered in this work, the best-tuned critical parameter is found to be 
+$p^* = 4.110 \pm 0.003$ for positive values of p and $p^* = -4.110 \pm 0.003$ for negative values of p. Despite this comparatively modest level of tuning, we are able to extract a critical exponent of approximately $\gamma \approx 0.354 \pm 0.204$. This suggests that the scaling behaviour is reasonably robust even without extremely fine-tuned initial data. In Fig.~\ref{Scaling}, we observe that two families (corresponding to positive and negative values of $p$, as described in Sec.~\ref{Construction}) yield consistent estimates of the critical exponent. For the current families of initial data, we obtain an $R^2$ value of 0.995 for the linear fit. However, these results should be interpreted with caution. More precise tuning toward the critical threshold, along with a broader set of initial data families, is required before drawing stronger conclusions, particularly regarding universality. This is because, at this level of tuning, the system may still be sufficiently far from the critical regime that the extracted exponent is not reliable. Previous studies suggest that insufficient fine-tuning can introduce systematic deviations in the inferred scaling behaviour.
 
 The quoted uncertainty in the critical parameter arises from the inability to unambiguously distinguish between subcritical and supercritical evolution within this narrow region of parameter space. In particular, near the threshold, small variations in the parameter lead to qualitatively different outcomes, and within our numerical resolution this transition cannot be resolved more precisely. This limitation propagates into the determination of the scaling exponent, contributing to the relatively large uncertainty in ($\gamma$).
 \begin{figure}[!hbt]
     \centering
     \includegraphics[scale=0.6]{../notebooks/separate_scaling.pdf}
-    \caption{Log-log scaling of the maximum Kretschmann scalar $K_{\max}$ 
-    as a function of $|p - p^*|$ for both families. The fitted lines 
-    yield consistent critical exponents $\gamma$, suggesting possible 
-    universality near the threshold of black hole formation for the families studies here. Each data point corresponds to an independent simulation, with typical computational cost of $\sim 4000$ core-hours per run. The approximate linear behaviour supports the expected power-law scaling $K_{\max} \sim (p^* - p)^{-4\gamma}$ near criticality.}
+    \caption{Log--log scaling of the maximum Kretschmann scalar $K_{\max}$ 
+as a function of $|p - p^*|$ for both families. The fitted lines 
+give consistent estimates of the critical exponent $\gamma$, which is to be trusted only after further tuning. 
+Each point corresponds to an independent simulation worth $\approx 4000$ core hours. The approximately 
+linear behaviour is consistent with the expected scaling 
+$K_{\max} \sim (p^* - p)^{-4\gamma}$ near criticality.}
     \label{Scaling}
 \end{figure}
 
-For the current family that we have chosen, we see a $R^2$ goodness of fit value of 0.995 which gives an additional assurance that there indeed exists some linear scaling even at this level of tuning. But in this regard, more work needs to be done to tune more into the critical regime and investigate the critical phenomena (Presence of self-similiar structures and so on).
-
-For example, as the parameter is tuned closer to the critical value, the evolution exhibits increasingly pronounced oscillatory features in the curvature, suggestive of the onset of echoing behaviour as in Fig \ref{feature}. These structures appear as repeated, self-similar peaks in the Kretschmann scalar as a function of proper time. However, due to the limited level of tuning and numerical resolution in the present simulations, these features cannot be conclusively identified as true (discrete) self-similarity. Achieving a more definitive verification would require finer tuning of the critical parameter and higher resolution to resolve the increasingly small spacetime scales involved.
+ However, further refinement of the tuning toward the critical regime is required to investigate the critical behaviour more reliably, including the possible presence of self-similar structures. For example, as the parameter is tuned closer to the critical value, the evolution exhibits increasingly pronounced oscillatory features in the curvature, suggestive of the onset of echoing behaviour as in Fig \ref{feature}. These structures appear as repetitive peaks in the Kretschmann scalar as a function of proper time. However, due to the limited level of tuning and numerical resolution in the present simulations, these features cannot be conclusively identified as true (discrete) self-similarity. Achieving a more definitive verification would require finer tuning of the critical parameter and higher resolution to resolve the increasingly small spacetime scales involved.
 
 \begin{figure}[!!hbt]
     \centering
     \includegraphics[scale=0.4]{../figures/feature.pdf}
-    \caption{The figure depicts the Kretschmann scalar plotted against the proper time at the origin for the subcritical evolutions. Here, proper time refers to the time measured by an observer at rest at that spatial location in the spacetime. As expected in critical phenomenon we can observe that as we tune more into the threshold, we see more echo-like features in the curvature since as we tune more from the subcritical side, evolution resembles the critical solution more until it disperses. Eventhough suggestive of self-similiarity further tuning and further analysis is needed for conclusive identification.}
+    \caption{The figure depicts the Kretschmann scalar plotted against the proper time at the origin for the subcritical evolutions. Here, proper time refers to the time measured by an observer at rest at that spatial location in the spacetime. As expected in critical phenomenon, as we tune more from the subcritical side, we observe more echo-like features until it dissipates. Eventhough suggestive of self-similiarity further tuning and analysis is needed for conclusive identification.}
     \label{feature}
 \end{figure}
 
@@ -52,11 +53,11 @@ As we approach the critical regime, the solution develops structure on increasin
 where $C < 1$ is the Courant factor determined by the numerical scheme and $\Delta x$ and $\Delta t$ are the spatial grid spacing and time-step spacing respectively.
 
 
-This condition has important consequences near criticality. To resolve the features \texttt{BAMPS} uses Adaptive Mesh Refinement (AMR) which adjusts the spatial grid sizes to capture the dynamics that happen in smaller and smaller scales. As finer spatial resolution ($\Delta x \to 0$) is required to resolve the small-scale features that emerge, the timestep must also decrease proportionally. Consequently, the computational cost increases significantly, since the number of timesteps required scales inversely with $\Delta t$. With our current computational resources we were only able to tune to about 3 decimal places due to that reason.
+This condition has important consequences near criticality. To resolve the features \texttt{BAMPS} uses Adaptive Mesh Refinement (AMR) which adjusts the spatial grid sizes to capture the dynamics that happen in smaller and smaller scales. As finer spatial resolution ($\Delta x \to 0$) is required to resolve the small-scale features that emerge, the timestep must also decrease proportionally due to CFL condition. Consequently, the computational cost increases significantly, since the number of timesteps required scales inversely with $\Delta t$. With our current computational resources we were only able to tune to about 3 decimal places due to that reason.
 
 Additionally, the dynamics of critical phenomenon is in such a way as we tune towards the threshold of collapse, the evolution resembles each other to even more duration of evolution until the solution ``chooses" an end point, be it a singular spacetime or dispersion. So essentially we will have to evolve more simulation time as we tune the parameter more to reach the critical regime.
 
-Therefore, the combination of shrinking physical scales and the CFL constraint severely limits how close one can tune to the critical parameter in multidimensional simulations. This is one of the primary reasons why achieving high precision in non-symmetric critical collapse is significantly more challenging than in spherical symmetry. This problem can most probably only mitigated by evolving with more number of points in the grids which indeed will slow the runs down more, hence we will need more computational resources to effectively resolve the features in a way that the computational time that it takes won't be high.
+Therefore, the combination of shrinking physical scales and the CFL constraint severely limits how close one can tune to the critical parameter in multidimensional simulations. This is one of the primary reasons why achieving high precision in non-symmetric critical collapse is significantly more challenging than in spherical symmetry. This problem can most probably only mitigated by evolving  with more computational resources to effectively resolve the features in a way that the computational time that it takes won't be high.
 
 \subsection*{Gauge effects and its resolution}
 
@@ -70,7 +71,7 @@ These features are not physical but arise due to the choice of gauge conditions.
     \label{shift}
 \end{figure}
 
-To mitigate such coordinate pathologies,we increase the damping parameters in the HDW Gauge (Sec \ref{HDWG}) to suppress rapid variations in the shift and control the growth of coordinate distortions (See Fig.\ref{shift}). But finding the right gauge is a process that purely involves trial and error and testing them requires to evolve them with multiple gauge choices and understand how the pathology behaves. Hence this process takes time which in turn adds the time to the tuning of the critical parameter as well.
+To mitigate such coordinate pathologies,we increase the damping parameters in the HDW Gauge (Sec \ref{HDWG}) to suppress rapid variations in the shift and control the growth of coordinate distortions (See Fig.\ref{shift}). But finding the right gauge is a process that purely involves trial and error and testing them requires to evolve them with multiple gauge choices and understand how the pathology behaves. Hence this process takes time which in turn slows down the tuning of the critical parameter as well.
 \section*{Intricacies in Horizon Finding}
 
 Another cause of the inability to classify spacetimes also come from limitations of the AH finders that we had used. Initially, far away from criticality, we found circular (spherical) AH's and as we approached the critical regime we see more of a ``peanut" shaped horizons as in Fig.\ref{peanut}.  These were comparitively found easily using the spherical parameterised \texttt{AHLoc3D} AH finder from the AH data outputted by \texttt{BAMPS}.
@@ -102,7 +103,7 @@ But as we tuned further the inability to tune the parameter by finding horizons 
 \begin{figure}
     \centering
     \includegraphics[scale=0.6]{../notebooks/problematic.pdf}
-    \caption{One of the disjoint horizons found by the new cartesian based horizon finder near criticality. \texttt{AHLoc3D} is not able to find them in a spherical parameterisation, since the derivatives diverges near the problematic points shown in red if we were to find it using the $r=F(\theta)$ parameterisation, since the parameterisation breaks at those regions (borderline before multivaluedness).  }
+    \caption{One of the disjoint horizons found by the new cartesian based horizon finder near criticality. \texttt{AHLoc3D} is not able to find them in a spherical parameterisation, since the derivatives diverge near the problematic points shown in red if we were to find it using the $r=F(\theta)$ parameterisation(borderline before multivaluedness).  }
     \label{horizon_not}
 \end{figure}
 

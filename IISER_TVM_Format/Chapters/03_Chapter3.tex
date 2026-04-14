@@ -17,7 +17,7 @@ where twp1 and twp2 are parameters that we would like to characterise the critic
 
 \section{Time Evolutions of Twist-included Brill wave Initial Data}
 
-With the new twist included Brill wave initial data that we constructed, we evolved them in \texttt{BAMPS} NR framework \cite{hilditch_weyhausen_brugmann_2016}. Unlike the previous tests of Brill waves, we have to evolve the non-diagonal components of the spacetime tensors as well due to the usage of new spatial metric ansatz due to the inclusion of twist as in Eq.\ref{Twist-included}. Due to the axisymmetric nature of the problem in hand, we use the cartoon method to simplify the computational costs.
+With the new twist included Brill wave initial data that we constructed, we evolved them in \texttt{BAMPS} NR framework \cite{hilditch_weyhausen_brugmann_2016}. \texttt{BAMPS} is a high-order pseudospectral code based on the method of lines, using Chebyshev expansions on Gauss--Lobatto collocation points. The computational domain is constructed using multi-patch cubed-sphere grids, with subpatches enabling Adaptive Mesh Refinement(AMR) and parallelization. Additionally, due to the axisymmetric nature of the problem in hand, we use the cartoon method to simplify the computational costs.
 
 \subsubsection{Cartoon Method \cite{alcubierre_brgmann_holz_takahashi_brandt_seidel_thornburg_2001}}
 \label{Cartoon}
@@ -35,7 +35,7 @@ Harmonic Damped Wave Gauge (HDWG) is obtained by modifying the harmonic gauge co
 $$
 H_a = \eta_L \log \left( \frac{\gamma^p}{\alpha} \right) n_a - \eta_s \alpha^{-1} g_{ai}\beta^i
 $$
-In black-hole spacetimes, particularly near horizon formation, one often observes a rapid growth of the spatial metric determinant $\gamma$ due to coordinate stretching. The first term in $H_a$, through the logarithmic factor $\log(\gamma^p / \alpha)$, acts to counter this growth by driving a collapse of the lapse $\alpha$, thereby controlling the increase in spatial volume elements. The second term damps the shift vector $\beta^i$, suppressing distortions in the spatial coordinates. For more details, refer \cite{lindblom_szilágyi_2009}
+where $\eta_s, \eta_L$ and p are constants. In black-hole spacetimes, particularly near horizon formation, one often observes a rapid growth of the spatial metric determinant $\gamma$ due to coordinate stretching. The first term in $H_a$, through the logarithmic factor $\log(\gamma^p / \alpha)$, acts to counter this growth by driving a collapse of the lapse $\alpha$, thereby controlling the increase in spatial volume elements. The second term damps the shift vector $\beta^i$, suppressing distortions in the spatial coordinates. For more details, refer \cite{lindblom_szilágyi_2009}
 
 Together, these terms act to control gauge dynamics, preventing the development of large coordinate distortions and stabilizing the evolution near strong-field regions. Since $\eta_L$ and $\eta_s$ sets the time scale where these damping acts, a bit of tuning to find the right parameters are required for proper gauge evolutions which becomes essential in out work.
 
@@ -71,7 +71,7 @@ Finally, these candidate solutions are passed to a root-finding algorithm such a
     \item Initial Data :- Using the framework that we made for solving the Initial Data PDE for arbitary parameters, we construct the initial data for whatever parameters we need for tuning. For example if we know the initial data is between [1,2] then we will construct 10 initial data like 1.0,1.1,1.2.....2.0 
     \item Evolve these initial data using \texttt{BAMPS} and analyse the results. If we observe dispersion on one parameter and horizon formation in the subsequent one, do the next level of search between these parameters and repeat the process
     \begin{itemize}[nosep]
-    \item For subcriticality, we look at the Curvature invariant, Kretschmann Scalar $$K = R_{abcd}R^{abcd}$$ where $R_{abcd}$ is the Riemann curvature tensor, observe its behaviour and check whether its dispersing towards spatial infinity (the end of the grid) and ensure there is no reflection at the boundaries which can be problematic.
+    \item For subcriticality, we look at the Curvature invariant, Kretschmann Scalar $$K = {}^{(4)}R_{abcd}\,{}^{(4)}R^{abcd}$$ where ${}^{(4)}R_{abcd}$ is the Riemann curvature tensor in 4D, observe its behaviour and check whether its dispersing towards spatial infinity (the end of the grid) and ensure there is no reflection at the boundaries which can be problematic.
 
     \item For supercriticality, if the code crashes (either due to numerical error or singularity), we output the very expensive apparent horizon data from the previous checkpoint time for a short time and use that data to find whether horizons have formed or not. 
     \end{itemize}
