@@ -1,9 +1,9 @@
 \chapter{Introduction and Background}
-General Relativity (GR) provides a profound description of gravity as the dynamics of spacetime geometry, governed by a set of highly nonlinear Partial Differential Equations (PDEs). While many exact solutions to Einstein’s equations are known, analytic methods often limit the wide variety of relativistic systems that could be understood using the framework of GR. This necessitates the use of numerical methods, leading to the field of Numerical Relativity (NR), in which spacetime dynamics are studied computationally.
+General Relativity (GR) provides a profound description of gravity as the dynamics of spacetime geometry, governed by a set of highly nonlinear Partial Differential Equations (PDEs). While many exact solutions to Einstein's equations are known, analytic methods often limit the wide variety of relativistic systems that could be understood using the framework of GR. This necessitates the use of numerical methods, leading to the field of Numerical Relativity (NR), in which spacetime dynamics are studied computationally.
 
 One of the most intriguing phenomena uncovered through numerical studies is critical behavior in gravitational collapse. When evolving a one-parameter family of initial data, the system exhibits a threshold separating dispersion from Black Hole (BH) formation. Near this threshold, the spacetime displays remarkable universal features such as power-law scaling, universality of critical exponents, and self-similarity. These discoveries, first made in spherically symmetric systems, revealed deep connections between gravity, nonlinear dynamics, and critical phenomena.
 
-However, much of our current understanding is restricted to highly symmetric settings. In particular, spherical symmetry eliminates gravitational wave degrees of freedom, limiting the richness of the dynamics. To explore genuinely gravitational critical phenomena, it is essential to move beyond spherical symmetry into axisymmetric or fully three-dimensional spacetimes. In vacuum, this becomes especially significant, as nontrivial dynamics arise purely from the nonlinear structure of Einstein’s equations rather than matter fields.
+However, much of our current understanding is restricted to highly symmetric settings. In particular, spherical symmetry eliminates gravitational wave degrees of freedom, limiting the richness of the dynamics. To explore genuinely gravitational critical phenomena, it is essential to move beyond spherical symmetry into axisymmetric or fully three-dimensional spacetimes. In vacuum, this becomes especially significant, as nontrivial dynamics arise purely from the nonlinear structure of Einstein's equations rather than matter fields.
 
 In this work, we investigate critical phenomena in axisymmetric vacuum spacetimes using Brill wave initial data, with a particular focus on the role of twist, which introduces additional geometric degrees of freedom. By constructing and evolving one-parameter families of twist-included initial data, we aim to study how these additional structures influence the nature of the critical solution, its universality, and the emergence of self-similar behavior. In this chapter, we provide a concise overview of the key background concepts relevant to this work.
 
@@ -194,7 +194,7 @@ But the main interest lies in the spacetimes that sit \textit{in the critical re
         \caption{In the critical solution, the same structure (echoes) reappears under rescaling.  
 The two different dots correspond to the same field at different times, and zooming in by a
 factor of $e^{\Delta}$ reveals the same repeating pattern, and this constant is
-family independent known as the echoing constant (Self-similarity).
+family independent known as the echoing constant (Self-similarity).}
         \label{fig:Self_similarity}
         \vspace{25pt}
     \end{subfigure}
@@ -205,11 +205,11 @@ family independent known as the echoing constant (Self-similarity).
 
 
 The choice of spherical symmetry here was crucial: it reduced the full \((3+1)\)-dimensional PDE system to an effective \((1+1)\)-dimensional problem (in suitable coordinates, the fields depend only on time and radius). This simplification dramatically lowers the computational cost compared with a full three-dimensional evolution, while still capturing highly nontrivial gravitational dynamics.
-Following Choptuik’s discovery, many researchers studied and characterized critical phenomena in a wide variety of matter models like scalar fields, perfect fluids, Yang-Mills fields, and scalar electrodynamics, etc., mostly within spherical symmetry, taking advantage of the same reduction in dimensionality and computational expense \cite{gundlach_hilditch_martín-garcía}.
+Following Choptuik's discovery, many researchers studied and characterized critical phenomena in a wide variety of matter models like scalar fields, perfect fluids, Yang-Mills fields, and scalar electrodynamics, etc., mostly within spherical symmetry, taking advantage of the same reduction in dimensionality and computational expense \cite{gundlach_hilditch_martín-garcía}.
 
 
 
-To further understand the structure of the critical solution space of Einstein’s equations, subsequent studies have explored departures from spherical symmetry. In this context, one of the most important and intriguing cases is that of vacuum spacetimes, i.e., gravitational collapse without matter fields. In spherical symmetry, vacuum solutions are trivial due to Birkhoff’s theorem, which implies the absence of dynamical degrees of freedom. Therefore, going beyond spherical symmetry is essential to probe genuinely gravitational critical phenomena in vacuum, where the dynamics arise purely from the non-linear structure of Einstein’s equations.
+To further understand the structure of the critical solution space of Einstein's equations, subsequent studies have explored departures from spherical symmetry. In this context, one of the most important and intriguing cases is that of vacuum spacetimes, i.e., gravitational collapse without matter fields. In spherical symmetry, vacuum solutions are trivial due to Birkhoff's theorem, which implies the absence of dynamical degrees of freedom. Therefore, going beyond spherical symmetry is essential to probe genuinely gravitational critical phenomena in vacuum, where the dynamics arise purely from the non-linear structure of Einstein's equations.
 
 In this regard, axisymmetric vacuum spacetimes form the next natural class of models, as they admit nontrivial gravitational wave dynamics absent in spherical symmetry, while still offering a significant reduction in computational complexity compared to fully three-dimensional simulations. In this class, the two main candidates are Brill waves and Teukolsky waves. In this work, we focus on Brill waves because they are comparatively simpler to implement.
 
@@ -229,7 +229,7 @@ When $q(\rho,z)=0$, the seed metric on the $(\rho,z)$--plane is flat, so the Bri
 3-metric
 reduces to a conformally flat geometry. Thus $q(\rho,z)$ acts as a \emph{seed function}
 that introduces nontrivial gravitational content into the initial data. At the same time, the
-conformal factor $\psi$ is fixed by the Hamiltonian constraint, which becomes an elliptic equation \footnote{With York’s conformal decomposition method} to solve, making this metric constraint satisfying. When $\gamma_{ij} = \psi ^4 \tilde{\gamma}_{ij}$ then the Hamiltonian constraint becomes ,
+conformal factor $\psi$ is fixed by the Hamiltonian constraint, which becomes an elliptic equation \footnote{With York's conformal decomposition method} to solve, making this metric constraint satisfying. When $\gamma_{ij} = \psi ^4 \tilde{\gamma}_{ij}$ then the Hamiltonian constraint becomes ,
 $
 8 \tilde{D}^2 \psi =\tilde{R} \psi 
 $
@@ -247,7 +247,7 @@ measures the failure of $\xi^a$ to be hypersurface orthogonal, and is encoded in
 \section*{Motivation}
 Critical collapse in twist-free axisymmetric geometries, both in vacuum and non-vacuum settings, has revealed significant departures from the standard critical phenomena observed in spherical symmetry, including bifurcation of the collapse point and loss of universality in scaling laws \cite{baumgarte_2018}. These deviations suggest that the additional gravitational degrees of freedom present in axisymmetry, namely, gravitational waves, might play a crucial role, as opposed to purely matter-driven dynamics. 
 
-But we also see that the introduction of rotating matter (with angular momentum) restores some of the textbook critical behavior that is lost in the previous case (only in non-vacuum cases), such as a single center of collapse and universal scaling laws \cite{marouda_cors_rüter_vaño-viñuales_hilditch}.\footnote{When there is angular momentum, there will be twist but not vice versa}. A possible explanation for the restoration of standard critical behavior in the presence of angular momentum is that, in axisymmetry, there is no corresponding vacuum threshold solution with nonzero angular momentum. This is because with regular vacuum initial data (without singularities/BH), the data can’t have or evolve to have angular momentum \cite{marouda_cors_rüter_vaño-viñuales_hilditch}. As a result, the dynamics is not influenced by competing vacuum critical solutions, allowing the system to exhibit cleaner, more universal behavior. In contrast, in the absence of angular momentum, vacuum axisymmetric thresholds may introduce competing dynamics that lead to deviations from the standard picture. But the absence of angular momentum doesn’t necessarily imply the absence of twist.
+But we also see that the introduction of rotating matter (with angular momentum) restores some of the textbook critical behavior that is lost in the previous case (only in non-vacuum cases), such as a single center of collapse and universal scaling laws \cite{marouda_cors_rüter_vaño-viñuales_hilditch}.\footnote{When there is angular momentum, there will be twist but not vice versa}. A possible explanation for the restoration of standard critical behavior in the presence of angular momentum is that, in axisymmetry, there is no corresponding vacuum threshold solution with nonzero angular momentum. This is because with regular vacuum initial data (without singularities/BH), the data can't have or evolve to have angular momentum \cite{marouda_cors_rüter_vaño-viñuales_hilditch}. As a result, the dynamics is not influenced by competing vacuum critical solutions, allowing the system to exhibit cleaner, more universal behavior. In contrast, in the absence of angular momentum, vacuum axisymmetric thresholds may introduce competing dynamics that lead to deviations from the standard picture. But the absence of angular momentum doesn't necessarily imply the absence of twist.
 
 Hence, to assess the hypothesis, it is essential to investigate whether a distinct twisting vacuum critical solution exists. If such a solution is present and lies nearby in solution space, it could influence or compete with matter-driven collapse, potentially modifying or suppressing universal behavior even in the case with angular momentum in non-vacuum
 
@@ -272,7 +272,7 @@ where the function \emph{f($\rho$,z)} and \emph{h($\rho$,z)} parameterises the t
 \end{equation} 
 \section{Horizons}
 
-The main tool we use to classify spacetimes as subcritical or supercritical is to probe for horizons, specifically Apparent Horizons (AHs), in the evolved slice. The main advantage of AH is that, unlike event horizons, they are not \textit{teleological}, i.e., we don’t need the information about the entire future development of the spacetime to get the information about AHs. In numerically computed dynamical spacetimes like ours, we might not be able to evolve them indefinitely to classify them, since the code will crash after some further evolution. Hence, AHs are the right tool to understand them.
+The main tool we use to classify spacetimes as subcritical or supercritical is to probe for horizons, specifically Apparent Horizons (AHs), in the evolved slice. The main advantage of AH is that, unlike event horizons, they are not \textit{teleological}, i.e., we don't need the information about the entire future development of the spacetime to get the information about AHs. In numerically computed dynamical spacetimes like ours, we might not be able to evolve them indefinitely to classify them, since the code will crash after some further evolution. Hence, AHs are the right tool to understand them.
 
 \textbf{But what is an AH and why does it relate to the notion of a singular spacetime?}
 
@@ -289,7 +289,7 @@ Hence, our aim is to find surfaces satisfying ($\Theta = 0$), and we identify th
 
 The importance of apparent horizons is closely tied to the singularity theorems of general relativity. These theorems state that, under suitable energy conditions (such as the \textit{null energy condition}, which is satisfied in vacuum since ($T_{ab}=0$)) and global hyperbolicity (satisfied since the initial data is constraint satisfying), the presence of a trapped surface implies that the spacetime is geodesically incomplete, i.e., contains a singularity.
 
-Thus, the formation of a MOTS or apparent horizon serves as a strong indicator of BH formation in the spacetime’s future development. This provides a practical and geometric criterion for classifying spacetimes in our analysis.
+Thus, the formation of a MOTS or apparent horizon serves as a strong indicator of BH formation in the spacetime's future development. This provides a practical and geometric criterion for classifying spacetimes in our analysis.
 
 
 
