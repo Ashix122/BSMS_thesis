@@ -41,7 +41,7 @@ Together, these terms act to control gauge dynamics, preventing the development 
 
 \section{Horizon Finding}
 \label{horizon}
-In our axisymmetric setting, using a spherical parameterization to locate surfaces satisfying the vanishing expansion condition in Eq.\ref{Horizon}, the problem reduces to a one-dimensional ordinary differential equation in the polar angle. To solve them, we use the \texttt{AHLoc3D} tool with a parabolic flow method \cite{thornburg_2007}. Essentially, it makes use of guess surfaces in such a way that the outermost MOTS is inside the surface, calculates the expansion at a number of points based on the resolution and the ``flows" towards lesser and lesser expansion values based on a pseudo time stepping ($\lambda$), ie
+In our axisymmetric setting, using a spherical parameterization to locate surfaces satisfying the vanishing expansion condition in Eq.\ref{Horizon}, the problem reduces to a one-dimensional ordinary differential equation (ODE) in the polar angle. To solve them, we use the \texttt{AHLoc3D} tool with a parabolic flow method \cite{thornburg_2007}. Essentially, it makes use of guess surfaces in such a way that the outermost MOTS is inside the surface, calculates the expansion at a number of points based on the resolution and the ``flows" towards lesser and lesser expansion values based on a pseudo time stepping ($\lambda$), ie
 $
 \partial_\lambda x^i = - \Theta s^i
 $
