@@ -5,7 +5,9 @@ Critical phenomena in gravitational collapse are most clearly understood in sphe
 However, once symmetry assumptions are relaxed, the problem becomes significantly more challenging. In the literature, studies of axisymmetric vacuum collapse typically achieve only about 5–7 digits of precision in tuning the critical parameter. This limitation arises from both the increased computational difficulty of solving multidimensional PDEs and the intrinsic nature of critical phenomena, which involve the development of increasingly fine spatial and temporal structures near the threshold of black hole formation.
 
 For the family of initial data considered in this work, the best-tuned critical parameter is found to be 
-$p^* = 4.110 \pm 0.003$ for positive values of p and $p^* = -4.110 \pm 0.003$ for negative values of p. Despite this comparatively modest level of tuning, we are able to extract a critical exponent of approximately $\gamma \approx 0.354 \pm 0.204$. This suggests that the scaling behavior is reasonably robust even without extremely fine-tuned initial data. In Fig.~\ref{Scaling}, we observe that two families (corresponding to positive and negative values of $p$, as described in Sec.~\ref{Construction}) yield consistent estimates of the critical exponent. For the current families of initial data, we obtain an $R^2$ value of 0.995 for the linear fit. However, these results should be interpreted with caution. More precise tuning toward the critical threshold, along with a broader set of initial data families, is required before drawing stronger conclusions, particularly regarding universality. This is because at this level of tuning, the system may still be sufficiently far from the critical regime that the extracted exponent is unreliable. Previous studies suggest that insufficient fine-tuning can introduce systematic deviations in the inferred scaling behavior.
+$p^* = 4.110 \pm 0.003$ for positive values of p and $p^* = -4.110 \pm 0.003$ for negative values of p. Despite this comparatively modest level of tuning, we are able to extract a critical exponent of approximately $\gamma \approx 0.354 \pm 0.204$. This suggests that the scaling behavior is reasonably robust even without extremely fine-tuned initial data. In Fig.~\ref{Scaling}, we observe that two families (corresponding to positive and negative values of $p$, as described in Sec.~\ref{Construction}) yield consistent estimates of the critical exponent.We obtain an $R^2$ value of 0.995 for the linear fit to the log--log plot of $K_{\max}$ versus $|p - p^*|$, indicating good agreement with an approximate scaling behaviour.
+
+However, these results should be interpreted with caution. More precise tuning toward the critical threshold, along with a broader set of initial data families, is required before drawing stronger conclusions, particularly regarding universality. This is because at this level of tuning, the system may still be sufficiently far from the critical regime that the extracted exponent is unreliable. Previous studies suggest that insufficient fine-tuning can introduce systematic deviations in the inferred scaling behavior.
 
 The quoted uncertainty in the critical parameter arises from the inability to unambiguously distinguish between subcritical and supercritical evolution within this narrow region of parameter space. In particular, near the threshold, small variations in the parameter lead to qualitatively different outcomes, and within our numerical resolution, this transition cannot be resolved more precisely. This limitation propagates into the determination of the scaling exponent, contributing to the relatively large uncertainty in ($\gamma$).
 \begin{figure}[!hbt]
@@ -66,7 +68,7 @@ In near-critical evolutions, coordinate pathologies often manifest as the develo
 These features are not physical but arise due to the choice of gauge conditions. In particular, certain gauge choices may fail to adequately account for the strong focusing of the geometry near criticality, leading to large coordinate distortions. Since, in NR, the coordinate system (indirectly) evolves alongside spacetime, the gauge dynamics can drive the coordinate system toward pathological configurations. In extreme cases, this can lead to the formation of coordinate singularities during the evolution. Such singularities are purely gauge effects and do not correspond to any physical divergence in the spacetime geometry, but they can nevertheless result in the breakdown of the numerical simulation.
 \begin{figure}
     \centering
-    \includegraphics[scale=0.4]{../figures/shift.pdf}
+    \includegraphics[scale=0.5]{../figures/shift.pdf}
     \caption{Two evolutions with different shift damping gauge parameters. As we can observe in the higher one, the divergence of the shift is damped away by the shift damping term ($\eta_s$) of the gauge, hence allowing us to evolve more in time and observe the dynamics.}
     \label{shift}
 \end{figure}
@@ -79,14 +81,14 @@ Another cause of the inability to classify spacetimes stems from limitations in 
 \begin{figure}
     \centering
     
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../notebooks/figure.pdf}
         \caption{Peanut-shaped horizons}
         \label{peanut}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{../notebooks/figure_4.114.pdf}
         \caption{Disjoint horizons}
@@ -109,7 +111,6 @@ But as we tuned further, the inability to tune the parameter by finding horizons
 
 As seen in Fig.\ref{horizon_not}, the parameterization is no longer valid for horizons like these, and, as we enter the critical regime, we can only rely on this new parameterization. Currently, we find disjoint horizons that are centered around $z=\pm z_{\text{peak}}$ where $z_{\text{peak}}$ is the point on the z axis where the maximum of curvature (Kretschmann Scalar) is located.
 
-Although non–star-shaped (non–ray-body) AHs have been observed in certain scenarios, such as during binary black hole mergers, the appearance of a set of disjoint non–ray-body AHs in the present context appears to be relatively unexplored and, to the best of our knowledge, has not been reported in similar studies. This, in turn, highlights the need for more general and robust parameterizations in investigations of this kind.
 
 Taken together, these results illustrate that while critical phenomena persist beyond spherical symmetry, accessing and characterizing them demands increasingly sophisticated numerical methods and a deeper understanding of the underlying geometry.
 
