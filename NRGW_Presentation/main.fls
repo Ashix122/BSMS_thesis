@@ -285,6 +285,8 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemeorchid
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemeorchid.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemewhale.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemewhale.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/oberdiek/centernot.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/oberdiek/centernot.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption.sty
@@ -446,11 +448,11 @@ INPUT ./Scaling_all.pdf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
-INPUT ./separate_scaling_new.pdf
-INPUT ./separate_scaling_new.pdf
-INPUT ./separate_scaling_new.pdf
-INPUT ./separate_scaling_new.pdf
-INPUT ./separate_scaling_new.pdf
+INPUT ../figures/separate_scaling_new.pdf
+INPUT ../figures/separate_scaling_new.pdf
+INPUT ../figures/separate_scaling_new.pdf
+INPUT ../figures/separate_scaling_new.pdf
+INPUT ../figures/separate_scaling_new.pdf
 INPUT ./figure.pdf
 INPUT ./figure.pdf
 INPUT ./figure.pdf

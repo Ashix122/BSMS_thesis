@@ -2,7 +2,7 @@
 
 % Theme
 \usetheme{Darmstadt}
-
+\usepackage{centernot}
 % Packages
 \usepackage{amsmath, amssymb}
 \usepackage{subcaption}
@@ -12,11 +12,11 @@
 \usepackage{appendixnumberbeamer}
 \usepackage{subcaption}
 % Title Page Information
-\title[Critical Phenomenon in Axisymmetric Spacetimes]{Critical Phenomenon in Axisymmetric Vacuum Spacetimes: Role of Twist}
-\subtitle{\Large Phase 1 Presentation}
+\title[]{Towards Critical Phenomenon in Axisymmetric Twisting Spacetimes in Vacuum}
+\subtitle{\Large Phase II Presentation}
 \author[Ashique T Nizar]{\textbf{Ashique T Nizar}}
-\institute[]{\Large Indian Institute of Science Education and Research, Trivandrum \\[4pt] \large Under the guidance of Dr.\ Soumen Basak and Dr.David Hilditch}
-\date{November 27, 2025}
+\institute[]{\Large Indian Institute of Science Education and Research, Trivandrum \\[4pt] \large Under the guidance of Dr.\ Soumen Basak}
+\date{April 20, 2025}
 
 \usepackage{xcolor,pifont}
 \newcommand*\colourcheck[1]{%
@@ -39,17 +39,27 @@
 \end{quote}
 \hfill --- John A. Wheeler
 
-\vspace{5pt}
-Often in time evolution PDE problems, the relevent equations can be formulated of the form.
-$$
-\partial_t u = f(u, \partial_{x^i} u)
-$$
-where t is the time and $x^i$ is the spatial coordinates
 $$
 R_{\mu \nu}-\frac{1}{2}g_{\mu \nu}R =8 \pi T_{\mu \nu}
 $$
-\textbf{BUT}, One of the most important equation of GR, the Einstein's Field equations, which are system of non-linear coupled differential equations, does'nt have that form explicitly
+\begin{alertblock}{Why NR}
+    
+\begin{itemize}
+\item General Relativity is a \textbf{nonlinear} theory.
+
+\item In extreme regimes (e.g., \textbf{gravitational collapse}, \textbf{black hole mergers}), spacetime dynamics become highly complex.
+
+\item Analytic and perturbative methods break down in these strong-field, dynamical scenarios.
+
+\item \textbf{Numerical Relativity} is required to solve Einstein’s equations and study such systems.
+\end{itemize}
+\end{alertblock}
+
+
+
+
 \end{frame}
+
 \begin{frame}{3+1 Decomposition}
 
 \begin{columns}[T]
@@ -297,7 +307,7 @@ But on the introduction of angular momentum into the initial data, we begin to r
 \begin{alertblock}{}
     \begin{itemize}
         \item Axisymmetry is characterised by the presence of a spacelike Killing vector field and twist measures its vorticity
-         \item Angular momentum implies twist but twist does not necessarily imply the presence of angular momentum
+         \item Angular Momentum $\implies$ Twist Twist $\centernot\implies$ Angular Momentum
     \end{itemize}
 \end{alertblock}
 \end{column}
@@ -375,8 +385,10 @@ h(\rho,z) &= \texttt{tp2}\,\rho^{3} e^{-(\rho^{2} + z^{2})}.
     \item As for the first family, we choose pure twisting (q=0) with \texttt{tp1}=\texttt{tp2} =p
 
  \item We solved the differential equation using the Psuedospectral method and the residuals are in the order of $10^{-30}$ and was checked for convergence with increasing resolution. \\
- 
- Hence, the initial data is ready to evolve now \greencheck
+ \centering
+ Hence, the \textbf{initial data} is ready to evolve now \greencheck
+
+ We evolve that using the \texttt{bamps} NR framework
 \end{itemize}
 \end{frame}
 
@@ -397,13 +409,15 @@ h(\rho,z) &= \texttt{tp2}\,\rho^{3} e^{-(\rho^{2} + z^{2})}.
 \end{frame}
 \begin{frame}{How do we tune and why is it hard?}
 
-\vspace{100pt}
+\vspace{150pt}
 To observe subcriticality, we look at the dispersal of the Kretschmann Curvature scalar $K=R_{abcd}R^{abcd}$
     
 \end{frame}
 \begin{frame}{How do we tune and why is it hard?}
-\vspace{100pt}
-To observe supercriticality, we probe for the formation of \textbf{Apparent horizons} (AHs) in the slice. Singularity theorems guarantee a singular spacetime if AHs are formed in the spacetime.
+\vspace{150pt}
+To observe supercriticality, we probe for the formation of \textbf{Apparent horizons} (AHs) in the slice. 
+
+Singularity theorems guarantee a singular spacetime/formation of BH if AHs are formed in the spacetime.
 \end{frame}
 
 
@@ -412,7 +426,8 @@ Often while tuning, we might not be able to classify the spacetimes due to some 
 
 \begin{enumerate}
     \item Coordinate artifacts and gauge/slicing effects
-Solution:- In NR, they are mitigated by utilising the gauge freedom and changing the gauges to overcome the artifact. But this process requires trial and error, which slows down the tuning process.
+
+    Solution:- In NR, they are mitigated by utilising the gauge freedom and changing the gauges to overcome the artifact. But this process requires trial and error, which slows down the tuning process.
 \end{enumerate}
 \vspace{100pt}
 \end{frame}
@@ -458,7 +473,7 @@ where D is the induced 3-metric, $K_{ij}$ the extrinsic curvature, $s^i$ the nor
     \caption{An example for a non-ray body horizon\footnotemark}
 \end{figure}
 \begin{alertblock}{Cartesian based finder}
-    Previous studies in vacuum axisymmetry didnt necessitate the usage of a different parameterization since it very much simplifies the finding problem, and they were able to tune high values of precision.
+    Previous studies in vacuum axisymmetry didn't necessitate the usage of a different parameterization since it very much simplifies the finding problem, and they were able to tune high values of precision.
 \end{alertblock}
 \footnotetext{Thornburg 2006}
 \end{column}
@@ -644,5 +659,19 @@ Hence the initial data is ready to evolve now \greencheck
 \end{frame}
 \begin{frame}{~}
     
+\end{frame}
+
+\begin{frame}{GR into a time evolution problem}
+
+\vspace{5pt}
+Often in time evolution PDE problems, the relevent equations can be formulated of the form.
+$$
+\partial_t u = f(u, \partial_{x^i} u)
+$$
+where t is the time and $x^i$ is the spatial coordinates (+ some contraint equations)
+$$
+R_{\mu \nu}-\frac{1}{2}g_{\mu \nu}R =8 \pi T_{\mu \nu}
+$$
+\textbf{BUT}, One of the most important equation of GR, the Einstein's Field equations, which are system of non-linear coupled differential equations, does'nt have that form explicitly
 \end{frame}
 \end{document}

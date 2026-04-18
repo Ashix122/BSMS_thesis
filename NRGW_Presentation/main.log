@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.7.18)  17 APR 2026 15:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.7.18)  18 APR 2026 13:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -530,7 +530,9 @@ Package: amsthm 2020/05/29 v2.20.6
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasethemes.sty)) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerthemedefault.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerfontthemedefault.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemedefault.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerinnerthemedefault.sty
 \beamer@dima=\dimen300
 \beamer@dimb=\dimen301
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerouterthemedefault.sty))) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerthemeDarmstadt.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerouterthemesmoothbars.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerinnerthemerounded.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemeorchid.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemewhale.sty)) (/usr/local/texlive/2025/texmf-dist/tex/latex/caption/subcaption.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerouterthemedefault.sty))) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerthemeDarmstadt.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerouterthemesmoothbars.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamerinnerthemerounded.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemeorchid.sty) (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemewhale.sty)) (/usr/local/texlive/2025/texmf-dist/tex/latex/oberdiek/centernot.sty
+Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
  (/usr/local/texlive/2025/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
@@ -718,15 +720,15 @@ Package caption Info: End \AtBeginDocument code.
 [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 52.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 61.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 52.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 61.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 52.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 61.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
@@ -734,27 +736,27 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 [2
 
 ]
-Overfull \hbox (0.88026pt too wide) detected at line 114
+Overfull \hbox (0.88026pt too wide) detected at line 124
 \OML/cmm/m/it/9 ^^M[] \OT1/cmss/m/n/9 = \OT1/mathkerncmss/m/sl/9 g[] \OT1/cmss/m/n/9 + \OT1/mathkerncmss/m/sl/9 n[]n[]\OML/cmm/m/it/9 ;  \OT1/mathkerncmss/m/sl/9 K[] \OT1/cmss/m/n/9 = \OMS/cmsy/m/n/9 ^^@\OML/cmm/m/it/9 ^^M[][][]\OMS/cmsy/m/n/9 r[]\OT1/mathkerncmss/m/sl/9 n[]\OML/cmm/m/it/9 :
  []
 
 
-Overfull \hbox (2.73653pt too wide) detected at line 114
+Overfull \hbox (2.73653pt too wide) detected at line 124
 \OT1/mathkerncmss/m/sl/9 C[] \OT1/cmss/m/n/9 : \OT1/mathkerncmss/m/sl/9 R \OT1/cmss/m/n/9 + \OT1/mathkerncmss/m/sl/9 K[] \OMS/cmsy/m/n/9 ^^@ \OT1/mathkerncmss/m/sl/9 K[]K[] \OMS/cmsy/m/n/9 ^^@ \OT1/cmss/m/n/9 16\OML/cmm/m/it/9 ^^Y^^Z \OT1/cmss/m/n/9 = 0\OML/cmm/m/it/9 ;
  []
 
 
-Overfull \hbox (100.55824pt too wide) detected at line 114
+Overfull \hbox (100.55824pt too wide) detected at line 124
 \OML/cmm/m/it/8 @[]\OT1/mathkerncmss/m/sl/8 K[] \OT1/cmss/m/n/8 = \OMS/cmsy/m/n/8 ^^@\OT1/mathkerncmss/m/sl/8 D[]D[]\OML/cmm/m/it/8  \OT1/cmss/m/n/8 + \OML/cmm/m/it/8 \OT1/cmss/m/n/8 (\OT1/mathkerncmss/m/sl/8 R[] \OMS/cmsy/m/n/8 ^^@ \OT1/cmss/m/n/8 2\OT1/mathkerncmss/m/sl/8 K[]K[][][] \OT1/cmss/m/n/8 + \OT1/mathkerncmss/m/sl/8 KK[]\OT1/cmss/m/n/8 ) + 4\OML/cmm/m/it/8 ^^Y\OT1/cmss/m/n/8 [\OML/cmm/m/it/8 ^^M[]\OT1/cmss/m/n/8 (\OT1/mathkerncmss/m/sl/8 s \OMS/cmsy/m/n/8 ^^@ \OML/cmm/m/it/8 ^^Z\OT1/cmss/m/n/8 ) \OMS/cmsy/m/n/8 ^^@ \OT1/cmss/m/n/8 2\OT1/mathkerncmss/m/sl/8 s[]\OT1/cmss/m/n/8 ] + \OMS/cmsy/m/n/8 L[]\OT1/mathkerncmss/m/sl/8 K[]\OML/cmm/m/it/8 :
  []
 
-<Screenshot 2025-11-22 121104.png, id=230, 307.74976pt x 227.04825pt>
+<Screenshot 2025-11-22 121104.png, id=245, 307.74976pt x 227.04825pt>
 File: Screenshot 2025-11-22 121104.png Graphic file (type png)
 <use Screenshot 2025-11-22 121104.png>
-Package pdftex.def Info: Screenshot 2025-11-22 121104.png  used on input line 114.
+Package pdftex.def Info: Screenshot 2025-11-22 121104.png  used on input line 124.
 (pdftex.def)             Requested size: 129.06117pt x 95.22102pt.
 
-Overfull \vbox (3.18793pt too high) detected at line 114
+Overfull \vbox (3.18793pt too high) detected at line 124
  []
 
 
@@ -762,26 +764,26 @@ Overfull \vbox (3.18793pt too high) detected at line 114
 [3
 
  <./Screenshot 2025-11-22 121104.png>]
-Overfull \hbox (0.88026pt too wide) detected at line 114
+Overfull \hbox (0.88026pt too wide) detected at line 124
 \OML/cmm/m/it/9 ^^M[] \OT1/cmss/m/n/9 = \OT1/mathkerncmss/m/sl/9 g[] \OT1/cmss/m/n/9 + \OT1/mathkerncmss/m/sl/9 n[]n[]\OML/cmm/m/it/9 ;  \OT1/mathkerncmss/m/sl/9 K[] \OT1/cmss/m/n/9 = \OMS/cmsy/m/n/9 ^^@\OML/cmm/m/it/9 ^^M[][][]\OMS/cmsy/m/n/9 r[]\OT1/mathkerncmss/m/sl/9 n[]\OML/cmm/m/it/9 :
  []
 
 
-Overfull \hbox (2.73653pt too wide) detected at line 114
+Overfull \hbox (2.73653pt too wide) detected at line 124
 \OT1/mathkerncmss/m/sl/9 C[] \OT1/cmss/m/n/9 : \OT1/mathkerncmss/m/sl/9 R \OT1/cmss/m/n/9 + \OT1/mathkerncmss/m/sl/9 K[] \OMS/cmsy/m/n/9 ^^@ \OT1/mathkerncmss/m/sl/9 K[]K[] \OMS/cmsy/m/n/9 ^^@ \OT1/cmss/m/n/9 16\OML/cmm/m/it/9 ^^Y^^Z \OT1/cmss/m/n/9 = 0\OML/cmm/m/it/9 ;
  []
 
 
-Overfull \hbox (100.55824pt too wide) detected at line 114
+Overfull \hbox (100.55824pt too wide) detected at line 124
 \OML/cmm/m/it/8 @[]\OT1/mathkerncmss/m/sl/8 K[] \OT1/cmss/m/n/8 = \OMS/cmsy/m/n/8 ^^@\OT1/mathkerncmss/m/sl/8 D[]D[]\OML/cmm/m/it/8  \OT1/cmss/m/n/8 + \OML/cmm/m/it/8 \OT1/cmss/m/n/8 (\OT1/mathkerncmss/m/sl/8 R[] \OMS/cmsy/m/n/8 ^^@ \OT1/cmss/m/n/8 2\OT1/mathkerncmss/m/sl/8 K[]K[][][] \OT1/cmss/m/n/8 + \OT1/mathkerncmss/m/sl/8 KK[]\OT1/cmss/m/n/8 ) + 4\OML/cmm/m/it/8 ^^Y\OT1/cmss/m/n/8 [\OML/cmm/m/it/8 ^^M[]\OT1/cmss/m/n/8 (\OT1/mathkerncmss/m/sl/8 s \OMS/cmsy/m/n/8 ^^@ \OML/cmm/m/it/8 ^^Z\OT1/cmss/m/n/8 ) \OMS/cmsy/m/n/8 ^^@ \OT1/cmss/m/n/8 2\OT1/mathkerncmss/m/sl/8 s[]\OT1/cmss/m/n/8 ] + \OMS/cmsy/m/n/8 L[]\OT1/mathkerncmss/m/sl/8 K[]\OML/cmm/m/it/8 :
  []
 
 File: Screenshot 2025-11-22 121104.png Graphic file (type png)
 <use Screenshot 2025-11-22 121104.png>
-Package pdftex.def Info: Screenshot 2025-11-22 121104.png  used on input line 114.
+Package pdftex.def Info: Screenshot 2025-11-22 121104.png  used on input line 124.
 (pdftex.def)             Requested size: 129.06117pt x 95.22102pt.
 
-Overfull \vbox (3.18793pt too high) detected at line 114
+Overfull \vbox (3.18793pt too high) detected at line 124
  []
 
 
@@ -789,26 +791,26 @@ Overfull \vbox (3.18793pt too high) detected at line 114
 [4
 
 ]
-Overfull \hbox (0.88026pt too wide) detected at line 114
+Overfull \hbox (0.88026pt too wide) detected at line 124
 \OML/cmm/m/it/9 ^^M[] \OT1/cmss/m/n/9 = \OT1/mathkerncmss/m/sl/9 g[] \OT1/cmss/m/n/9 + \OT1/mathkerncmss/m/sl/9 n[]n[]\OML/cmm/m/it/9 ;  \OT1/mathkerncmss/m/sl/9 K[] \OT1/cmss/m/n/9 = \OMS/cmsy/m/n/9 ^^@\OML/cmm/m/it/9 ^^M[][][]\OMS/cmsy/m/n/9 r[]\OT1/mathkerncmss/m/sl/9 n[]\OML/cmm/m/it/9 :
  []
 
 
-Overfull \hbox (2.73653pt too wide) detected at line 114
+Overfull \hbox (2.73653pt too wide) detected at line 124
 \OT1/mathkerncmss/m/sl/9 C[] \OT1/cmss/m/n/9 : \OT1/mathkerncmss/m/sl/9 R \OT1/cmss/m/n/9 + \OT1/mathkerncmss/m/sl/9 K[] \OMS/cmsy/m/n/9 ^^@ \OT1/mathkerncmss/m/sl/9 K[]K[] \OMS/cmsy/m/n/9 ^^@ \OT1/cmss/m/n/9 16\OML/cmm/m/it/9 ^^Y^^Z \OT1/cmss/m/n/9 = 0\OML/cmm/m/it/9 ;
  []
 
 
-Overfull \hbox (100.55824pt too wide) detected at line 114
+Overfull \hbox (100.55824pt too wide) detected at line 124
 \OML/cmm/m/it/8 @[]\OT1/mathkerncmss/m/sl/8 K[] \OT1/cmss/m/n/8 = \OMS/cmsy/m/n/8 ^^@\OT1/mathkerncmss/m/sl/8 D[]D[]\OML/cmm/m/it/8  \OT1/cmss/m/n/8 + \OML/cmm/m/it/8 \OT1/cmss/m/n/8 (\OT1/mathkerncmss/m/sl/8 R[] \OMS/cmsy/m/n/8 ^^@ \OT1/cmss/m/n/8 2\OT1/mathkerncmss/m/sl/8 K[]K[][][] \OT1/cmss/m/n/8 + \OT1/mathkerncmss/m/sl/8 KK[]\OT1/cmss/m/n/8 ) + 4\OML/cmm/m/it/8 ^^Y\OT1/cmss/m/n/8 [\OML/cmm/m/it/8 ^^M[]\OT1/cmss/m/n/8 (\OT1/mathkerncmss/m/sl/8 s \OMS/cmsy/m/n/8 ^^@ \OML/cmm/m/it/8 ^^Z\OT1/cmss/m/n/8 ) \OMS/cmsy/m/n/8 ^^@ \OT1/cmss/m/n/8 2\OT1/mathkerncmss/m/sl/8 s[]\OT1/cmss/m/n/8 ] + \OMS/cmsy/m/n/8 L[]\OT1/mathkerncmss/m/sl/8 K[]\OML/cmm/m/it/8 :
  []
 
 File: Screenshot 2025-11-22 121104.png Graphic file (type png)
 <use Screenshot 2025-11-22 121104.png>
-Package pdftex.def Info: Screenshot 2025-11-22 121104.png  used on input line 114.
+Package pdftex.def Info: Screenshot 2025-11-22 121104.png  used on input line 124.
 (pdftex.def)             Requested size: 129.06117pt x 95.22102pt.
 
-Overfull \vbox (3.18793pt too high) detected at line 114
+Overfull \vbox (3.18793pt too high) detected at line 124
  []
 
 
@@ -816,26 +818,26 @@ Overfull \vbox (3.18793pt too high) detected at line 114
 [5
 
 ]
-Overfull \hbox (0.88026pt too wide) detected at line 114
+Overfull \hbox (0.88026pt too wide) detected at line 124
 \OML/cmm/m/it/9 ^^M[] \OT1/cmss/m/n/9 = \OT1/mathkerncmss/m/sl/9 g[] \OT1/cmss/m/n/9 + \OT1/mathkerncmss/m/sl/9 n[]n[]\OML/cmm/m/it/9 ;  \OT1/mathkerncmss/m/sl/9 K[] \OT1/cmss/m/n/9 = \OMS/cmsy/m/n/9 ^^@\OML/cmm/m/it/9 ^^M[][][]\OMS/cmsy/m/n/9 r[]\OT1/mathkerncmss/m/sl/9 n[]\OML/cmm/m/it/9 :
  []
 
 
-Overfull \hbox (2.73653pt too wide) detected at line 114
+Overfull \hbox (2.73653pt too wide) detected at line 124
 \OT1/mathkerncmss/m/sl/9 C[] \OT1/cmss/m/n/9 : \OT1/mathkerncmss/m/sl/9 R \OT1/cmss/m/n/9 + \OT1/mathkerncmss/m/sl/9 K[] \OMS/cmsy/m/n/9 ^^@ \OT1/mathkerncmss/m/sl/9 K[]K[] \OMS/cmsy/m/n/9 ^^@ \OT1/cmss/m/n/9 16\OML/cmm/m/it/9 ^^Y^^Z \OT1/cmss/m/n/9 = 0\OML/cmm/m/it/9 ;
  []
 
 
-Overfull \hbox (100.55824pt too wide) detected at line 114
+Overfull \hbox (100.55824pt too wide) detected at line 124
 \OML/cmm/m/it/8 @[]\OT1/mathkerncmss/m/sl/8 K[] \OT1/cmss/m/n/8 = \OMS/cmsy/m/n/8 ^^@\OT1/mathkerncmss/m/sl/8 D[]D[]\OML/cmm/m/it/8  \OT1/cmss/m/n/8 + \OML/cmm/m/it/8 \OT1/cmss/m/n/8 (\OT1/mathkerncmss/m/sl/8 R[] \OMS/cmsy/m/n/8 ^^@ \OT1/cmss/m/n/8 2\OT1/mathkerncmss/m/sl/8 K[]K[][][] \OT1/cmss/m/n/8 + \OT1/mathkerncmss/m/sl/8 KK[]\OT1/cmss/m/n/8 ) + 4\OML/cmm/m/it/8 ^^Y\OT1/cmss/m/n/8 [\OML/cmm/m/it/8 ^^M[]\OT1/cmss/m/n/8 (\OT1/mathkerncmss/m/sl/8 s \OMS/cmsy/m/n/8 ^^@ \OML/cmm/m/it/8 ^^Z\OT1/cmss/m/n/8 ) \OMS/cmsy/m/n/8 ^^@ \OT1/cmss/m/n/8 2\OT1/mathkerncmss/m/sl/8 s[]\OT1/cmss/m/n/8 ] + \OMS/cmsy/m/n/8 L[]\OT1/mathkerncmss/m/sl/8 K[]\OML/cmm/m/it/8 :
  []
 
 File: Screenshot 2025-11-22 121104.png Graphic file (type png)
 <use Screenshot 2025-11-22 121104.png>
-Package pdftex.def Info: Screenshot 2025-11-22 121104.png  used on input line 114.
+Package pdftex.def Info: Screenshot 2025-11-22 121104.png  used on input line 124.
 (pdftex.def)             Requested size: 129.06117pt x 95.22102pt.
 
-Overfull \vbox (3.18793pt too high) detected at line 114
+Overfull \vbox (3.18793pt too high) detected at line 124
  []
 
 
@@ -843,26 +845,26 @@ Overfull \vbox (3.18793pt too high) detected at line 114
 [6
 
 ]
-Overfull \hbox (0.88026pt too wide) detected at line 114
+Overfull \hbox (0.88026pt too wide) detected at line 124
 \OML/cmm/m/it/9 ^^M[] \OT1/cmss/m/n/9 = \OT1/mathkerncmss/m/sl/9 g[] \OT1/cmss/m/n/9 + \OT1/mathkerncmss/m/sl/9 n[]n[]\OML/cmm/m/it/9 ;  \OT1/mathkerncmss/m/sl/9 K[] \OT1/cmss/m/n/9 = \OMS/cmsy/m/n/9 ^^@\OML/cmm/m/it/9 ^^M[][][]\OMS/cmsy/m/n/9 r[]\OT1/mathkerncmss/m/sl/9 n[]\OML/cmm/m/it/9 :
  []
 
 
-Overfull \hbox (2.73653pt too wide) detected at line 114
+Overfull \hbox (2.73653pt too wide) detected at line 124
 \OT1/mathkerncmss/m/sl/9 C[] \OT1/cmss/m/n/9 : \OT1/mathkerncmss/m/sl/9 R \OT1/cmss/m/n/9 + \OT1/mathkerncmss/m/sl/9 K[] \OMS/cmsy/m/n/9 ^^@ \OT1/mathkerncmss/m/sl/9 K[]K[] \OMS/cmsy/m/n/9 ^^@ \OT1/cmss/m/n/9 16\OML/cmm/m/it/9 ^^Y^^Z \OT1/cmss/m/n/9 = 0\OML/cmm/m/it/9 ;
  []
 
 
-Overfull \hbox (100.55824pt too wide) detected at line 114
+Overfull \hbox (100.55824pt too wide) detected at line 124
 \OML/cmm/m/it/8 @[]\OT1/mathkerncmss/m/sl/8 K[] \OT1/cmss/m/n/8 = \OMS/cmsy/m/n/8 ^^@\OT1/mathkerncmss/m/sl/8 D[]D[]\OML/cmm/m/it/8  \OT1/cmss/m/n/8 + \OML/cmm/m/it/8 \OT1/cmss/m/n/8 (\OT1/mathkerncmss/m/sl/8 R[] \OMS/cmsy/m/n/8 ^^@ \OT1/cmss/m/n/8 2\OT1/mathkerncmss/m/sl/8 K[]K[][][] \OT1/cmss/m/n/8 + \OT1/mathkerncmss/m/sl/8 KK[]\OT1/cmss/m/n/8 ) + 4\OML/cmm/m/it/8 ^^Y\OT1/cmss/m/n/8 [\OML/cmm/m/it/8 ^^M[]\OT1/cmss/m/n/8 (\OT1/mathkerncmss/m/sl/8 s \OMS/cmsy/m/n/8 ^^@ \OML/cmm/m/it/8 ^^Z\OT1/cmss/m/n/8 ) \OMS/cmsy/m/n/8 ^^@ \OT1/cmss/m/n/8 2\OT1/mathkerncmss/m/sl/8 s[]\OT1/cmss/m/n/8 ] + \OMS/cmsy/m/n/8 L[]\OT1/mathkerncmss/m/sl/8 K[]\OML/cmm/m/it/8 :
  []
 
 File: Screenshot 2025-11-22 121104.png Graphic file (type png)
 <use Screenshot 2025-11-22 121104.png>
-Package pdftex.def Info: Screenshot 2025-11-22 121104.png  used on input line 114.
+Package pdftex.def Info: Screenshot 2025-11-22 121104.png  used on input line 124.
 (pdftex.def)             Requested size: 129.06117pt x 95.22102pt.
 
-Overfull \vbox (3.18793pt too high) detected at line 114
+Overfull \vbox (3.18793pt too high) detected at line 124
  []
 
 
@@ -874,13 +876,13 @@ Overfull \vbox (3.18793pt too high) detected at line 114
 [8
 
 ]
-<image.png, id=514, 537.00626pt x 454.69875pt>
+<image.png, id=530, 537.00626pt x 454.69875pt>
 File: image.png Graphic file (type png)
 <use image.png>
-Package pdftex.def Info: image.png  used on input line 166.
+Package pdftex.def Info: image.png  used on input line 176.
 (pdftex.def)             Requested size: 169.80702pt x 143.77898pt.
 
-Overfull \hbox (48.51576pt too wide) in paragraph at lines 166--166
+Overfull \hbox (48.51576pt too wide) in paragraph at lines 176--176
  [] 
  []
 
@@ -891,10 +893,10 @@ Overfull \hbox (48.51576pt too wide) in paragraph at lines 166--166
  <./image.png (PNG copy)>]
 File: image.png Graphic file (type png)
 <use image.png>
-Package pdftex.def Info: image.png  used on input line 195.
+Package pdftex.def Info: image.png  used on input line 205.
 (pdftex.def)             Requested size: 157.679pt x 133.51053pt.
 
-Overfull \hbox (36.38774pt too wide) in paragraph at lines 195--195
+Overfull \hbox (36.38774pt too wide) in paragraph at lines 205--205
  [] 
  []
 
@@ -903,7 +905,7 @@ Overfull \hbox (36.38774pt too wide) in paragraph at lines 195--195
 [10
 
 ]
-Overfull \hbox (30.18431pt too wide) detected at line 226
+Overfull \hbox (30.18431pt too wide) detected at line 236
 []  [][] [][][][][][][][][] [][][][][][][] 
  []
 
@@ -912,72 +914,72 @@ Overfull \hbox (30.18431pt too wide) detected at line 226
 [11
 
 ]
-<deviation.png, id=679, 255.95625pt x 423.5825pt>
+<deviation.png, id=695, 255.95625pt x 423.5825pt>
 File: deviation.png Graphic file (type png)
 <use deviation.png>
-Package pdftex.def Info: deviation.png  used on input line 251.
+Package pdftex.def Info: deviation.png  used on input line 261.
 (pdftex.def)             Requested size: 55.3133pt x 91.53381pt.
 
 
 [12
 
  <./deviation.png>]
-<chop_getcrit.png, id=737, 542.025pt x 226.8475pt>
+<chop_getcrit.png, id=753, 542.025pt x 226.8475pt>
 File: chop_getcrit.png Graphic file (type png)
 <use chop_getcrit.png>
-Package pdftex.def Info: chop_getcrit.png  used on input line 276.
+Package pdftex.def Info: chop_getcrit.png  used on input line 286.
 (pdftex.def)             Requested size: 151.80194pt x 63.5307pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{fig:placeholder}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.276 \end{frame}
+l.286 \end{frame}
                  
 
 [13
 
  <./chop_getcrit.png>]
-<Scaling_all.pdf, id=810, 462.52798pt x 346.89601pt>
+<Scaling_all.pdf, id=826, 462.52798pt x 346.89601pt>
 File: Scaling_all.pdf Graphic file (type pdf)
 <use Scaling_all.pdf>
-Package pdftex.def Info: Scaling_all.pdf  used on input line 305.
+Package pdftex.def Info: Scaling_all.pdf  used on input line 315.
 (pdftex.def)             Requested size: 199.73653pt x 149.80284pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{fig:placeholder}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.305 \end{frame}
+l.315 \end{frame}
                  
 
 [14
 
  <./Scaling_all.pdf>]
-<fig.png, id=940, 462.528pt x 260.172pt>
+<fig.png, id=954, 462.528pt x 260.172pt>
 File: fig.png Graphic file (type png)
 <use fig.png>
-Package pdftex.def Info: fig.png  used on input line 331.
+Package pdftex.def Info: fig.png  used on input line 341.
 (pdftex.def)             Requested size: 153.64493pt x 86.42471pt.
 File: Scaling_all.pdf Graphic file (type pdf)
 <use Scaling_all.pdf>
-Package pdftex.def Info: Scaling_all.pdf  used on input line 331.
+Package pdftex.def Info: Scaling_all.pdf  used on input line 341.
 (pdftex.def)             Requested size: 138.2795pt x 103.70966pt.
 
 
 [15
 
  <./fig.png>]
-/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:361: Missing $ inserted.
+/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:371: Missing $ inserted.
 <inserted text> 
                 $
-l.361 \end{frame}
+l.371 \end{frame}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:361: Missing } inserted.
+/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:371: Missing } inserted.
 <inserted text> 
                 }
-l.361 \end{frame}
+l.371 \end{frame}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -985,18 +987,18 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:361: Display math should end with $$.
+/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:371: Display math should end with $$.
 <to be read again> 
                    \tex_par:D 
-l.361 \end{frame}
+l.371 \end{frame}
                  
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
-/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:361: Extra }, or forgotten \endgroup.
+/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:371: Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.361 \end{frame}
+l.371 \end{frame}
                  
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1005,22 +1007,22 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:361: LaTeX Error: Bad math environment delimiter.
+/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:371: LaTeX Error: Bad math environment delimiter.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.361 \end{frame}
+l.371 \end{frame}
                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:361: Missing $ inserted.
+/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:371: Missing $ inserted.
 <inserted text> 
                 $
-l.361 \end{frame}
+l.371 \end{frame}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1028,10 +1030,10 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:361: Display math should end with $$.
+/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:371: Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.361 \end{frame}
+l.371 \end{frame}
                  
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
@@ -1041,10 +1043,10 @@ So I shall assume that you typed `$$' both times.
 [16
 
 ]
-/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:381: Misplaced alignment tab character &.
+/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:393: Misplaced alignment tab character &.
 \beamer@doifinframe ...the f and h $$ f(\rho ,z) &
                                                   = \texttt {tp1}\,\rho ^{2}...
-l.381 \end{frame}
+l.393 \end{frame}
                  
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1053,10 +1055,10 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:381: Misplaced alignment tab character &.
+/home/ashiquetnizar/Projects/BSMS_thesis/NRGW_Presentation/main.tex:393: Misplaced alignment tab character &.
 \beamer@doifinframe ...{2})} \; \; \; h(\rho ,z) &
                                                   = \texttt {tp2}\,\rho ^{3}...
-l.381 \end{frame}
+l.393 \end{frame}
                  
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1070,20 +1072,20 @@ might try typing `S' now just to see what is salvageable.
 [17
 
 ]
-<separate_scaling_new.pdf, id=1123, 505.89pt x 361.35pt>
-File: separate_scaling_new.pdf Graphic file (type pdf)
-<use separate_scaling_new.pdf>
-Package pdftex.def Info: separate_scaling_new.pdf  used on input line 397.
+<../figures/separate_scaling_new.pdf, id=1135, 505.89pt x 361.35pt>
+File: ../figures/separate_scaling_new.pdf Graphic file (type pdf)
+<use ../figures/separate_scaling_new.pdf>
+Package pdftex.def Info: ../figures/separate_scaling_new.pdf  used on input line 409.
 (pdftex.def)             Requested size: 184.3758pt x 131.6959pt.
 
-Overfull \vbox (5.18271pt too high) detected at line 397
+Overfull \vbox (5.18271pt too high) detected at line 409
  []
 
 
 
 [18
 
- <./separate_scaling_new.pdf>]
+ <../figures/separate_scaling_new.pdf>]
 
 [19
 
@@ -1098,40 +1100,40 @@ Overfull \vbox (5.18271pt too high) detected at line 397
 ]
 
 LaTeX Warning: The counter will not be printed.
-             The label is: 2 on input line 441.
+             The label is: 2 on input line 456.
 
-<figure.pdf, id=1384, 433.62pt x 433.62pt>
+<figure.pdf, id=1396, 433.62pt x 433.62pt>
 File: figure.pdf Graphic file (type pdf)
 <use figure.pdf>
-Package pdftex.def Info: figure.pdf  used on input line 441.
+Package pdftex.def Info: figure.pdf  used on input line 456.
 (pdftex.def)             Requested size: 121.29126pt x 121.28705pt.
 
 
 [22
 
  <./figure.pdf>]
-<../figures/Screenshot_2026-04-05_14-48-44.png, id=1493, 1188.44pt x 449.68pt>
+<../figures/Screenshot_2026-04-05_14-48-44.png, id=1505, 1188.44pt x 449.68pt>
 File: ../figures/Screenshot_2026-04-05_14-48-44.png Graphic file (type png)
 <use ../figures/Screenshot_2026-04-05_14-48-44.png>
-Package pdftex.def Info: ../figures/Screenshot_2026-04-05_14-48-44.png  used on input line 466.
+Package pdftex.def Info: ../figures/Screenshot_2026-04-05_14-48-44.png  used on input line 481.
 (pdftex.def)             Requested size: 118.85095pt x 44.97063pt.
 
 
 [23
 
  <../figures/Screenshot_2026-04-05_14-48-44.png>]
-<../notebooks/figure_4.114.pdf, id=1561, 433.62pt x 433.62pt>
+<../notebooks/figure_4.114.pdf, id=1573, 433.62pt x 433.62pt>
 File: ../notebooks/figure_4.114.pdf Graphic file (type pdf)
 <use ../notebooks/figure_4.114.pdf>
-Package pdftex.def Info: ../notebooks/figure_4.114.pdf  used on input line 492.
+Package pdftex.def Info: ../notebooks/figure_4.114.pdf  used on input line 507.
 (pdftex.def)             Requested size: 124.4507pt x 124.44974pt.
-<../notebooks/problematic.pdf, id=1562, 867.24pt x 361.35pt>
+<../notebooks/problematic.pdf, id=1574, 867.24pt x 361.35pt>
 File: ../notebooks/problematic.pdf Graphic file (type pdf)
 <use ../notebooks/problematic.pdf>
-Package pdftex.def Info: ../notebooks/problematic.pdf  used on input line 492.
+Package pdftex.def Info: ../notebooks/problematic.pdf  used on input line 507.
 (pdftex.def)             Requested size: 261.1959pt x 108.83038pt.
 
-Overfull \hbox (107.55098pt too wide) in paragraph at lines 492--492
+Overfull \hbox (107.55098pt too wide) in paragraph at lines 507--507
  [][] 
  []
 
@@ -1157,18 +1159,18 @@ pdfTeX warning: pdflatex (file ../notebooks/problematic.pdf): PDF inclusion: mul
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\translate ' on input line 523.
+(hyperref)                removing `\translate ' on input line 538.
 
-<echoing_loss.png, id=1870, 868.24374pt x 815.045pt>
+<echoing_loss.png, id=1882, 868.24374pt x 815.045pt>
 File: echoing_loss.png Graphic file (type png)
 <use echoing_loss.png>
-Package pdftex.def Info: echoing_loss.png  used on input line 548.
+Package pdftex.def Info: echoing_loss.png  used on input line 563.
 (pdftex.def)             Requested size: 129.06117pt x 121.1446pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{fig:placeholder}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.548 \end{frame}
+l.563 \end{frame}
                  
 
 [28
@@ -1182,13 +1184,13 @@ l.548 \end{frame}
 [30
 
 ]
-<scaling_curvature.png, id=1901, 911.405pt x 604.2575pt>
+<scaling_curvature.png, id=1913, 911.405pt x 604.2575pt>
 File: scaling_curvature.png Graphic file (type png)
 <use scaling_curvature.png>
-Package pdftex.def Info: scaling_curvature.png  used on input line 621.
+Package pdftex.def Info: scaling_curvature.png  used on input line 636.
 (pdftex.def)             Requested size: 169.80702pt x 112.57883pt.
 
-Overfull \hbox (48.51576pt too wide) in paragraph at lines 621--621
+Overfull \hbox (48.51576pt too wide) in paragraph at lines 636--636
  [] 
  []
 
@@ -1196,34 +1198,34 @@ Overfull \hbox (48.51576pt too wide) in paragraph at lines 621--621
 pdfTeX warning (ext4): destination with the same identifier (name{fig:placeholder}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.621 \end{frame}
+l.636 \end{frame}
                  
 
 [31
 
  <./scaling_curvature.png>]
-<plots/constraint_plot_reflected_x.pdf, id=1909, 702.46443pt x 409.49281pt>
+<plots/constraint_plot_reflected_x.pdf, id=1921, 702.46443pt x 409.49281pt>
 File: plots/constraint_plot_reflected_x.pdf Graphic file (type pdf)
 <use plots/constraint_plot_reflected_x.pdf>
-Package pdftex.def Info: plots/constraint_plot_reflected_x.pdf  used on input line 644.
+Package pdftex.def Info: plots/constraint_plot_reflected_x.pdf  used on input line 659.
 (pdftex.def)             Requested size: 169.01035pt x 98.51772pt.
 
-Overfull \hbox (15.36542pt too wide) in paragraph at lines 644--644
+Overfull \hbox (15.36542pt too wide) in paragraph at lines 659--659
 [][] 
  []
 
-<plots/constraint_plot_z.pdf, id=1910, 702.46443pt x 409.49281pt>
+<plots/constraint_plot_z.pdf, id=1922, 702.46443pt x 409.49281pt>
 File: plots/constraint_plot_z.pdf Graphic file (type pdf)
 <use plots/constraint_plot_z.pdf>
-Package pdftex.def Info: plots/constraint_plot_z.pdf  used on input line 644.
+Package pdftex.def Info: plots/constraint_plot_z.pdf  used on input line 659.
 (pdftex.def)             Requested size: 169.01035pt x 98.51772pt.
 
-Overfull \hbox (15.36542pt too wide) in paragraph at lines 644--644
+Overfull \hbox (15.36542pt too wide) in paragraph at lines 659--659
 [][] 
  []
 
 
-Overfull \hbox (18.49988pt too wide) in paragraph at lines 644--644
+Overfull \hbox (18.49988pt too wide) in paragraph at lines 659--659
  [] 
  []
 
@@ -1237,6 +1239,10 @@ pdfTeX warning: pdflatex (file ./plots/constraint_plot_z.pdf): PDF inclusion: mu
 >]
 
 [33
+
+]
+
+[34
 
 ]
 \tf@nav=\write6
@@ -1267,18 +1273,18 @@ Package rerunfilecheck Info: Checksums for `main.out':
 (rerunfilecheck)             After:  C7A6B62D662A44B3AF831DB9F4E97A98;441.
  ) 
 Here is how much of TeX's memory you used:
- 23761 strings out of 467816
- 465118 string characters out of 5432258
- 844715 words of memory out of 5000000
- 51833 multiletter control sequences out of 15000+600000
+ 23792 strings out of 467816
+ 466116 string characters out of 5432258
+ 844898 words of memory out of 5000000
+ 51858 multiletter control sequences out of 15000+600000
  639104 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,20n,123p,438b,993s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (33 pages, 2381694 bytes).
+Output written on main.pdf (34 pages, 2386219 bytes).
 PDF statistics:
- 2069 PDF objects out of 2073 (max. 8388607)
- 1095 compressed objects within 11 object streams
- 73 named destinations out of 1000 (max. 500000)
- 652 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2087 PDF objects out of 2487 (max. 8388607)
+ 1105 compressed objects within 12 object streams
+ 75 named destinations out of 1000 (max. 500000)
+ 688 words of extra memory for PDF output out of 10000 (max. 10000000)
 
